@@ -1,78 +1,124 @@
-# React + TypeScript + Vite
+# Vault PWA — Development Decisions
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Stack
 
-Currently, two official plugins are available:
+- Frontend: React + TypeScript + Vite.
+- Backend: Python + FastAPI.
+- Server role: API/CRUD and authentication verification; the server does not perform vault encryption/decryption.
+- Client-side cryptographic operations are performed in the PWA.
+- Client persistent storage: IndexedDB.
+- Browser `localStorage` is not used for secrets.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Authentication
 
-## React Compiler
+- First-time device flow:
+  1. User logs in with account credentials.
+  2. Client generates an authentication public/private key pair.
+  3. Client registers the public key with the server.
+  4. Client sets up the local PIN.
+  5. User enters the vault.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- Subsequent launches on a registered/trusted device:
+  - User is asked for the local PIN instead of account credentials.
+  - Successful PIN verification unlocks the local vault.
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+- Device authentication is separate from vault encryption.
 
-## Expanding the ESLint configuration
+## Auth Key Pair
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Algorithm: ECDSA.
+- Curve: P-256.
+- Hash: SHA-256.
+- Private key:
+  - Generated on the client.
+  - Non-extractable Web Crypto `CryptoKey`.
+  - Stored locally in IndexedDB.
+  - Never sent to the server.
+- Public key:
+  - Generated alongside the private key.
+  - Stored locally.
+  - Registered/stored on the server.
+- Server authentication uses a signed request payload plus replay-protection data (for example, a fresh server challenge/nonce); the server verifies the signature using the registered public key.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## PIN / Local Trust
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- PIN is only for local app trust/unlock.
+- PIN is never sent to the server.
+- The raw PIN is never stored.
+- A salted, slow PIN-derived verifier is stored locally in IndexedDB.
+- Initial KDF: PBKDF2-HMAC-SHA-256.
+- Exact PBKDF2 iteration count and PIN policy will be fixed during implementation/security review.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Vault Encryption
 
+- A random Vault Encryption Key is generated on the client.
+- Vault data (passwords and notes) is encrypted/decrypted on the client.
+- Algorithm: AES-256-GCM.
+- A fresh random IV is used for each encryption operation.
+- The Vault Encryption Key is not sent to the server in plaintext.
+
+## Recovery
+
+- A cryptographically random 256-bit Recovery Key is generated on the client.
+- The Recovery Key is presented to the user for offline safekeeping.
+- The server does not store the Recovery Key.
+- The Recovery Key is not used directly to encrypt vault records.
+- The Recovery Key is used to derive/provide a wrapping key that protects the Vault Encryption Key.
+- Vault Encryption Key wrapping algorithm: AES-256-KW.
+- The server stores the wrapped/encrypted Vault Encryption Key.
+- Recovery flow:
+  1. User logs in again after losing local PWA/browser storage.
+  2. Client retrieves the encrypted vault and wrapped Vault Encryption Key.
+  3. User supplies the Recovery Key.
+  4. Client derives/provides the AES-256-KW wrapping key.
+  5. Client unwraps the Vault Encryption Key.
+  6. Client can decrypt the vault and establish new local device state.
+
+## Key Relationships
+
+```text
+Recovery Key
+    |
+    | AES-KW wrapping
+    v
+Vault Encryption Key
+    |
+    | AES-256-GCM
+    v
+Encrypted Vault Data
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## Client Storage
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```text
+IndexedDB
+├── auth
+│   ├── privateKey
+│   └── publicKey
+├── unlock
+│   ├── pinSalt
+│   └── pinVerifier / derived material
+└── vault
+    ├── wrappedVaultKey
+    └── encryptedData
 ```
+
+- Decrypted vault data and the active Vault Encryption Key exist only in application memory while the vault is unlocked.
+- When the vault is locked, sensitive plaintext state is cleared from memory as far as practical.
+
+## Server-Side Stored Data
+
+The server may store:
+
+- Account/user data.
+- Registered public authentication key.
+- Wrapped Vault Encryption Key.
+- Encrypted vault data.
+- Metadata required for API/authentication and CRUD operations.
+
+The server must not store:
+
+- Authentication private key.
+- Recovery Key.
+- Plaintext Vault Encryption Key.
+- Plaintext passwords or notes.

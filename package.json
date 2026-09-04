@@ -13,6 +13,7 @@
     "dotenv": "^17.4.2",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
+    "rxdb": "^17.5.0",
     "zod": "^4.5.4"
   },
   "devDependencies": {
