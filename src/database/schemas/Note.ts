@@ -10,6 +10,7 @@ export const noteSchema: RxJsonSchema<Note> = {
   properties: {
     id: {
       type: "string",
+      maxLength: 26,
     },
     title: {
       type: "string",
@@ -26,11 +27,10 @@ export const noteSchema: RxJsonSchema<Note> = {
       format: "date-time",
     },
     deletedAt: {
-      type: "string",
+      type: ["string", null],
       format: "date-time",
     },
   },
-  required: ["id", "title", "content", "createdAt", "updatedAt"],
-
+  required: ["id", "title", "content", "createdAt", "updatedAt", "deletedAt"],
   indexes: ["updatedAt", "title"],
 };
