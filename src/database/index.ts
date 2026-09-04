@@ -33,7 +33,7 @@ export class AppDatabase {
       },
     });
 
-    const notes = new NoteRepository(database);
+    const notes = new NoteRepository(database.notes);
 
     return new AppDatabase(database, notes);
   }

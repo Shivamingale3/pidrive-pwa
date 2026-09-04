@@ -1,11 +1,10 @@
 import { ulid } from "ulid";
 
-import type { AppDatabase } from "@/database/database";
 import type { CreateNote, Note, UpdateNote } from "@/types/notes.types";
-
+import type { RxCollection } from "rxdb";
+import { map, type Observable } from "rxjs";
 export class NoteRepository {
-  constructor(private readonly database: AppDatabase) {}
-
+  constructor(private readonly notes: RxCollection<Note>) {}
   async create(data: CreateNote): Promise<Note> {
     const now = new Date().toISOString();
 
@@ -17,13 +16,13 @@ export class NoteRepository {
       deletedAt: null,
     };
 
-    const document = await this.database.notes.insert(note);
+    const document = await this.notes.insert(note);
 
     return document.toJSON();
   }
 
   async findById(id: string): Promise<Note | null> {
-    const document = await this.database.notes
+    const document = await this.notes
       .findOne({
         selector: {
           id,
@@ -36,7 +35,7 @@ export class NoteRepository {
   }
 
   async findAll(): Promise<Note[]> {
-    const documents = await this.database.notes
+    const documents = await this.notes
       .find({
         selector: {
           deletedAt: null,
@@ -51,7 +50,7 @@ export class NoteRepository {
   }
 
   async update(id: string, data: UpdateNote): Promise<Note> {
-    const document = await this.database.notes
+    const document = await this.notes
       .findOne({
         selector: {
           id,
@@ -73,7 +72,7 @@ export class NoteRepository {
   }
 
   async delete(id: string): Promise<void> {
-    const document = await this.database.notes
+    const document = await this.notes
       .findOne({
         selector: {
           id,
@@ -92,5 +91,21 @@ export class NoteRepository {
       deletedAt: now,
       updatedAt: now,
     });
+  }
+  findAll$(): Observable<Note[]> {
+    return this.notes
+      .find({
+        selector: {
+          deletedAt: null,
+        },
+        sort: [
+          {
+            updatedAt: "desc",
+          },
+        ],
+      })
+      .$.pipe(
+        map((documents) => documents.map((document) => document.toJSON())),
+      );
   }
 }
