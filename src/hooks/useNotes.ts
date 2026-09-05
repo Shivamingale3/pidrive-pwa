@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 
 import type { CreateNote, Note, UpdateNote } from "@/types/notes.types";
-import useDatabase from "./useDatabase";
+import useDatabase from "@/hooks/useDatabase";
 
 export const useNotes = () => {
   const database = useDatabase();

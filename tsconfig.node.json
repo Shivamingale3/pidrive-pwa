@@ -19,6 +19,7 @@
     "erasableSyntaxOnly": false,
     "noFallthroughCasesInSwitch": true,
     "paths": {
+      "@": ["./src"],
       "@/*": ["./src/*"]
     }
   },

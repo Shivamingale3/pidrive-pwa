@@ -2,7 +2,7 @@ import { createRxDatabase, type RxDatabase } from "rxdb";
 import { getRxStorageDexie } from "rxdb/plugins/storage-dexie";
 
 import { NoteRepository } from "@/repositories/notes.repository";
-import { noteSchema } from "./schemas/Note";
+import { noteSchema } from "@/database/schemas/Note";
 import type { AppDatabaseCollections } from "@/types/app.types";
 
 export class AppDatabase {
