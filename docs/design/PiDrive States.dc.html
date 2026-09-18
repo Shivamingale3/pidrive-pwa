@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240"><rect width="240" height="240" fill="#101010"/><text x="120" y="118" font-family="ui-monospace,monospace" font-size="30" font-weight="700" fill="#fefefe" text-anchor="middle">05</text><text x="120" y="152" font-family="system-ui" font-size="17" font-weight="600" fill="#a09d97" text-anchor="middle">States</text></svg></template>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>
+body{margin:0;background:#e7e5e0;font-family:'Plus Jakarta Sans',system-ui,sans-serif}
+a{color:#101010}a:hover{color:#000}
+input::placeholder{color:#77746e;opacity:1}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #101010;outline-offset:3px;border-radius:8px}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+</style></helmet>
+
+<section style="padding:44px 48px 60px">
+<div style="display:flex;align-items:baseline;gap:12px;margin:0 0 8px">
+  <span style="font:700 10px/1 ui-monospace,monospace;padding:4px 8px;background:#101010;color:#fefefe;border-radius:5px">9</span>
+  <h2 style="margin:0;font:800 20px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#101010">PiDrive — failures and the missing pieces</h2>
+</div>
+<p style="margin:0 0 34px;max-width:760px;font:500 13.5px/1.6 'Plus Jakarta Sans',system-ui;color:#5f5c57;text-wrap:pretty">Thirteen screens. Failures are sorted by severity: three take the whole screen because the app cannot go on, five sit inline next to the thing that failed, one is a choice sheet. Then Face ID with a PIN fallback, sort and filter as a pinned segmented control, and the media grid or list toggle. The last two are live — click the tabs and the view buttons. Dark row below.</p>
+
+<div style="display:flex;gap:40px;flex-wrap:wrap;align-items:flex-start">
+<div style="display:flex;align-items:baseline;gap:10px;padding:0 0 26px;width:100%">
+  <span style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#a09d97">LIGHT</span>
+  <span style="font:700 15px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.02em;color:#101010">Thirteen screens, light theme</span>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">ERR 01</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Wrong server version</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Blocking · admin has to act</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:104px 26px 26px;display:flex;flex-direction:column;background:#ffffff">
+  <div style="width:52px;height:52px;border-radius:18px;background:#fdeeea;display:flex;align-items:center;justify-content:center">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c23c1a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5v9"></path><circle cx="12" cy="18" r="1.1" fill="#c23c1a" stroke="none"></circle></svg>
+  </div>
+  <h1 style="margin:22px 0 0;font:800 27px/1.15 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#101010">This app is newer than your Pi</h1>
+  <p style="margin:12px 0 0;font:500 14px/1.55 'Plus Jakarta Sans',system-ui;color:#77746e;text-wrap:pretty">pi.local answers, but it speaks v1.1. This build needs v1.4 or later, and the endpoints it depends on are not there yet.</p>
+
+  <div style="margin-top:22px;border-radius:20px;border:1.5px solid #eceae5;overflow:hidden">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 17px;border-bottom:1px solid #eceae5">
+      <span style="font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">App build</span>
+      <span style="font:600 12.5px/1 ui-monospace,monospace;color:#101010">1.4.0</span>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 17px;border-bottom:1px solid #eceae5">
+      <span style="font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">API version</span>
+      <span style="font:600 12.5px/1 ui-monospace,monospace;color:#c23c1a">1.1.3</span>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 17px">
+      <span style="font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">Endpoint</span>
+      <span style="font:600 12.5px/1 ui-monospace,monospace;color:#101010">pi.local:8000</span>
+    </div>
+  </div>
+
+  <div style="flex:1"></div>
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <button type="button" style="height:56px;border-radius:28px;border:none;background:#101010;color:#fefefe;font:700 15.5px/1 'Plus Jakarta Sans',system-ui;cursor:pointer">Check again</button>
+    <button type="button" style="height:52px;border-radius:26px;border:1.5px solid #eceae5;background:#ffffff;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#101010;cursor:pointer">Copy these details</button>
+  </div>
+  <p style="margin:16px 0 0;font:500 11.5px/1.55 'Plus Jakarta Sans',system-ui;color:#a09d97;text-align:center;text-wrap:pretty">Your vault is untouched. Nothing was read or written.</p>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">ERR 02</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Session expired mid-use</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Blocking · password, not PIN</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#fbfaf8;position:relative;overflow:hidden">
+  <div style="padding:0 22px;opacity:.32;pointer-events:none">
+    <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#a09d97">PASSWORDS</div>
+    <h1 style="margin:9px 0 18px;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#101010">42 items</h1>
+    <div style="display:flex;flex-direction:column;gap:9px">
+      <div style="height:66px;border-radius:18px;background:#ffffff;border:1.5px solid #eceae5"></div>
+      <div style="height:66px;border-radius:18px;background:#ffffff;border:1.5px solid #eceae5"></div>
+      <div style="height:66px;border-radius:18px;background:#ffffff;border:1.5px solid #eceae5"></div>
+      <div style="height:66px;border-radius:18px;background:#ffffff;border:1.5px solid #eceae5"></div>
+    </div>
+  </div>
+  <div style="position:absolute;inset:0;background:rgba(231,229,224,0.72)"></div>
+  <div style="position:absolute;left:0;right:0;bottom:0;border-radius:30px 30px 0 0;background:#ffffff;padding:26px 24px 34px;box-shadow:0 -18px 50px rgba(16,16,16,0.14);animation:rise .25s ease-out">
+    <div style="width:38px;height:5px;border-radius:3px;background:#eceae5;margin:0 auto 20px"></div>
+    <div style="font:800 21px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#101010">Your session ran out</div>
+    <p style="margin:10px 0 0;font:500 13.5px/1.55 'Plus Jakarta Sans',system-ui;color:#77746e;text-wrap:pretty">The Pi stopped accepting this session after 30 days. Sign in with your password to carry on — the PIN alone will not do it.</p>
+    <div style="margin-top:18px;height:58px;border-radius:18px;background:#f5f4f1;border:1.5px solid #eceae5;display:flex;align-items:center;gap:10px;padding:0 18px">
+      <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="#a09d97" stroke-width="1.7" stroke-linecap="round"><rect x="3.5" y="7.8" width="11" height="7" rx="2.2"></rect><path d="M6.2 7.8V5.6a2.8 2.8 0 015.6 0v2.2"></path></svg>
+      <span style="font:600 14px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Password</span>
+    </div>
+    <button type="button" style="width:100%;height:56px;margin-top:14px;border-radius:28px;border:none;background:#101010;color:#fefefe;font:700 15.5px/1 'Plus Jakarta Sans',system-ui;cursor:pointer">Sign in</button>
+    <button type="button" style="width:100%;height:48px;margin-top:8px;border-radius:24px;border:none;background:transparent;font:700 13.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e;cursor:pointer">Sign out instead</button>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">ERR 03</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Decrypt failure</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Blocking · key no longer matches</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:104px 26px 26px;display:flex;flex-direction:column;background:#ffffff">
+  <div style="width:52px;height:52px;border-radius:18px;background:#fdeeea;display:flex;align-items:center;justify-content:center">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c23c1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="9.5" rx="3"></rect><path d="M8.2 10.5V7.6a3.8 3.8 0 017.6 0"></path><path d="M9.6 14.4l4.8 3.2M14.4 14.4l-4.8 3.2"></path></svg>
+  </div>
+  <h1 style="margin:22px 0 0;font:800 27px/1.15 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#101010">This vault will not decrypt</h1>
+  <p style="margin:12px 0 0;font:500 14px/1.55 'Plus Jakarta Sans',system-ui;color:#77746e;text-wrap:pretty">The Pi handed over your items, but the key on this phone cannot open them. That happens after the password changes somewhere else.</p>
+
+  <div style="margin-top:22px;padding:18px;border-radius:20px;background:#f5f4f1;display:flex;flex-direction:column;gap:12px">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+      <span style="font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">Items received</span>
+      <span style="font:700 12.5px/1 ui-monospace,monospace;color:#101010">42</span>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+      <span style="font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">Items opened</span>
+      <span style="font:700 12.5px/1 ui-monospace,monospace;color:#c23c1a">0</span>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+      <span style="font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">Key last set</span>
+      <span style="font:700 12.5px/1 ui-monospace,monospace;color:#101010">14 Feb</span>
+    </div>
+  </div>
+  <div style="margin-top:14px;padding:14px 16px;border-radius:16px;background:#fdeeea;font:600 12px/1.5 'Plus Jakarta Sans',system-ui;color:#8f2b12;text-wrap:pretty">Nothing was written. Your data on the Pi is exactly as it was.</div>
+
+  <div style="flex:1"></div>
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <button type="button" style="height:56px;border-radius:28px;border:none;background:#101010;color:#fefefe;font:700 15.5px/1 'Plus Jakarta Sans',system-ui;cursor:pointer">Sign in for a fresh key</button>
+    <button type="button" style="height:52px;border-radius:26px;border:1.5px solid #eceae5;background:#ffffff;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#101010;cursor:pointer">Report this to your admin</button>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">ERR 04</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Request timed out</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Inline · retry in place</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#fbfaf8">
+  <div style="flex:1;overflow:hidden;display:flex;flex-direction:column">
+    <div style="padding:0 22px">
+      <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#101010">Passwords</h1>
+      <div style="margin-top:7px;font:500 12.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">Could not load the list</div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:9px;margin:16px 22px 0;padding:12px 16px;border-radius:16px;background:#fdeeea">
+      <span style="width:8px;height:8px;border-radius:50%;background:#c23c1a;flex:none"></span>
+      <span style="font:600 12.5px/1.3 'Plus Jakarta Sans',system-ui;color:#8f2b12">No answer in 10 seconds</span>
+      <div style="flex:1"></div>
+      <button type="button" style="height:32px;padding:0 13px;border-radius:16px;border:1.5px solid #c23c1a;background:transparent;font:700 11px/1 'Plus Jakarta Sans',system-ui;color:#8f2b12;cursor:pointer">Retry</button>
+    </div>
+
+    <div style="padding:14px 22px 0;display:flex;flex-direction:column;gap:9px">
+      <div style="height:66px;border-radius:18px;background:#f5f4f1;animation:pulse 1.6s ease-in-out infinite"></div>
+      <div style="height:66px;border-radius:18px;background:#f5f4f1;opacity:.72;animation:pulse 1.6s ease-in-out .2s infinite"></div>
+      <div style="height:66px;border-radius:18px;background:#f5f4f1;opacity:.5;animation:pulse 1.6s ease-in-out .4s infinite"></div>
+    </div>
+
+    <div style="margin:20px 22px 0;padding:18px;border-radius:20px;border:1.5px dashed #eceae5;display:flex;gap:13px;align-items:flex-start">
+      <svg width="19" height="19" viewBox="0 0 22 22" fill="none" stroke="#77746e" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:1px"><circle cx="11" cy="11" r="7.6"></circle><path d="M11 7v4.4l3 1.8"></path></svg>
+      <span>
+        <span style="display:block;font:700 13.5px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Nothing is cached</span>
+        <span style="display:block;margin-top:6px;font:500 12.5px/1.55 'Plus Jakarta Sans',system-ui;color:#77746e;text-wrap:pretty">Every list is read from the API, so there is no older copy to show you. Retry once you are back on the same network as pi.local.</span>
+      </span>
+    </div>
+  </div>
+
+  <div style="display:flex;align-items:center;justify-content:space-around;padding:10px 8px 30px;background:#ffffff;border-top:1.5px solid #eceae5">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l8-6 8 6v9a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 013 18z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Home</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#101010" stroke-width="1.9" stroke-linecap="round"><circle cx="8" cy="11" r="3.4"></circle><path d="M11.4 11H19M16 11v3"></path></svg>
+      <span style="font:700 10px/1 'Plus Jakarta Sans',system-ui;color:#101010">Passwords</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round"><path d="M5 3h9l4 4v12H5z"></path><path d="M8 9h6M8 13h6"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Notes</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Media</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">ERR 05</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Pi disk full</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Inline · upload blocked</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#fbfaf8;position:relative;overflow:hidden">
+  <div style="padding:0 22px;opacity:.32;pointer-events:none">
+    <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#a09d97">MEDIA · DOCUMENTS</div>
+    <h1 style="margin:9px 0 0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#101010">Upload</h1>
+  </div>
+  <div style="position:absolute;inset:0;background:rgba(231,229,224,0.72)"></div>
+
+  <div style="position:absolute;left:0;right:0;bottom:0;border-radius:30px 30px 0 0;background:#ffffff;padding:26px 24px 34px;box-shadow:0 -18px 50px rgba(16,16,16,0.14);animation:rise .25s ease-out">
+    <div style="width:38px;height:5px;border-radius:3px;background:#eceae5;margin:0 auto 20px"></div>
+    <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:18px;background:#f5f4f1">
+      <span style="width:40px;height:40px;border-radius:13px;background:#ffffff;border:1.5px solid #eceae5;display:flex;align-items:center;justify-content:center;font:700 10px/1 ui-monospace,monospace;color:#101010;flex:none">ZIP</span>
+      <span style="min-width:0">
+        <span style="display:block;font:700 14px/1.2 'Plus Jakarta Sans',system-ui;color:#101010;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">tax-2025.zip</span>
+        <span style="display:block;margin-top:5px;font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">18 MB · stopped at 0%</span>
+      </span>
+    </div>
+
+    <div style="margin-top:16px;padding:18px;border-radius:20px;background:#fdeeea">
+      <div style="display:flex;align-items:center;gap:10px">
+        <svg width="19" height="19" viewBox="0 0 22 22" fill="none" stroke="#c23c1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M3 7.5A1.5 1.5 0 014.5 6h13A1.5 1.5 0 0119 7.5v3H3z"></path><path d="M3 11.5h16v3A1.5 1.5 0 0117.5 16h-13A1.5 1.5 0 013 14.5z"></path><path d="M6.4 8.5h.01M6.4 13.5h.01"></path></svg>
+        <span style="font:700 13.5px/1.2 'Plus Jakarta Sans',system-ui;color:#8f2b12">Your Pi has no room left</span>
+      </div>
+      <p style="margin:10px 0 0;font:500 12.5px/1.55 'Plus Jakarta Sans',system-ui;color:#8f2b12;text-wrap:pretty">MinIO reports 0 bytes free on /mnt/vault. Nothing was uploaded — the file is still only on your phone.</p>
+      <div style="margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;font:700 11px/1 ui-monospace,monospace;color:#8f2b12">
+        <span>238.4 GB USED</span>
+        <span>0 B FREE</span>
+      </div>
+      <div style="margin-top:8px;height:6px;border-radius:3px;background:rgba(194,60,26,0.22);overflow:hidden">
+        <div style="width:100%;height:100%;background:#c23c1a"></div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:10px;margin-top:18px">
+      <button type="button" style="flex:1;height:52px;border-radius:26px;border:1.5px solid #eceae5;background:#ffffff;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#101010;cursor:pointer">Free up space</button>
+      <button type="button" disabled="disabled" style="flex:1;height:52px;border-radius:26px;border:none;background:#f5f4f1;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#a09d97;cursor:not-allowed">Try again</button>
+    </div>
+    <p style="margin:14px 0 0;font:500 11.5px/1.5 'Plus Jakarta Sans',system-ui;color:#a09d97;text-align:center;text-wrap:pretty">Passwords and notes still save — they are kilobytes, not gigabytes.</p>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">ERR 06</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Account quota reached</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Inline · admin sets the limit</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:104px 26px 26px;display:flex;flex-direction:column;background:#ffffff">
+  <button type="button" aria-label="Back" style="width:42px;height:42px;border-radius:14px;border:none;background:#f5f4f1;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#101010" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5L5.5 9l5.5 5.5"></path></svg>
+  </button>
+  <h1 style="margin:20px 0 0;font:800 27px/1.15 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#101010">You have used all 5 GB</h1>
+  <p style="margin:12px 0 0;font:500 14px/1.55 'Plus Jakarta Sans',system-ui;color:#77746e;text-wrap:pretty">Your admin set this account's limit. The Pi itself has room — it just will not take more from you until something goes.</p>
+
+  <div style="margin-top:22px;padding:20px;border-radius:22px;border:1.5px solid #eceae5">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+      <span style="font:800 24px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#101010">5.00 GB</span>
+      <span style="font:700 11px/1 ui-monospace,monospace;color:#c23c1a">100% OF 5 GB</span>
+    </div>
+    <div style="margin-top:14px;height:8px;border-radius:4px;background:#f5f4f1;overflow:hidden;display:flex">
+      <div style="width:74%;height:100%;background:#101010"></div>
+      <div style="width:19%;height:100%;background:#77746e"></div>
+      <div style="width:7%;height:100%;background:#a09d97"></div>
+    </div>
+    <div style="margin-top:16px;display:flex;flex-direction:column;gap:11px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="width:9px;height:9px;border-radius:3px;background:#101010;flex:none"></span>
+        <span style="flex:1;font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#101010">Media</span>
+        <span style="font:600 12.5px/1 ui-monospace,monospace;color:#77746e">3.7 GB</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="width:9px;height:9px;border-radius:3px;background:#77746e;flex:none"></span>
+        <span style="flex:1;font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#101010">Private area</span>
+        <span style="font:600 12.5px/1 ui-monospace,monospace;color:#77746e">960 MB</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="width:9px;height:9px;border-radius:3px;background:#a09d97;flex:none"></span>
+        <span style="flex:1;font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#101010">Passwords and notes</span>
+        <span style="font:600 12.5px/1 ui-monospace,monospace;color:#77746e">14 MB</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="flex:1"></div>
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <button type="button" style="height:56px;border-radius:28px;border:none;background:#101010;color:#fefefe;font:700 15.5px/1 'Plus Jakarta Sans',system-ui;cursor:pointer">Review largest files</button>
+    <button type="button" style="height:52px;border-radius:26px;border:1.5px solid #eceae5;background:#ffffff;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#101010;cursor:pointer">Ask your admin for more</button>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">ERR 07</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Permission denied</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Inline · 403 from the API</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#fbfaf8">
+  <div style="padding:0 18px;display:flex;align-items:center;gap:12px">
+    <button type="button" aria-label="Back to Media" style="width:42px;height:42px;border-radius:14px;border:none;background:#f5f4f1;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#101010" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5L5.5 9l5.5 5.5"></path></svg>
+    </button>
+    <span style="font:700 15px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.02em;color:#101010">Shared</span>
+  </div>
+
+  <div style="margin:20px 22px 0;padding:22px;border-radius:24px;background:#ffffff;border:1.5px solid #eceae5">
+    <div style="width:46px;height:46px;border-radius:16px;background:#fdeeea;display:flex;align-items:center;justify-content:center">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#c23c1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9.6" width="14" height="8.4" rx="2.8"></rect><path d="M7.4 9.6V7.2a3.6 3.6 0 017.2 0v2.4"></path></svg>
+    </div>
+    <div style="margin-top:16px;font:800 19px/1.25 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#101010">Family is not yours to open</div>
+    <p style="margin:10px 0 0;font:500 13px/1.55 'Plus Jakarta Sans',system-ui;color:#77746e;text-wrap:pretty">The Pi refused the request with 403. Your account can read Media, but this folder belongs to another user.</p>
+    <div style="margin-top:16px;padding:13px 15px;border-radius:14px;background:#f5f4f1;display:flex;flex-direction:column;gap:7px">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <span style="font:600 11.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">Path</span>
+        <span style="font:600 11.5px/1 ui-monospace,monospace;color:#101010">/media/shared/family</span>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <span style="font:600 11.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">Owner</span>
+        <span style="font:600 11.5px/1 ui-monospace,monospace;color:#101010">priya@pidrive.app</span>
+      </div>
+    </div>
+    <button type="button" style="width:100%;height:52px;margin-top:16px;border-radius:26px;border:1.5px solid #eceae5;background:#ffffff;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#101010;cursor:pointer">Ask Priya for access</button>
+  </div>
+
+  <div style="padding:18px 22px 0">
+    <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">FOLDERS YOU CAN OPEN</div>
+    <div style="margin-top:12px;display:flex;flex-direction:column;gap:9px">
+      <div style="display:flex;align-items:center;gap:13px;padding:14px 16px;border-radius:18px;background:#ffffff;border:1.5px solid #eceae5">
+        <span style="width:38px;height:38px;border-radius:12px;background:#f5f4f1;display:flex;align-items:center;justify-content:center;font:700 10px/1 ui-monospace,monospace;color:#101010;flex:none">DIR</span>
+        <span style="flex:1;font:600 14.5px/1 'Plus Jakarta Sans',system-ui;color:#101010">Documents</span>
+        <span style="font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">12 items</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:13px;padding:14px 16px;border-radius:18px;background:#ffffff;border:1.5px solid #eceae5">
+        <span style="width:38px;height:38px;border-radius:12px;background:#f5f4f1;display:flex;align-items:center;justify-content:center;font:700 10px/1 ui-monospace,monospace;color:#101010;flex:none">DIR</span>
+        <span style="flex:1;font:600 14.5px/1 'Plus Jakarta Sans',system-ui;color:#101010">Aadhaar</span>
+        <span style="font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">6 items</span>
+      </div>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">ERR 08</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Corrupted file</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Inline · inside the viewer</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:64px 0 0;display:flex;flex-direction:column;background:#0e0f11">
+  <div style="display:flex;align-items:center;gap:12px;padding:12px 18px">
+    <button type="button" aria-label="Close viewer" style="width:40px;height:40px;border-radius:14px;border:none;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none">
+      <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="#fdfdfd" stroke-width="2" stroke-linecap="round"><path d="M4.5 4.5l9 9M13.5 4.5l-9 9"></path></svg>
+    </button>
+    <span style="min-width:0">
+      <span style="display:block;font:700 14px/1.2 'Plus Jakarta Sans',system-ui;color:#fdfdfd;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">passport-scan.jpg</span>
+      <span style="display:block;margin-top:4px;font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:rgba(255,255,255,0.55)">2.4 MB · 12 Mar 2026</span>
+    </span>
+  </div>
+
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:24px 30px">
+    <div style="width:96px;height:96px;border-radius:28px;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center">
+      <svg width="40" height="40" viewBox="0 0 32 32" fill="none" stroke="#ff9d80" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4.5h11l5 5v18H8z"></path><path d="M11.5 14l9 9M20.5 14l-9 9"></path></svg>
+    </div>
+    <div style="text-align:center">
+      <div style="font:800 20px/1.25 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#fdfdfd">This file will not open</div>
+      <p style="margin:10px 0 0;font:500 13px/1.6 'Plus Jakarta Sans',system-ui;color:rgba(255,255,255,0.6);text-wrap:pretty">All 2.4 MB came down from the Pi, but the JPEG data is not readable. The copy in MinIO is likely damaged.</p>
+    </div>
+    <div style="width:100%;padding:14px 16px;border-radius:16px;background:#331a12;font:600 12px/1.5 'Plus Jakarta Sans',system-ui;color:#ff9d80;text-wrap:pretty">Checksum on the Pi does not match the one recorded at upload.</div>
+  </div>
+
+  <div style="padding:0 24px 34px;display:flex;flex-direction:column;gap:10px">
+    <button type="button" style="height:54px;border-radius:27px;border:none;background:#fdfdfd;color:#0e0f11;font:700 15px/1 'Plus Jakarta Sans',system-ui;cursor:pointer">Download the raw bytes</button>
+    <button type="button" style="height:50px;border-radius:25px;border:1.5px solid rgba(255,157,128,0.5);background:transparent;font:700 13.5px/1 'Plus Jakarta Sans',system-ui;color:#ff9d80;cursor:pointer">Delete it from the Pi</button>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">ERR 09</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Duplicate name</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Choice · three ways out</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#fbfaf8;position:relative;overflow:hidden">
+  <div style="padding:0 22px;opacity:.32;pointer-events:none">
+    <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#a09d97">MEDIA · DOCUMENTS</div>
+    <h1 style="margin:9px 0 0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#101010">12 items</h1>
+  </div>
+  <div style="position:absolute;inset:0;background:rgba(231,229,224,0.72)"></div>
+
+  <div style="position:absolute;left:0;right:0;bottom:0;border-radius:30px 30px 0 0;background:#ffffff;padding:26px 24px 34px;box-shadow:0 -18px 50px rgba(16,16,16,0.14);animation:rise .25s ease-out">
+    <div style="width:38px;height:5px;border-radius:3px;background:#eceae5;margin:0 auto 20px"></div>
+    <div style="font:800 20px/1.25 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#101010">Documents already has this name</div>
+    <p style="margin:10px 0 0;font:500 13px/1.55 'Plus Jakarta Sans',system-ui;color:#77746e;text-wrap:pretty">lease-agreement.pdf is already on your Pi. Nothing has been uploaded yet.</p>
+
+    <div style="margin-top:18px;display:flex;gap:10px">
+      <div style="flex:1;padding:14px;border-radius:16px;background:#f5f4f1">
+        <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#a09d97">ON THE PI</div>
+        <div style="margin-top:9px;font:700 13.5px/1.2 'Plus Jakarta Sans',system-ui;color:#101010">1.1 MB</div>
+        <div style="margin-top:5px;font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">12 Mar 2026</div>
+      </div>
+      <div style="flex:1;padding:14px;border-radius:16px;background:#f5f4f1;border:1.5px solid #101010">
+        <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#a09d97">THE NEW ONE</div>
+        <div style="margin-top:9px;font:700 13.5px/1.2 'Plus Jakarta Sans',system-ui;color:#101010">1.4 MB</div>
+        <div style="margin-top:5px;font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">Today</div>
+      </div>
+    </div>
+
+    <div style="margin-top:18px;display:flex;flex-direction:column;gap:2px">
+      <button type="button" style="display:flex;align-items:center;gap:13px;padding:15px 6px;border:none;background:transparent;cursor:pointer;text-align:left;border-bottom:1px solid #eceae5">
+        <span style="width:34px;height:34px;border-radius:11px;background:#f5f4f1;display:flex;align-items:center;justify-content:center;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#101010;flex:none">＋</span>
+        <span style="flex:1">
+          <span style="display:block;font:700 14px/1.2 'Plus Jakarta Sans',system-ui;color:#101010">Keep both</span>
+          <span style="display:block;margin-top:4px;font:500 11.5px/1.3 'Plus Jakarta Sans',system-ui;color:#77746e">Uploads as lease-agreement (2).pdf</span>
+        </span>
+      </button>
+      <button type="button" style="display:flex;align-items:center;gap:13px;padding:15px 6px;border:none;background:transparent;cursor:pointer;text-align:left;border-bottom:1px solid #eceae5">
+        <span style="width:34px;height:34px;border-radius:11px;background:#f5f4f1;display:flex;align-items:center;justify-content:center;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#101010;flex:none">↻</span>
+        <span style="flex:1">
+          <span style="display:block;font:700 14px/1.2 'Plus Jakarta Sans',system-ui;color:#101010">Replace it</span>
+          <span style="display:block;margin-top:4px;font:500 11.5px/1.3 'Plus Jakarta Sans',system-ui;color:#77746e">The old file is gone for good</span>
+        </span>
+      </button>
+      <button type="button" style="display:flex;align-items:center;gap:13px;padding:15px 6px;border:none;background:transparent;cursor:pointer;text-align:left">
+        <span style="width:34px;height:34px;border-radius:11px;background:#f5f4f1;display:flex;align-items:center;justify-content:center;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#101010;flex:none">✎</span>
+        <span style="flex:1">
+          <span style="display:block;font:700 14px/1.2 'Plus Jakarta Sans',system-ui;color:#101010">Rename first</span>
+          <span style="display:block;margin-top:4px;font:500 11.5px/1.3 'Plus Jakarta Sans',system-ui;color:#77746e">Type a new name, then upload</span>
+        </span>
+      </button>
+    </div>
+    <button type="button" style="width:100%;height:52px;margin-top:12px;border-radius:26px;border:1.5px solid #eceae5;background:#ffffff;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#101010;cursor:pointer">Cancel the upload</button>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">EXT 01</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Face ID unlock</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Default way in</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:104px 26px 34px;display:flex;flex-direction:column;align-items:center;background:#ffffff">
+  <div style="width:46px;height:46px;border-radius:16px;background:#101010;display:flex;align-items:center;justify-content:center;font:800 21px/1 'Plus Jakarta Sans',system-ui;color:#fefefe">&#960;</div>
+  <div style="margin-top:14px;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.22em;color:#a09d97">PIDRIVE IS LOCKED</div>
+
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px">
+    <div style="width:132px;height:132px;border-radius:38px;border:2px solid #eceae5;display:flex;align-items:center;justify-content:center;animation:pulse 2.4s ease-in-out infinite">
+      <svg width="62" height="62" viewBox="0 0 64 64" fill="none" stroke="#101010" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 20V12a4 4 0 014-4h8M56 20V12a4 4 0 00-4-4h-8M8 44v8a4 4 0 004 4h8M56 44v8a4 4 0 01-4 4h-8"></path>
+        <path d="M24 26v5M40 26v5"></path>
+        <path d="M32 26v10h-3"></path>
+        <path d="M24 42c2.6 2.4 5.2 3.6 8 3.6s5.4-1.2 8-3.6"></path>
+      </svg>
+    </div>
+    <div style="text-align:center">
+      <div style="font:800 24px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#101010">Look at your phone</div>
+      <p style="margin:10px 0 0;font:500 13.5px/1.55 'Plus Jakarta Sans',system-ui;color:#77746e;text-wrap:pretty">Face ID unlocks the vault. The PIN is there if Face ID cannot see you.</p>
+    </div>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:9px;padding:12px 16px;border-radius:16px;background:#f5f4f1;width:100%;box-sizing:border-box">
+    <span style="width:7px;height:7px;border-radius:50%;background:#0e7c66;flex:none"></span>
+    <span style="font:600 11.5px/1.3 'Plus Jakarta Sans',system-ui;color:#77746e">shivam@pidrive.app · session still valid</span>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">EXT 02</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Face ID failed twice</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">PIN appears as fallback</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:104px 26px 34px;display:flex;flex-direction:column;align-items:center;background:#ffffff">
+  <div style="width:46px;height:46px;border-radius:16px;background:#101010;display:flex;align-items:center;justify-content:center;font:800 21px/1 'Plus Jakarta Sans',system-ui;color:#fefefe">&#960;</div>
+  <div style="margin-top:14px;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.22em;color:#a09d97">PIDRIVE IS LOCKED</div>
+
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px">
+    <div style="width:132px;height:132px;border-radius:38px;border:2px solid #c23c1a;background:#fdeeea;display:flex;align-items:center;justify-content:center">
+      <svg width="62" height="62" viewBox="0 0 64 64" fill="none" stroke="#c23c1a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 20V12a4 4 0 014-4h8M56 20V12a4 4 0 00-4-4h-8M8 44v8a4 4 0 004 4h8M56 44v8a4 4 0 01-4 4h-8"></path>
+        <path d="M22 26l6 6M28 26l-6 6M36 26l6 6M42 26l-6 6"></path>
+        <path d="M24 44c2.6-2.4 5.2-3.6 8-3.6s5.4 1.2 8 3.6"></path>
+      </svg>
+    </div>
+    <div style="text-align:center">
+      <div style="font:800 24px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#101010">Face not recognised</div>
+      <p style="margin:10px 0 0;font:500 13.5px/1.55 'Plus Jakarta Sans',system-ui;color:#77746e;text-wrap:pretty">Two tries used. One more and PiDrive will ask for your six-digit PIN instead.</p>
+    </div>
+  </div>
+
+  <div style="width:100%;display:flex;flex-direction:column;gap:10px">
+    <button type="button" style="height:56px;border-radius:28px;border:none;background:#101010;color:#fefefe;font:700 15.5px/1 'Plus Jakarta Sans',system-ui;cursor:pointer">Try Face ID again</button>
+    <button type="button" style="height:52px;border-radius:26px;border:1.5px solid #eceae5;background:#ffffff;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#101010;cursor:pointer">Enter PIN instead</button>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">EXT 03</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Sort and filter</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Live · pinned under the header</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#fbfaf8">
+  <div style="flex:1;overflow:hidden;display:flex;flex-direction:column">
+    <div style="padding:0 22px;display:flex;align-items:flex-end;justify-content:space-between;gap:14px">
+      <div>
+        <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#101010">Passwords</h1>
+        <div style="margin-top:7px;font:500 12.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">{{ pwCount }}</div>
+      </div>
+      <button type="button" aria-label="Search" style="width:40px;height:40px;border-radius:14px;border:1.5px solid #eceae5;background:#ffffff;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none">
+        <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="#101010" stroke-width="1.9" stroke-linecap="round"><circle cx="8" cy="8" r="5"></circle><path d="M11.8 11.8L15 15"></path></svg>
+      </button>
+    </div>
+
+    <div style="margin:16px 22px 0;padding:4px;border-radius:16px;background:#f5f4f1;display:flex;gap:4px">
+      <sc-for list="{{ sortTabs }}" as="t" hint-placeholder-count="3">
+        <button type="button" onClick="{{ t.onPick }}" style="flex:1;height:38px;border-radius:12px;border:none;background:{{ t.bg }};color:{{ t.fg }};font:700 12.5px/1 'Plus Jakarta Sans',system-ui;cursor:pointer;transition:background .16s ease">{{ t.label }}</button>
+      </sc-for>
+    </div>
+
+    <div style="padding:14px 22px 0;display:flex;flex-direction:column;gap:9px;overflow:hidden">
+      <sc-for list="{{ pwList }}" as="p" hint-placeholder-count="6">
+        <div style="display:flex;align-items:center;gap:13px;padding:13px 16px;border-radius:18px;background:#ffffff;border:1.5px solid #eceae5">
+          <span style="width:38px;height:38px;border-radius:12px;background:#f5f4f1;display:flex;align-items:center;justify-content:center;font:800 15px/1 'Plus Jakarta Sans',system-ui;color:#101010;flex:none">{{ p.initial }}</span>
+          <span style="flex:1;min-width:0">
+            <span style="display:block;font:700 14.5px/1.2 'Plus Jakarta Sans',system-ui;color:#101010;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ p.site }}</span>
+            <span style="display:block;margin-top:5px;font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ p.meta }}</span>
+          </span>
+          <span style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.1em;color:#a09d97">{{ p.tag }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="display:flex;align-items:center;justify-content:space-around;padding:10px 8px 30px;background:#ffffff;border-top:1.5px solid #eceae5">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l8-6 8 6v9a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 013 18z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Home</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#101010" stroke-width="1.9" stroke-linecap="round"><circle cx="8" cy="11" r="3.4"></circle><path d="M11.4 11H19M16 11v3"></path></svg>
+      <span style="font:700 10px/1 'Plus Jakarta Sans',system-ui;color:#101010">Passwords</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round"><path d="M5 3h9l4 4v12H5z"></path><path d="M8 9h6M8 13h6"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Notes</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Media</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">EXT 04</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Grid or list</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Live · toggle in the header</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#fbfaf8">
+  <div style="flex:1;overflow:hidden;display:flex;flex-direction:column">
+    <div style="padding:0 22px;display:flex;align-items:flex-end;justify-content:space-between;gap:14px">
+      <div>
+        <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#101010">Documents</h1>
+        <div style="margin-top:7px;font:500 12.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">6 files · 214 MB on your Pi</div>
+      </div>
+      <div style="padding:3px;border-radius:14px;background:#f5f4f1;display:flex;gap:3px;flex:none">
+        <sc-for list="{{ viewBtns }}" as="v" hint-placeholder-count="2">
+          <button type="button" onClick="{{ v.onPick }}" aria-label="{{ v.label }}" style="width:36px;height:34px;border-radius:11px;border:none;background:{{ v.bg }};color:{{ v.fg }};font:700 14px/1 'Plus Jakarta Sans',system-ui;cursor:pointer;transition:background .16s ease">{{ v.glyph }}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <sc-if value="{{ gridOn }}" hint-placeholder-val="{{ true }}">
+      <div style="padding:18px 22px 0;display:grid;grid-template-columns:1fr 1fr;gap:11px">
+        <sc-for list="{{ mediaList }}" as="f" hint-placeholder-count="6">
+          <div style="border-radius:20px;overflow:hidden;background:#ffffff;border:1.5px solid #eceae5">
+            <div style="height:96px;background:#f5f4f1;display:flex;align-items:center;justify-content:center;font:700 12px/1 ui-monospace,monospace;letter-spacing:0.1em;color:#a09d97">{{ f.ext }}</div>
+            <div style="padding:11px 13px 13px">
+              <span style="display:block;font:700 12.5px/1.2 'Plus Jakarta Sans',system-ui;color:#101010;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ f.name }}</span>
+              <span style="display:block;margin-top:5px;font:500 11px/1 'Plus Jakarta Sans',system-ui;color:#77746e">{{ f.size }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ listOn }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:18px 22px 0;display:flex;flex-direction:column;gap:9px">
+        <sc-for list="{{ mediaList }}" as="f" hint-placeholder-count="6">
+          <div style="display:flex;align-items:center;gap:13px;padding:13px 16px;border-radius:18px;background:#ffffff;border:1.5px solid #eceae5">
+            <span style="width:38px;height:38px;border-radius:12px;background:#f5f4f1;display:flex;align-items:center;justify-content:center;font:700 9.5px/1 ui-monospace,monospace;color:#101010;flex:none">{{ f.ext }}</span>
+            <span style="flex:1;min-width:0">
+              <span style="display:block;font:600 14.5px/1.2 'Plus Jakarta Sans',system-ui;color:#101010;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ f.name }}</span>
+              <span style="display:block;margin-top:5px;font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">{{ f.meta }}</span>
+            </span>
+            <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M7 3.5L12.5 9 7 14.5"></path></svg>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+  </div>
+
+  <div style="display:flex;align-items:center;justify-content:space-around;padding:10px 8px 30px;background:#ffffff;border-top:1.5px solid #eceae5">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l8-6 8 6v9a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 013 18z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Home</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round"><circle cx="8" cy="11" r="3.4"></circle><path d="M11.4 11H19M16 11v3"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Passwords</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round"><path d="M5 3h9l4 4v12H5z"></path><path d="M8 9h6M8 13h6"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Notes</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#101010" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path></svg>
+      <span style="font:700 10px/1 'Plus Jakarta Sans',system-ui;color:#101010">Media</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;align-items:baseline;gap:10px;padding:34px 0 26px;width:100%">
+  <span style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#a09d97">DARK</span>
+  <span style="font:700 15px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.02em;color:#101010">The same thirteen, dark theme</span>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">ERR 01</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Wrong server version</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Blocking · admin has to act</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:104px 26px 26px;display:flex;flex-direction:column;background:#101215">
+  <div style="width:52px;height:52px;border-radius:18px;background:#331a12;display:flex;align-items:center;justify-content:center">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e2603c" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5v9"></path><circle cx="12" cy="18" r="1.1" fill="#e2603c" stroke="none"></circle></svg>
+  </div>
+  <h1 style="margin:22px 0 0;font:800 27px/1.15 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#f2f1ee">This app is newer than your Pi</h1>
+  <p style="margin:12px 0 0;font:500 14px/1.55 'Plus Jakarta Sans',system-ui;color:#9b9ca1;text-wrap:pretty">pi.local answers, but it speaks v1.1. This build needs v1.4 or later, and the endpoints it depends on are not there yet.</p>
+
+  <div style="margin-top:22px;border-radius:20px;border:1.5px solid #2b2f34;overflow:hidden">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 17px;border-bottom:1px solid #2b2f34">
+      <span style="font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">App build</span>
+      <span style="font:600 12.5px/1 ui-monospace,monospace;color:#f2f1ee">1.4.0</span>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 17px;border-bottom:1px solid #2b2f34">
+      <span style="font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">API version</span>
+      <span style="font:600 12.5px/1 ui-monospace,monospace;color:#e2603c">1.1.3</span>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 17px">
+      <span style="font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">Endpoint</span>
+      <span style="font:600 12.5px/1 ui-monospace,monospace;color:#f2f1ee">pi.local:8000</span>
+    </div>
+  </div>
+
+  <div style="flex:1"></div>
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <button type="button" style="height:56px;border-radius:28px;border:none;background:#f2f1ee;color:#101215;font:700 15.5px/1 'Plus Jakarta Sans',system-ui;cursor:pointer">Check again</button>
+    <button type="button" style="height:52px;border-radius:26px;border:1.5px solid #2b2f34;background:#101215;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;cursor:pointer">Copy these details</button>
+  </div>
+  <p style="margin:16px 0 0;font:500 11.5px/1.55 'Plus Jakarta Sans',system-ui;color:#7e8085;text-align:center;text-wrap:pretty">Your vault is untouched. Nothing was read or written.</p>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">ERR 02</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Session expired mid-use</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Blocking · password, not PIN</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#16181c;position:relative;overflow:hidden">
+  <div style="padding:0 22px;opacity:.32;pointer-events:none">
+    <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#7e8085">PASSWORDS</div>
+    <h1 style="margin:9px 0 18px;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#f2f1ee">42 items</h1>
+    <div style="display:flex;flex-direction:column;gap:9px">
+      <div style="height:66px;border-radius:18px;background:#101215;border:1.5px solid #2b2f34"></div>
+      <div style="height:66px;border-radius:18px;background:#101215;border:1.5px solid #2b2f34"></div>
+      <div style="height:66px;border-radius:18px;background:#101215;border:1.5px solid #2b2f34"></div>
+      <div style="height:66px;border-radius:18px;background:#101215;border:1.5px solid #2b2f34"></div>
+    </div>
+  </div>
+  <div style="position:absolute;inset:0;background:rgba(9,10,12,0.74)"></div>
+  <div style="position:absolute;left:0;right:0;bottom:0;border-radius:30px 30px 0 0;background:#101215;padding:26px 24px 34px;box-shadow:0 -18px 50px rgba(0,0,0,0.55);animation:rise .25s ease-out">
+    <div style="width:38px;height:5px;border-radius:3px;background:#2b2f34;margin:0 auto 20px"></div>
+    <div style="font:800 21px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#f2f1ee">Your session ran out</div>
+    <p style="margin:10px 0 0;font:500 13.5px/1.55 'Plus Jakarta Sans',system-ui;color:#9b9ca1;text-wrap:pretty">The Pi stopped accepting this session after 30 days. Sign in with your password to carry on — the PIN alone will not do it.</p>
+    <div style="margin-top:18px;height:58px;border-radius:18px;background:#1c1f23;border:1.5px solid #2b2f34;display:flex;align-items:center;gap:10px;padding:0 18px">
+      <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="#7e8085" stroke-width="1.7" stroke-linecap="round"><rect x="3.5" y="7.8" width="11" height="7" rx="2.2"></rect><path d="M6.2 7.8V5.6a2.8 2.8 0 015.6 0v2.2"></path></svg>
+      <span style="font:600 14px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Password</span>
+    </div>
+    <button type="button" style="width:100%;height:56px;margin-top:14px;border-radius:28px;border:none;background:#f2f1ee;color:#101215;font:700 15.5px/1 'Plus Jakarta Sans',system-ui;cursor:pointer">Sign in</button>
+    <button type="button" style="width:100%;height:48px;margin-top:8px;border-radius:24px;border:none;background:transparent;font:700 13.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1;cursor:pointer">Sign out instead</button>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">ERR 03</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Decrypt failure</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Blocking · key no longer matches</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:104px 26px 26px;display:flex;flex-direction:column;background:#101215">
+  <div style="width:52px;height:52px;border-radius:18px;background:#331a12;display:flex;align-items:center;justify-content:center">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e2603c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="9.5" rx="3"></rect><path d="M8.2 10.5V7.6a3.8 3.8 0 017.6 0"></path><path d="M9.6 14.4l4.8 3.2M14.4 14.4l-4.8 3.2"></path></svg>
+  </div>
+  <h1 style="margin:22px 0 0;font:800 27px/1.15 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#f2f1ee">This vault will not decrypt</h1>
+  <p style="margin:12px 0 0;font:500 14px/1.55 'Plus Jakarta Sans',system-ui;color:#9b9ca1;text-wrap:pretty">The Pi handed over your items, but the key on this phone cannot open them. That happens after the password changes somewhere else.</p>
+
+  <div style="margin-top:22px;padding:18px;border-radius:20px;background:#1c1f23;display:flex;flex-direction:column;gap:12px">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+      <span style="font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">Items received</span>
+      <span style="font:700 12.5px/1 ui-monospace,monospace;color:#f2f1ee">42</span>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+      <span style="font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">Items opened</span>
+      <span style="font:700 12.5px/1 ui-monospace,monospace;color:#e2603c">0</span>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+      <span style="font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">Key last set</span>
+      <span style="font:700 12.5px/1 ui-monospace,monospace;color:#f2f1ee">14 Feb</span>
+    </div>
+  </div>
+  <div style="margin-top:14px;padding:14px 16px;border-radius:16px;background:#331a12;font:600 12px/1.5 'Plus Jakarta Sans',system-ui;color:#ff9d80;text-wrap:pretty">Nothing was written. Your data on the Pi is exactly as it was.</div>
+
+  <div style="flex:1"></div>
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <button type="button" style="height:56px;border-radius:28px;border:none;background:#f2f1ee;color:#101215;font:700 15.5px/1 'Plus Jakarta Sans',system-ui;cursor:pointer">Sign in for a fresh key</button>
+    <button type="button" style="height:52px;border-radius:26px;border:1.5px solid #2b2f34;background:#101215;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;cursor:pointer">Report this to your admin</button>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">ERR 04</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Request timed out</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Inline · retry in place</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#16181c">
+  <div style="flex:1;overflow:hidden;display:flex;flex-direction:column">
+    <div style="padding:0 22px">
+      <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#f2f1ee">Passwords</h1>
+      <div style="margin-top:7px;font:500 12.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">Could not load the list</div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:9px;margin:16px 22px 0;padding:12px 16px;border-radius:16px;background:#331a12">
+      <span style="width:8px;height:8px;border-radius:50%;background:#e2603c;flex:none"></span>
+      <span style="font:600 12.5px/1.3 'Plus Jakarta Sans',system-ui;color:#ff9d80">No answer in 10 seconds</span>
+      <div style="flex:1"></div>
+      <button type="button" style="height:32px;padding:0 13px;border-radius:16px;border:1.5px solid #e2603c;background:transparent;font:700 11px/1 'Plus Jakarta Sans',system-ui;color:#ff9d80;cursor:pointer">Retry</button>
+    </div>
+
+    <div style="padding:14px 22px 0;display:flex;flex-direction:column;gap:9px">
+      <div style="height:66px;border-radius:18px;background:#1c1f23;animation:pulse 1.6s ease-in-out infinite"></div>
+      <div style="height:66px;border-radius:18px;background:#1c1f23;opacity:.72;animation:pulse 1.6s ease-in-out .2s infinite"></div>
+      <div style="height:66px;border-radius:18px;background:#1c1f23;opacity:.5;animation:pulse 1.6s ease-in-out .4s infinite"></div>
+    </div>
+
+    <div style="margin:20px 22px 0;padding:18px;border-radius:20px;border:1.5px dashed #2b2f34;display:flex;gap:13px;align-items:flex-start">
+      <svg width="19" height="19" viewBox="0 0 22 22" fill="none" stroke="#9b9ca1" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:1px"><circle cx="11" cy="11" r="7.6"></circle><path d="M11 7v4.4l3 1.8"></path></svg>
+      <span>
+        <span style="display:block;font:700 13.5px/1.3 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Nothing is cached</span>
+        <span style="display:block;margin-top:6px;font:500 12.5px/1.55 'Plus Jakarta Sans',system-ui;color:#9b9ca1;text-wrap:pretty">Every list is read from the API, so there is no older copy to show you. Retry once you are back on the same network as pi.local.</span>
+      </span>
+    </div>
+  </div>
+
+  <div style="display:flex;align-items:center;justify-content:space-around;padding:10px 8px 30px;background:#101215;border-top:1.5px solid #2b2f34">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l8-6 8 6v9a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 013 18z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Home</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#f2f1ee" stroke-width="1.9" stroke-linecap="round"><circle cx="8" cy="11" r="3.4"></circle><path d="M11.4 11H19M16 11v3"></path></svg>
+      <span style="font:700 10px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Passwords</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round"><path d="M5 3h9l4 4v12H5z"></path><path d="M8 9h6M8 13h6"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Notes</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Media</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">ERR 05</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Pi disk full</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Inline · upload blocked</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#16181c;position:relative;overflow:hidden">
+  <div style="padding:0 22px;opacity:.32;pointer-events:none">
+    <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#7e8085">MEDIA · DOCUMENTS</div>
+    <h1 style="margin:9px 0 0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#f2f1ee">Upload</h1>
+  </div>
+  <div style="position:absolute;inset:0;background:rgba(9,10,12,0.74)"></div>
+
+  <div style="position:absolute;left:0;right:0;bottom:0;border-radius:30px 30px 0 0;background:#101215;padding:26px 24px 34px;box-shadow:0 -18px 50px rgba(0,0,0,0.55);animation:rise .25s ease-out">
+    <div style="width:38px;height:5px;border-radius:3px;background:#2b2f34;margin:0 auto 20px"></div>
+    <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:18px;background:#1c1f23">
+      <span style="width:40px;height:40px;border-radius:13px;background:#101215;border:1.5px solid #2b2f34;display:flex;align-items:center;justify-content:center;font:700 10px/1 ui-monospace,monospace;color:#f2f1ee;flex:none">ZIP</span>
+      <span style="min-width:0">
+        <span style="display:block;font:700 14px/1.2 'Plus Jakarta Sans',system-ui;color:#f2f1ee;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">tax-2025.zip</span>
+        <span style="display:block;margin-top:5px;font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">18 MB · stopped at 0%</span>
+      </span>
+    </div>
+
+    <div style="margin-top:16px;padding:18px;border-radius:20px;background:#331a12">
+      <div style="display:flex;align-items:center;gap:10px">
+        <svg width="19" height="19" viewBox="0 0 22 22" fill="none" stroke="#e2603c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M3 7.5A1.5 1.5 0 014.5 6h13A1.5 1.5 0 0119 7.5v3H3z"></path><path d="M3 11.5h16v3A1.5 1.5 0 0117.5 16h-13A1.5 1.5 0 013 14.5z"></path><path d="M6.4 8.5h.01M6.4 13.5h.01"></path></svg>
+        <span style="font:700 13.5px/1.2 'Plus Jakarta Sans',system-ui;color:#ff9d80">Your Pi has no room left</span>
+      </div>
+      <p style="margin:10px 0 0;font:500 12.5px/1.55 'Plus Jakarta Sans',system-ui;color:#ff9d80;text-wrap:pretty">MinIO reports 0 bytes free on /mnt/vault. Nothing was uploaded — the file is still only on your phone.</p>
+      <div style="margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;font:700 11px/1 ui-monospace,monospace;color:#ff9d80">
+        <span>238.4 GB USED</span>
+        <span>0 B FREE</span>
+      </div>
+      <div style="margin-top:8px;height:6px;border-radius:3px;background:rgba(226,96,60,0.25);overflow:hidden">
+        <div style="width:100%;height:100%;background:#e2603c"></div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:10px;margin-top:18px">
+      <button type="button" style="flex:1;height:52px;border-radius:26px;border:1.5px solid #2b2f34;background:#101215;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;cursor:pointer">Free up space</button>
+      <button type="button" disabled="disabled" style="flex:1;height:52px;border-radius:26px;border:none;background:#1c1f23;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#7e8085;cursor:not-allowed">Try again</button>
+    </div>
+    <p style="margin:14px 0 0;font:500 11.5px/1.5 'Plus Jakarta Sans',system-ui;color:#7e8085;text-align:center;text-wrap:pretty">Passwords and notes still save — they are kilobytes, not gigabytes.</p>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">ERR 06</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Account quota reached</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Inline · admin sets the limit</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:104px 26px 26px;display:flex;flex-direction:column;background:#101215">
+  <button type="button" aria-label="Back" style="width:42px;height:42px;border-radius:14px;border:none;background:#1c1f23;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#f2f1ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5L5.5 9l5.5 5.5"></path></svg>
+  </button>
+  <h1 style="margin:20px 0 0;font:800 27px/1.15 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#f2f1ee">You have used all 5 GB</h1>
+  <p style="margin:12px 0 0;font:500 14px/1.55 'Plus Jakarta Sans',system-ui;color:#9b9ca1;text-wrap:pretty">Your admin set this account's limit. The Pi itself has room — it just will not take more from you until something goes.</p>
+
+  <div style="margin-top:22px;padding:20px;border-radius:22px;border:1.5px solid #2b2f34">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+      <span style="font:800 24px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#f2f1ee">5.00 GB</span>
+      <span style="font:700 11px/1 ui-monospace,monospace;color:#e2603c">100% OF 5 GB</span>
+    </div>
+    <div style="margin-top:14px;height:8px;border-radius:4px;background:#1c1f23;overflow:hidden;display:flex">
+      <div style="width:74%;height:100%;background:#f2f1ee"></div>
+      <div style="width:19%;height:100%;background:#9b9ca1"></div>
+      <div style="width:7%;height:100%;background:#7e8085"></div>
+    </div>
+    <div style="margin-top:16px;display:flex;flex-direction:column;gap:11px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="width:9px;height:9px;border-radius:3px;background:#f2f1ee;flex:none"></span>
+        <span style="flex:1;font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Media</span>
+        <span style="font:600 12.5px/1 ui-monospace,monospace;color:#9b9ca1">3.7 GB</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="width:9px;height:9px;border-radius:3px;background:#9b9ca1;flex:none"></span>
+        <span style="flex:1;font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Private area</span>
+        <span style="font:600 12.5px/1 ui-monospace,monospace;color:#9b9ca1">960 MB</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="width:9px;height:9px;border-radius:3px;background:#7e8085;flex:none"></span>
+        <span style="flex:1;font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Passwords and notes</span>
+        <span style="font:600 12.5px/1 ui-monospace,monospace;color:#9b9ca1">14 MB</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="flex:1"></div>
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <button type="button" style="height:56px;border-radius:28px;border:none;background:#f2f1ee;color:#101215;font:700 15.5px/1 'Plus Jakarta Sans',system-ui;cursor:pointer">Review largest files</button>
+    <button type="button" style="height:52px;border-radius:26px;border:1.5px solid #2b2f34;background:#101215;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;cursor:pointer">Ask your admin for more</button>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">ERR 07</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Permission denied</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Inline · 403 from the API</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#16181c">
+  <div style="padding:0 18px;display:flex;align-items:center;gap:12px">
+    <button type="button" aria-label="Back to Media" style="width:42px;height:42px;border-radius:14px;border:none;background:#1c1f23;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#f2f1ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5L5.5 9l5.5 5.5"></path></svg>
+    </button>
+    <span style="font:700 15px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.02em;color:#f2f1ee">Shared</span>
+  </div>
+
+  <div style="margin:20px 22px 0;padding:22px;border-radius:24px;background:#101215;border:1.5px solid #2b2f34">
+    <div style="width:46px;height:46px;border-radius:16px;background:#331a12;display:flex;align-items:center;justify-content:center">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#e2603c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9.6" width="14" height="8.4" rx="2.8"></rect><path d="M7.4 9.6V7.2a3.6 3.6 0 017.2 0v2.4"></path></svg>
+    </div>
+    <div style="margin-top:16px;font:800 19px/1.25 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#f2f1ee">Family is not yours to open</div>
+    <p style="margin:10px 0 0;font:500 13px/1.55 'Plus Jakarta Sans',system-ui;color:#9b9ca1;text-wrap:pretty">The Pi refused the request with 403. Your account can read Media, but this folder belongs to another user.</p>
+    <div style="margin-top:16px;padding:13px 15px;border-radius:14px;background:#1c1f23;display:flex;flex-direction:column;gap:7px">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <span style="font:600 11.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">Path</span>
+        <span style="font:600 11.5px/1 ui-monospace,monospace;color:#f2f1ee">/media/shared/family</span>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <span style="font:600 11.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">Owner</span>
+        <span style="font:600 11.5px/1 ui-monospace,monospace;color:#f2f1ee">priya@pidrive.app</span>
+      </div>
+    </div>
+    <button type="button" style="width:100%;height:52px;margin-top:16px;border-radius:26px;border:1.5px solid #2b2f34;background:#101215;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;cursor:pointer">Ask Priya for access</button>
+  </div>
+
+  <div style="padding:18px 22px 0">
+    <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#7e8085">FOLDERS YOU CAN OPEN</div>
+    <div style="margin-top:12px;display:flex;flex-direction:column;gap:9px">
+      <div style="display:flex;align-items:center;gap:13px;padding:14px 16px;border-radius:18px;background:#101215;border:1.5px solid #2b2f34">
+        <span style="width:38px;height:38px;border-radius:12px;background:#1c1f23;display:flex;align-items:center;justify-content:center;font:700 10px/1 ui-monospace,monospace;color:#f2f1ee;flex:none">DIR</span>
+        <span style="flex:1;font:600 14.5px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Documents</span>
+        <span style="font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">12 items</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:13px;padding:14px 16px;border-radius:18px;background:#101215;border:1.5px solid #2b2f34">
+        <span style="width:38px;height:38px;border-radius:12px;background:#1c1f23;display:flex;align-items:center;justify-content:center;font:700 10px/1 ui-monospace,monospace;color:#f2f1ee;flex:none">DIR</span>
+        <span style="flex:1;font:600 14.5px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Aadhaar</span>
+        <span style="font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">6 items</span>
+      </div>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">ERR 08</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Corrupted file</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Inline · inside the viewer</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:64px 0 0;display:flex;flex-direction:column;background:#0e0f11">
+  <div style="display:flex;align-items:center;gap:12px;padding:12px 18px">
+    <button type="button" aria-label="Close viewer" style="width:40px;height:40px;border-radius:14px;border:none;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none">
+      <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="#fdfdfd" stroke-width="2" stroke-linecap="round"><path d="M4.5 4.5l9 9M13.5 4.5l-9 9"></path></svg>
+    </button>
+    <span style="min-width:0">
+      <span style="display:block;font:700 14px/1.2 'Plus Jakarta Sans',system-ui;color:#fdfdfd;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">passport-scan.jpg</span>
+      <span style="display:block;margin-top:4px;font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:rgba(255,255,255,0.55)">2.4 MB · 12 Mar 2026</span>
+    </span>
+  </div>
+
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:24px 30px">
+    <div style="width:96px;height:96px;border-radius:28px;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center">
+      <svg width="40" height="40" viewBox="0 0 32 32" fill="none" stroke="#ff9d80" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4.5h11l5 5v18H8z"></path><path d="M11.5 14l9 9M20.5 14l-9 9"></path></svg>
+    </div>
+    <div style="text-align:center">
+      <div style="font:800 20px/1.25 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#fdfdfd">This file will not open</div>
+      <p style="margin:10px 0 0;font:500 13px/1.6 'Plus Jakarta Sans',system-ui;color:rgba(255,255,255,0.6);text-wrap:pretty">All 2.4 MB came down from the Pi, but the JPEG data is not readable. The copy in MinIO is likely damaged.</p>
+    </div>
+    <div style="width:100%;padding:14px 16px;border-radius:16px;background:#331a12;font:600 12px/1.5 'Plus Jakarta Sans',system-ui;color:#ff9d80;text-wrap:pretty">Checksum on the Pi does not match the one recorded at upload.</div>
+  </div>
+
+  <div style="padding:0 24px 34px;display:flex;flex-direction:column;gap:10px">
+    <button type="button" style="height:54px;border-radius:27px;border:none;background:#fdfdfd;color:#0e0f11;font:700 15px/1 'Plus Jakarta Sans',system-ui;cursor:pointer">Download the raw bytes</button>
+    <button type="button" style="height:50px;border-radius:25px;border:1.5px solid rgba(255,157,128,0.5);background:transparent;font:700 13.5px/1 'Plus Jakarta Sans',system-ui;color:#ff9d80;cursor:pointer">Delete it from the Pi</button>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">ERR 09</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Duplicate name</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Choice · three ways out</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#16181c;position:relative;overflow:hidden">
+  <div style="padding:0 22px;opacity:.32;pointer-events:none">
+    <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#7e8085">MEDIA · DOCUMENTS</div>
+    <h1 style="margin:9px 0 0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#f2f1ee">12 items</h1>
+  </div>
+  <div style="position:absolute;inset:0;background:rgba(9,10,12,0.74)"></div>
+
+  <div style="position:absolute;left:0;right:0;bottom:0;border-radius:30px 30px 0 0;background:#101215;padding:26px 24px 34px;box-shadow:0 -18px 50px rgba(0,0,0,0.55);animation:rise .25s ease-out">
+    <div style="width:38px;height:5px;border-radius:3px;background:#2b2f34;margin:0 auto 20px"></div>
+    <div style="font:800 20px/1.25 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#f2f1ee">Documents already has this name</div>
+    <p style="margin:10px 0 0;font:500 13px/1.55 'Plus Jakarta Sans',system-ui;color:#9b9ca1;text-wrap:pretty">lease-agreement.pdf is already on your Pi. Nothing has been uploaded yet.</p>
+
+    <div style="margin-top:18px;display:flex;gap:10px">
+      <div style="flex:1;padding:14px;border-radius:16px;background:#1c1f23">
+        <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#7e8085">ON THE PI</div>
+        <div style="margin-top:9px;font:700 13.5px/1.2 'Plus Jakarta Sans',system-ui;color:#f2f1ee">1.1 MB</div>
+        <div style="margin-top:5px;font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">12 Mar 2026</div>
+      </div>
+      <div style="flex:1;padding:14px;border-radius:16px;background:#1c1f23;border:1.5px solid #f2f1ee">
+        <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#7e8085">THE NEW ONE</div>
+        <div style="margin-top:9px;font:700 13.5px/1.2 'Plus Jakarta Sans',system-ui;color:#f2f1ee">1.4 MB</div>
+        <div style="margin-top:5px;font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">Today</div>
+      </div>
+    </div>
+
+    <div style="margin-top:18px;display:flex;flex-direction:column;gap:2px">
+      <button type="button" style="display:flex;align-items:center;gap:13px;padding:15px 6px;border:none;background:transparent;cursor:pointer;text-align:left;border-bottom:1px solid #2b2f34">
+        <span style="width:34px;height:34px;border-radius:11px;background:#1c1f23;display:flex;align-items:center;justify-content:center;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;flex:none">＋</span>
+        <span style="flex:1">
+          <span style="display:block;font:700 14px/1.2 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Keep both</span>
+          <span style="display:block;margin-top:4px;font:500 11.5px/1.3 'Plus Jakarta Sans',system-ui;color:#9b9ca1">Uploads as lease-agreement (2).pdf</span>
+        </span>
+      </button>
+      <button type="button" style="display:flex;align-items:center;gap:13px;padding:15px 6px;border:none;background:transparent;cursor:pointer;text-align:left;border-bottom:1px solid #2b2f34">
+        <span style="width:34px;height:34px;border-radius:11px;background:#1c1f23;display:flex;align-items:center;justify-content:center;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;flex:none">↻</span>
+        <span style="flex:1">
+          <span style="display:block;font:700 14px/1.2 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Replace it</span>
+          <span style="display:block;margin-top:4px;font:500 11.5px/1.3 'Plus Jakarta Sans',system-ui;color:#9b9ca1">The old file is gone for good</span>
+        </span>
+      </button>
+      <button type="button" style="display:flex;align-items:center;gap:13px;padding:15px 6px;border:none;background:transparent;cursor:pointer;text-align:left">
+        <span style="width:34px;height:34px;border-radius:11px;background:#1c1f23;display:flex;align-items:center;justify-content:center;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;flex:none">✎</span>
+        <span style="flex:1">
+          <span style="display:block;font:700 14px/1.2 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Rename first</span>
+          <span style="display:block;margin-top:4px;font:500 11.5px/1.3 'Plus Jakarta Sans',system-ui;color:#9b9ca1">Type a new name, then upload</span>
+        </span>
+      </button>
+    </div>
+    <button type="button" style="width:100%;height:52px;margin-top:12px;border-radius:26px;border:1.5px solid #2b2f34;background:#101215;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;cursor:pointer">Cancel the upload</button>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">EXT 01</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Face ID unlock</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Default way in</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:104px 26px 34px;display:flex;flex-direction:column;align-items:center;background:#101215">
+  <div style="width:46px;height:46px;border-radius:16px;background:#f2f1ee;display:flex;align-items:center;justify-content:center;font:800 21px/1 'Plus Jakarta Sans',system-ui;color:#101215">&#960;</div>
+  <div style="margin-top:14px;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.22em;color:#7e8085">PIDRIVE IS LOCKED</div>
+
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px">
+    <div style="width:132px;height:132px;border-radius:38px;border:2px solid #2b2f34;display:flex;align-items:center;justify-content:center;animation:pulse 2.4s ease-in-out infinite">
+      <svg width="62" height="62" viewBox="0 0 64 64" fill="none" stroke="#f2f1ee" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 20V12a4 4 0 014-4h8M56 20V12a4 4 0 00-4-4h-8M8 44v8a4 4 0 004 4h8M56 44v8a4 4 0 01-4 4h-8"></path>
+        <path d="M24 26v5M40 26v5"></path>
+        <path d="M32 26v10h-3"></path>
+        <path d="M24 42c2.6 2.4 5.2 3.6 8 3.6s5.4-1.2 8-3.6"></path>
+      </svg>
+    </div>
+    <div style="text-align:center">
+      <div style="font:800 24px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#f2f1ee">Look at your phone</div>
+      <p style="margin:10px 0 0;font:500 13.5px/1.55 'Plus Jakarta Sans',system-ui;color:#9b9ca1;text-wrap:pretty">Face ID unlocks the vault. The PIN is there if Face ID cannot see you.</p>
+    </div>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:9px;padding:12px 16px;border-radius:16px;background:#1c1f23;width:100%;box-sizing:border-box">
+    <span style="width:7px;height:7px;border-radius:50%;background:#35c39a;flex:none"></span>
+    <span style="font:600 11.5px/1.3 'Plus Jakarta Sans',system-ui;color:#9b9ca1">shivam@pidrive.app · session still valid</span>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">EXT 02</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Face ID failed twice</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">PIN appears as fallback</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:104px 26px 34px;display:flex;flex-direction:column;align-items:center;background:#101215">
+  <div style="width:46px;height:46px;border-radius:16px;background:#f2f1ee;display:flex;align-items:center;justify-content:center;font:800 21px/1 'Plus Jakarta Sans',system-ui;color:#101215">&#960;</div>
+  <div style="margin-top:14px;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.22em;color:#7e8085">PIDRIVE IS LOCKED</div>
+
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px">
+    <div style="width:132px;height:132px;border-radius:38px;border:2px solid #e2603c;background:#331a12;display:flex;align-items:center;justify-content:center">
+      <svg width="62" height="62" viewBox="0 0 64 64" fill="none" stroke="#e2603c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 20V12a4 4 0 014-4h8M56 20V12a4 4 0 00-4-4h-8M8 44v8a4 4 0 004 4h8M56 44v8a4 4 0 01-4 4h-8"></path>
+        <path d="M22 26l6 6M28 26l-6 6M36 26l6 6M42 26l-6 6"></path>
+        <path d="M24 44c2.6-2.4 5.2-3.6 8-3.6s5.4 1.2 8 3.6"></path>
+      </svg>
+    </div>
+    <div style="text-align:center">
+      <div style="font:800 24px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#f2f1ee">Face not recognised</div>
+      <p style="margin:10px 0 0;font:500 13.5px/1.55 'Plus Jakarta Sans',system-ui;color:#9b9ca1;text-wrap:pretty">Two tries used. One more and PiDrive will ask for your six-digit PIN instead.</p>
+    </div>
+  </div>
+
+  <div style="width:100%;display:flex;flex-direction:column;gap:10px">
+    <button type="button" style="height:56px;border-radius:28px;border:none;background:#f2f1ee;color:#101215;font:700 15.5px/1 'Plus Jakarta Sans',system-ui;cursor:pointer">Try Face ID again</button>
+    <button type="button" style="height:52px;border-radius:26px;border:1.5px solid #2b2f34;background:#101215;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;cursor:pointer">Enter PIN instead</button>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">EXT 03</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Sort and filter</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Live · pinned under the header</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#16181c">
+  <div style="flex:1;overflow:hidden;display:flex;flex-direction:column">
+    <div style="padding:0 22px;display:flex;align-items:flex-end;justify-content:space-between;gap:14px">
+      <div>
+        <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#f2f1ee">Passwords</h1>
+        <div style="margin-top:7px;font:500 12.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">{{ pwCount }}</div>
+      </div>
+      <button type="button" aria-label="Search" style="width:40px;height:40px;border-radius:14px;border:1.5px solid #2b2f34;background:#101215;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none">
+        <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="#f2f1ee" stroke-width="1.9" stroke-linecap="round"><circle cx="8" cy="8" r="5"></circle><path d="M11.8 11.8L15 15"></path></svg>
+      </button>
+    </div>
+
+    <div style="margin:16px 22px 0;padding:4px;border-radius:16px;background:#1c1f23;display:flex;gap:4px">
+      <sc-for list="{{ sortTabsD }}" as="t" hint-placeholder-count="3">
+        <button type="button" onClick="{{ t.onPick }}" style="flex:1;height:38px;border-radius:12px;border:none;background:{{ t.bg }};color:{{ t.fg }};font:700 12.5px/1 'Plus Jakarta Sans',system-ui;cursor:pointer;transition:background .16s ease">{{ t.label }}</button>
+      </sc-for>
+    </div>
+
+    <div style="padding:14px 22px 0;display:flex;flex-direction:column;gap:9px;overflow:hidden">
+      <sc-for list="{{ pwList }}" as="p" hint-placeholder-count="6">
+        <div style="display:flex;align-items:center;gap:13px;padding:13px 16px;border-radius:18px;background:#101215;border:1.5px solid #2b2f34">
+          <span style="width:38px;height:38px;border-radius:12px;background:#1c1f23;display:flex;align-items:center;justify-content:center;font:800 15px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;flex:none">{{ p.initial }}</span>
+          <span style="flex:1;min-width:0">
+            <span style="display:block;font:700 14.5px/1.2 'Plus Jakarta Sans',system-ui;color:#f2f1ee;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ p.site }}</span>
+            <span style="display:block;margin-top:5px;font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ p.meta }}</span>
+          </span>
+          <span style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.1em;color:#7e8085">{{ p.tag }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="display:flex;align-items:center;justify-content:space-around;padding:10px 8px 30px;background:#101215;border-top:1.5px solid #2b2f34">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l8-6 8 6v9a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 013 18z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Home</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#f2f1ee" stroke-width="1.9" stroke-linecap="round"><circle cx="8" cy="11" r="3.4"></circle><path d="M11.4 11H19M16 11v3"></path></svg>
+      <span style="font:700 10px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Passwords</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round"><path d="M5 3h9l4 4v12H5z"></path><path d="M8 9h6M8 13h6"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Notes</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Media</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">EXT 04</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Grid or list</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Live · toggle in the header</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#16181c">
+  <div style="flex:1;overflow:hidden;display:flex;flex-direction:column">
+    <div style="padding:0 22px;display:flex;align-items:flex-end;justify-content:space-between;gap:14px">
+      <div>
+        <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#f2f1ee">Documents</h1>
+        <div style="margin-top:7px;font:500 12.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">6 files · 214 MB on your Pi</div>
+      </div>
+      <div style="padding:3px;border-radius:14px;background:#1c1f23;display:flex;gap:3px;flex:none">
+        <sc-for list="{{ viewBtnsD }}" as="v" hint-placeholder-count="2">
+          <button type="button" onClick="{{ v.onPick }}" aria-label="{{ v.label }}" style="width:36px;height:34px;border-radius:11px;border:none;background:{{ v.bg }};color:{{ v.fg }};font:700 14px/1 'Plus Jakarta Sans',system-ui;cursor:pointer;transition:background .16s ease">{{ v.glyph }}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <sc-if value="{{ gridOn }}" hint-placeholder-val="{{ true }}">
+      <div style="padding:18px 22px 0;display:grid;grid-template-columns:1fr 1fr;gap:11px">
+        <sc-for list="{{ mediaList }}" as="f" hint-placeholder-count="6">
+          <div style="border-radius:20px;overflow:hidden;background:#101215;border:1.5px solid #2b2f34">
+            <div style="height:96px;background:#1c1f23;display:flex;align-items:center;justify-content:center;font:700 12px/1 ui-monospace,monospace;letter-spacing:0.1em;color:#7e8085">{{ f.ext }}</div>
+            <div style="padding:11px 13px 13px">
+              <span style="display:block;font:700 12.5px/1.2 'Plus Jakarta Sans',system-ui;color:#f2f1ee;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ f.name }}</span>
+              <span style="display:block;margin-top:5px;font:500 11px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">{{ f.size }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ listOn }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:18px 22px 0;display:flex;flex-direction:column;gap:9px">
+        <sc-for list="{{ mediaList }}" as="f" hint-placeholder-count="6">
+          <div style="display:flex;align-items:center;gap:13px;padding:13px 16px;border-radius:18px;background:#101215;border:1.5px solid #2b2f34">
+            <span style="width:38px;height:38px;border-radius:12px;background:#1c1f23;display:flex;align-items:center;justify-content:center;font:700 9.5px/1 ui-monospace,monospace;color:#f2f1ee;flex:none">{{ f.ext }}</span>
+            <span style="flex:1;min-width:0">
+              <span style="display:block;font:600 14.5px/1.2 'Plus Jakarta Sans',system-ui;color:#f2f1ee;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ f.name }}</span>
+              <span style="display:block;margin-top:5px;font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">{{ f.meta }}</span>
+            </span>
+            <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M7 3.5L12.5 9 7 14.5"></path></svg>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+  </div>
+
+  <div style="display:flex;align-items:center;justify-content:space-around;padding:10px 8px 30px;background:#101215;border-top:1.5px solid #2b2f34">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l8-6 8 6v9a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 013 18z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Home</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round"><circle cx="8" cy="11" r="3.4"></circle><path d="M11.4 11H19M16 11v3"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Passwords</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round"><path d="M5 3h9l4 4v12H5z"></path><path d="M8 9h6M8 13h6"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Notes</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#f2f1ee" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path></svg>
+      <span style="font:700 10px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Media</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="width:280px;padding-top:34px;display:flex;flex-direction:column;gap:22px">
+  <div>
+    <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#a09d97;margin-bottom:12px">SEVERITY RULE</div>
+    <div style="font:500 12px/1.75 'Plus Jakarta Sans',system-ui;color:#5f5c57">
+      Whole screen when the app cannot go on<br />Inline banner when one request failed<br />Sheet when the user has to choose<br />Every failure says what was written<br />Every failure offers one clear action
+    </div>
+  </div>
+  <div style="border-top:1px solid rgba(16,16,16,0.12);padding-top:16px;font:500 12px/1.7 'Plus Jakarta Sans',system-ui;color:#5f5c57">
+    No screen claims a local copy exists, because none does. A failed read shows a skeleton and a retry, never stale data. Delete stays permanent behind a confirm, as agreed.
+  </div>
+  <div style="border-top:1px solid rgba(16,16,16,0.12);padding-top:16px;font:500 12px/1.7 'Plus Jakarta Sans',system-ui;color:#5f5c57">
+    Face ID is the way in. The PIN shows up only after Face ID fails three times, and still gates the private area on its own.
+  </div>
+</div>
+
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:1400},&quot;sortDefault&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Recent&quot;,&quot;A–Z&quot;,&quot;Weak&quot;],&quot;default&quot;:&quot;Recent&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Lists&quot;},&quot;mediaView&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Grid&quot;,&quot;List&quot;],&quot;default&quot;:&quot;Grid&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Lists&quot;}}">
+class Component extends DCLogic {
+  state = { sort: null, grid: null };
+
+  get sortIdx() {
+    const map = { 'Recent': 0, 'A–Z': 1, 'Weak': 2 };
+    return this.state.sort ?? (map[this.props.sortDefault] ?? 0);
+  }
+  get gridOn() {
+    return this.state.grid ?? (this.props.mediaView !== 'List');
+  }
+
+  tabs(d) {
+    const on = d ? '#f2f1ee' : '#101010', onFg = d ? '#101215' : '#fefefe', off = d ? '#9b9ca1' : '#77746e';
+    return ['Recent', 'A–Z', 'Weak'].map((label, i) => ({
+      label,
+      bg: i === this.sortIdx ? on : 'transparent',
+      fg: i === this.sortIdx ? onFg : off,
+      onPick: () => this.setState({ sort: i })
+    }));
+  }
+
+  views(d) {
+    const on = d ? '#f2f1ee' : '#101010', onFg = d ? '#101215' : '#fefefe', off = d ? '#9b9ca1' : '#77746e';
+    return [
+      { glyph: '▦', label: 'Grid view', active: this.gridOn, onPick: () => this.setState({ grid: true }) },
+      { glyph: '☰', label: 'List view', active: !this.gridOn, onPick: () => this.setState({ grid: false }) }
+    ].map(v => ({ glyph: v.glyph, label: v.label, bg: v.active ? on : 'transparent', fg: v.active ? onFg : off, onPick: v.onPick }));
+  }
+
+  PW = {
+    0: [
+      { site: 'Cloudflare', meta: 'shivam@pidrive.app', tag: '2H AGO', initial: 'C' },
+      { site: 'GitHub', meta: 'shivam@pidrive.app', tag: 'YESTERDAY', initial: 'G' },
+      { site: 'Tailscale', meta: 'shivam@pidrive.app', tag: '3 DAYS', initial: 'T' },
+      { site: 'HDFC Bank', meta: 'shivam.k', tag: '1 WEEK', initial: 'H' },
+      { site: 'Nextcloud', meta: 'admin@pi.local', tag: '2 WEEKS', initial: 'N' },
+      { site: 'Zerodha', meta: 'SK4821', tag: '1 MONTH', initial: 'Z' }
+    ],
+    1: [
+      { site: 'Cloudflare', meta: 'shivam@pidrive.app', tag: 'C', initial: 'C' },
+      { site: 'GitHub', meta: 'shivam@pidrive.app', tag: 'G', initial: 'G' },
+      { site: 'HDFC Bank', meta: 'shivam.k', tag: 'H', initial: 'H' },
+      { site: 'Nextcloud', meta: 'admin@pi.local', tag: 'N', initial: 'N' },
+      { site: 'Tailscale', meta: 'shivam@pidrive.app', tag: 'T', initial: 'T' },
+      { site: 'Zerodha', meta: 'SK4821', tag: 'Z', initial: 'Z' }
+    ],
+    2: [
+      { site: 'Nextcloud', meta: 'admin@pi.local · 8 characters', tag: 'WEAK', initial: 'N' },
+      { site: 'Zerodha', meta: 'SK4821 · reused twice', tag: 'REUSED', initial: 'Z' },
+      { site: 'Old router', meta: 'admin · 6 characters', tag: 'WEAK', initial: 'O' }
+    ]
+  };
+
+  FILES = [
+    { name: 'lease-agreement.pdf', ext: 'PDF', size: '1.1 MB', meta: '1.1 MB · 12 Mar 2026' },
+    { name: 'passport-scan.jpg', ext: 'JPG', size: '2.4 MB', meta: '2.4 MB · 12 Mar 2026' },
+    { name: 'tax-2025.zip', ext: 'ZIP', size: '18 MB', meta: '18 MB · 2 Mar 2026' },
+    { name: 'medical-report.jpg', ext: 'JPG', size: '3.8 MB', meta: '3.8 MB · 28 Feb 2026' },
+    { name: 'insurance-policy.pdf', ext: 'PDF', size: '740 KB', meta: '740 KB · 19 Feb 2026' },
+    { name: 'pi-ssh-key.pem', ext: 'PEM', size: '3 KB', meta: '3 KB · 14 Feb 2026' }
+  ];
+
+  renderVals() {
+    const list = this.PW[this.sortIdx];
+    const counts = ['42 items · newest use first', '42 items · A to Z', '3 items need attention'];
+    return {
+      sortTabs: this.tabs(false), sortTabsD: this.tabs(true),
+      viewBtns: this.views(false), viewBtnsD: this.views(true),
+      pwList: list, pwCount: counts[this.sortIdx],
+      mediaList: this.FILES,
+      gridOn: this.gridOn, listOn: !this.gridOn
+    };
+  }
+}
+</script>
+</body>
+</html>

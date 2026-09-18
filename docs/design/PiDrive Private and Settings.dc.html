@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240"><rect width="240" height="240" fill="#101010"/><text x="120" y="118" font-family="ui-monospace,monospace" font-size="30" font-weight="700" fill="#fefefe" text-anchor="middle">04</text><text x="120" y="152" font-family="system-ui" font-size="17" font-weight="600" fill="#a09d97" text-anchor="middle">Private</text></svg></template>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>
+body{margin:0;background:#e7e5e0;font-family:'Plus Jakarta Sans',system-ui,sans-serif}
+a{color:#101010}a:hover{color:#000}
+input::placeholder{color:#77746e;opacity:1}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #101010;outline-offset:3px;border-radius:8px}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes shake{10%,90%{transform:translateX(-3px)}30%,70%{transform:translateX(4px)}50%{transform:translateX(-4px)}}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+</style></helmet>
+
+<section style="padding:44px 48px 60px">
+<div style="display:flex;align-items:baseline;gap:12px;margin:0 0 8px">
+  <span style="font:700 10px/1 ui-monospace,monospace;padding:4px 8px;background:#101010;color:#fefefe;border-radius:5px">8</span>
+  <h2 style="margin:0;font:800 20px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#101010">PiDrive — private vault and settings</h2>
+</div>
+<p style="margin:0 0 34px;max-width:760px;font:500 13.5px/1.6 'Plus Jakarta Sans',system-ui;color:#5f5c57;text-wrap:pretty">Nine screens. Every screen reads and writes through the Pi's API, so the last one shows what you see when pi.local does not answer. Live: the private gate takes <span style="font-family:ui-monospace,monospace">135790</span>, the security toggles and timeout pickers respond, the change-password form validates as you type, the change-PIN flow runs all three steps. Dark row below.</p>
+
+<div style="display:flex;gap:40px;flex-wrap:wrap;align-items:flex-start">
+<div style="display:flex;align-items:baseline;gap:10px;padding:0 0 26px;width:100%">
+  <span style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#a09d97">LIGHT</span>
+  <span style="font:700 15px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.02em;color:#101010">Eight screens, light theme</span>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">PRIV 01</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Private vault — gate</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">App PIN again · 135790</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#ffffff;position:relative;overflow:hidden">
+  <div style="padding:0 18px">
+    <button type="button" aria-label="Back to Media" style="width:42px;height:42px;border-radius:14px;border:none;background:#f5f4f1;display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#101010" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5L5.5 9l5.5 5.5"></path></svg>
+    </button>
+  </div>
+
+  <div style="padding:22px 26px 0;display:flex;flex-direction:column;align-items:center;gap:15px">
+    <div style="width:56px;height:56px;border-radius:19px;background:#f5f4f1;border:1.5px solid #eceae5;display:flex;align-items:center;justify-content:center">
+      <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#101010" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="10.5" width="16" height="10.5" rx="3"></rect><path d="M8 10.5V7.6a4 4 0 018 0v2.9"></path></svg>
+    </div>
+    <div style="text-align:center">
+      <div style="font:800 22px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#101010">Private area</div>
+      <div style="margin-top:7px;font:500 13.5px/1.5 'Plus Jakarta Sans',system-ui;color:#77746e;max-width:280px;text-wrap:pretty">Enter your app PIN again to open the private area.</div>
+    </div>
+  </div>
+
+  <div role="status" aria-live="polite" aria-label="{{ gateAria }}" style="display:flex;gap:8px;padding:24px 26px 0;animation:{{ gateShake }}">
+    <sc-for list="{{ gateDots }}" as="d" hint-placeholder-count="6">
+      <div style="flex:1;height:56px;border-radius:17px;background:{{ d.bg }};border:1.5px solid {{ d.border }};display:flex;align-items:center;justify-content:center;transition:border-color .12s ease,background .12s ease">
+        <span style="font:600 21px/1 'Plus Jakarta Sans',system-ui;color:#101010">{{ d.char }}</span>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="min-height:34px;display:flex;align-items:center;justify-content:center;padding-top:10px"><sc-if value="{{ gateErr }}" hint-placeholder-val="{{ false }}"><span style="font:600 12.5px/1.4 'Plus Jakarta Sans',system-ui;color:#8f2b12">{{ gateErr }}</span></sc-if></div>
+
+  <div style="flex:1"></div>
+  <div style="background:#0e0f11;border-radius:30px;overflow:hidden;margin:0 12px 34px;padding:12px 0">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.1)">
+      <sc-for list="{{ gateKeys }}" as="k" hint-placeholder-count="9">
+        <div style="height:76px;background:#0e0f11"><button type="button" onClick="{{ k.press }}" aria-label="{{ k.label }}" style="width:100%;height:100%;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .1s ease" style-active="background:rgba(255,255,255,0.14)"><span style="font:500 28px/1 'Plus Jakarta Sans',system-ui;color:#fdfdfd">{{ k.d }}</span></button></div>
+      </sc-for>
+      <div style="height:76px;background:#0e0f11"></div>
+      <div style="height:76px;background:#0e0f11"><button type="button" onClick="{{ gatePress0 }}" aria-label="0" style="width:100%;height:100%;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .1s ease" style-active="background:rgba(255,255,255,0.14)"><span style="font:500 28px/1 'Plus Jakarta Sans',system-ui;color:#fdfdfd">0</span></button></div>
+      <div style="height:76px;background:#0e0f11"><button type="button" onClick="{{ gateBack }}" aria-label="Delete" style="width:100%;height:100%;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .1s ease" style-active="background:rgba(255,255,255,0.14)">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.8" stroke-linecap="round"><path d="M9 5h13v16H9L2 13z"></path><path d="M12.5 10l6 6M18.5 10l-6 6"></path></svg>
+      </button></div>
+    </div>
+  </div>
+
+  <sc-if value="{{ gateOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;background:#0e0f11;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;animation:rise .25s ease-out">
+      <div style="width:66px;height:66px;border-radius:33px;background:#fdfdfd;display:flex;align-items:center;justify-content:center"><svg width="30" height="30" viewBox="0 0 30 30"><path d="M8 15.5l5 5 9.5-10" fill="none" stroke="#0e0f11" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+      <span style="font:800 22px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#fdfdfd">Private area open</span>
+      <button type="button" onClick="{{ gateReset }}" style="border:none;background:none;padding:14px;font:600 12.5px 'Plus Jakarta Sans',system-ui;color:rgba(255,255,255,0.6);cursor:pointer">Lock again</button>
+    </div>
+  </sc-if>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">PRIV 02</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Private vault — browse</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Separate tree, no tab bar</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#ffffff;position:relative">
+  <div style="padding:0 18px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+    <button type="button" aria-label="Lock and leave" style="height:42px;padding:0 15px;border-radius:21px;border:none;background:#0e0f11;display:flex;align-items:center;gap:8px;cursor:pointer">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fdfdfd" stroke-width="2.1" stroke-linecap="round"><rect x="4" y="10.5" width="16" height="10.5" rx="3"></rect><path d="M8 10.5V7.6a4 4 0 018 0v2.9"></path></svg>
+      <span style="font:700 12px/1 'Plus Jakarta Sans',system-ui;color:#fdfdfd">Lock</span>
+    </button>
+    <div style="display:flex;gap:8px">
+      <button type="button" style="height:42px;padding:0 15px;border-radius:21px;border:1.5px solid #eceae5;background:#ffffff;font:700 12px/1 'Plus Jakarta Sans',system-ui;color:#101010;cursor:pointer">Select</button>
+      <button type="button" aria-label="More options" style="width:42px;height:42px;border-radius:21px;border:1.5px solid #eceae5;background:#ffffff;display:flex;align-items:center;justify-content:center;cursor:pointer">
+        <svg width="17" height="17" viewBox="0 0 18 18" fill="#101010"><circle cx="9" cy="4" r="1.5"></circle><circle cx="9" cy="9" r="1.5"></circle><circle cx="9" cy="14" r="1.5"></circle></svg>
+      </button>
+    </div>
+  </div>
+
+  <div style="padding:20px 22px 0">
+    <h1 style="margin:0;font:800 26px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#101010">Private</h1>
+    <div style="display:flex;align-items:center;gap:7px;margin-top:9px">
+      <span style="font:700 12.5px/1 'Plus Jakarta Sans',system-ui;color:#101010">Private root</span>
+      <span style="font:500 12.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">· 7 items · 96 MB</span>
+    </div>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:16px 22px 0">
+    <sc-for list="{{ privateFiles }}" as="f" hint-placeholder-count="7">
+      <div style="display:flex;align-items:center;gap:13px;padding:12px 2px;border-bottom:1.5px solid #f5f4f1">
+        <span style="width:42px;height:42px;border-radius:13px;background:#f5f4f1;display:flex;align-items:center;justify-content:center;flex:none;position:relative;overflow:hidden">
+          <sc-if value="{{ f.isImage }}" hint-placeholder-val="{{ false }}">
+            <span style="position:absolute;inset:0;background:linear-gradient(135deg,#c9c6bf,#8d8a84);filter:blur(6px)"></span>
+          </sc-if>
+          <span style="position:relative;padding:3px 5px;border-radius:6px;background:{{ f.scrim }};font:700 10.5px/1 ui-monospace,monospace;color:{{ f.iconColor }}">{{ f.ext }}</span>
+        </span>
+        <span style="flex:1;min-width:0">
+          <span style="display:block;font:600 14.5px/1.2 'Plus Jakarta Sans',system-ui;color:#101010;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ f.name }}</span>
+          <span style="display:flex;align-items:center;gap:7px;margin-top:5px">
+            <span style="width:6px;height:6px;border-radius:50%;background:#0e7c66;flex:none"></span>
+            <span style="font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">{{ f.meta }}</span>
+          </span>
+        </span>
+        <button type="button" aria-label="More options for {{ f.name }}" style="width:40px;height:40px;border-radius:13px;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none" style-active="background:#f5f4f1">
+          <svg width="16" height="16" viewBox="0 0 18 18" fill="#a09d97"><circle cx="9" cy="4" r="1.5"></circle><circle cx="9" cy="9" r="1.5"></circle><circle cx="9" cy="14" r="1.5"></circle></svg>
+        </button>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="padding:14px 22px 34px">
+    <div style="display:flex;gap:11px;align-items:flex-start;padding:15px 17px;border-radius:18px;background:#f5f4f1">
+      <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="#77746e" stroke-width="1.6" style="flex:none;margin-top:1px"><rect x="3" y="7.6" width="12" height="7.4" rx="2.4"></rect><path d="M6 7.6V5.4a3 3 0 016 0v2.2"></path></svg>
+      <span style="font:500 12.5px/1.55 'Plus Jakarta Sans',system-ui;color:#77746e;text-wrap:pretty">Nothing here appears in Media, search, or recents. Locks itself the moment you leave the app.</span>
+    </div>
+  </div>
+
+  <button type="button" aria-label="Add to private area" style="position:absolute;right:22px;bottom:118px;width:56px;height:56px;border-radius:28px;border:none;background:#101010;color:#fefefe;font:400 27px/1 'Plus Jakarta Sans',system-ui;cursor:pointer;box-shadow:0 12px 28px rgba(16,16,16,0.24)">+</button>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">STATE</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Server not answering</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Nothing loads until it does</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#fbfaf8">
+  <div style="flex:1;overflow:hidden;display:flex;flex-direction:column">
+    <div style="padding:0 22px;display:flex;align-items:center;justify-content:space-between;gap:14px">
+      <div>
+        <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#a09d97">VAULT UNLOCKED</div>
+        <h1 style="margin:9px 0 0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#101010">Hello, Shivam</h1>
+      </div>
+      <div style="width:42px;height:42px;border-radius:15px;background:#101010;display:flex;align-items:center;justify-content:center;font:800 19px/1 'Plus Jakarta Sans',system-ui;color:#fefefe">&#960;</div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:9px;margin:18px 22px 0;padding:12px 16px;border-radius:16px;background:#fdeeea">
+      <span style="width:8px;height:8px;border-radius:50%;background:#c23c1a"></span>
+      <span style="font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#8f2b12">Can't reach pi.local</span>
+      <div style="flex:1"></div>
+      <button type="button" style="height:32px;padding:0 13px;border-radius:16px;border:1.5px solid #c23c1a;background:transparent;font:700 11px/1 'Plus Jakarta Sans',system-ui;color:#8f2b12;cursor:pointer">Retry</button>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px 22px 0">
+      <sc-for list="{{ offlineCards }}" as="c" hint-placeholder-count="3">
+        <div style="padding:16px;border-radius:20px;border:1.5px solid #eceae5;background:{{ c.bg }};display:flex;flex-direction:column;gap:12px;min-height:96px;opacity:{{ c.opacity }}">
+          <span style="width:36px;height:36px;border-radius:12px;background:#f5f4f1;display:flex;align-items:center;justify-content:center;font:700 15px/1 'Plus Jakarta Sans',system-ui;color:{{ c.fg }}">{{ c.glyph }}</span>
+          <span>
+            <span style="display:block;font:700 14.5px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.02em;color:{{ c.fg }}">{{ c.title }}</span>
+            <span style="display:block;margin-top:4px;font:500 12px/1.2 'Plus Jakarta Sans',system-ui;color:#77746e">{{ c.count }}</span>
+          </span>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="margin:18px 22px 0;padding:18px;border-radius:20px;border:1.5px dashed #eceae5;display:flex;gap:13px;align-items:flex-start">
+      <svg width="19" height="19" viewBox="0 0 22 22" fill="none" stroke="#77746e" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:1px"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path><path d="M6 6l11 11" stroke="#c23c1a"></path></svg>
+      <span>
+        <span style="display:block;font:700 13.5px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Everything lives on your Pi</span>
+        <span style="display:block;margin-top:6px;font:500 12.5px/1.55 'Plus Jakarta Sans',system-ui;color:#77746e;text-wrap:pretty">Passwords, notes and files are all read from the API — nothing is kept on this phone. Until pi.local answers, there is nothing to show.</span>
+      </span>
+    </div>
+  </div>
+
+  <div style="display:flex;align-items:center;justify-content:space-around;padding:10px 8px 30px;background:#ffffff;border-top:1.5px solid #eceae5">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#101010" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l8-6 8 6v9a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 013 18z"></path></svg>
+      <span style="font:700 10px/1 'Plus Jakarta Sans',system-ui;color:#101010">Home</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round"><circle cx="8" cy="11" r="3.4"></circle><path d="M11.4 11H19M16 11v3"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Passwords</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round"><path d="M5 3h9l4 4v12H5z"></path><path d="M8 9h6M8 13h6"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Notes</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Media</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">SET 01</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Settings</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#fbfaf8">
+  <div style="padding:0 18px;display:flex;align-items:center;gap:12px">
+    <button type="button" aria-label="Back" style="width:42px;height:42px;border-radius:14px;border:1.5px solid #eceae5;background:#ffffff;display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#101010" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5L5.5 9l5.5 5.5"></path></svg>
+    </button>
+    <h1 style="margin:0;font:800 22px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#101010">Settings</h1>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:20px 20px 0;display:flex;flex-direction:column;gap:18px">
+    <div style="padding:18px;border-radius:22px;background:#ffffff;border:1.5px solid #eceae5;display:flex;align-items:center;gap:14px">
+      <span style="width:50px;height:50px;border-radius:17px;background:#101010;display:flex;align-items:center;justify-content:center;font:800 19px/1 'Plus Jakarta Sans',system-ui;color:#fefefe">S</span>
+      <span style="flex:1;min-width:0">
+        <span style="display:block;font:700 15.5px/1.2 'Plus Jakarta Sans',system-ui;color:#101010">Shivam</span>
+        <span style="display:block;margin-top:5px;font:500 12.5px/1.2 'Plus Jakarta Sans',system-ui;color:#77746e;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">shivam@pidrive.app</span>
+      </span>
+      <span style="padding:6px 10px;border-radius:10px;background:#f5f4f1;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.14em;color:#77746e;flex:none">MEMBER</span>
+    </div>
+
+    <sc-for list="{{ settingGroups }}" as="g" hint-placeholder-count="4">
+      <div>
+        <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97;padding:0 6px 9px">{{ g.label }}</div>
+        <div style="border-radius:22px;background:#ffffff;border:1.5px solid #eceae5;overflow:hidden">
+          <sc-for list="{{ g.rows }}" as="r" hint-placeholder-count="2">
+            <button type="button" style="width:100%;padding:15px 17px;border:none;border-bottom:1.5px solid #f5f4f1;background:#ffffff;display:flex;align-items:center;gap:13px;cursor:pointer;text-align:left" style-active="background:#f5f4f1">
+              <span style="width:22px;font:600 14px/1 ui-monospace,monospace;color:{{ r.color }};flex:none">{{ r.glyph }}</span>
+              <span style="flex:1;min-width:0">
+                <span style="display:block;font:600 14.5px/1.2 'Plus Jakarta Sans',system-ui;color:{{ r.color }}">{{ r.label }}</span>
+                <span style="display:block;margin-top:5px;font:500 11.5px/1.2 'Plus Jakarta Sans',system-ui;color:#77746e">{{ r.meta }}</span>
+              </span>
+              <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="#a09d97" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M7 3.5L12.5 9 7 14.5"></path></svg>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="padding:16px 20px 34px">
+    <div style="font:500 11.5px/1.5 'Plus Jakarta Sans',system-ui;color:#a09d97;text-align:center">PiDrive 1.4.0 · pi.local · users are added by your admin</div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">SET 02</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Security</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Toggles and pickers are live</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#fbfaf8">
+  <div style="padding:0 18px;display:flex;align-items:center;gap:12px">
+    <button type="button" aria-label="Back" style="width:42px;height:42px;border-radius:14px;border:1.5px solid #eceae5;background:#ffffff;display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#101010" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5L5.5 9l5.5 5.5"></path></svg>
+    </button>
+    <h1 style="margin:0;font:800 22px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#101010">Security</h1>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:20px 20px 0;display:flex;flex-direction:column;gap:16px">
+    <div style="border-radius:22px;background:#ffffff;border:1.5px solid #eceae5;overflow:hidden">
+      <sc-for list="{{ securityToggles }}" as="t" hint-placeholder-count="3">
+        <button type="button" onClick="{{ t.toggle }}" aria-pressed="{{ t.on }}" style="width:100%;padding:16px 17px;border:none;border-bottom:1.5px solid #f5f4f1;background:#ffffff;display:flex;align-items:center;gap:14px;cursor:pointer;text-align:left">
+          <span style="flex:1;min-width:0">
+            <span style="display:block;font:600 14.5px/1.2 'Plus Jakarta Sans',system-ui;color:#101010">{{ t.label }}</span>
+            <span style="display:block;margin-top:6px;font:500 11.5px/1.45 'Plus Jakarta Sans',system-ui;color:#77746e;text-wrap:pretty">{{ t.meta }}</span>
+          </span>
+          <sc-if value="{{ t.on }}" hint-placeholder-val="{{ true }}">
+            <span style="width:46px;height:28px;border-radius:14px;background:#101010;display:flex;align-items:center;justify-content:flex-end;padding:3px;box-sizing:border-box;flex:none"><span style="width:22px;height:22px;border-radius:11px;background:#fefefe"></span></span>
+          </sc-if>
+          <sc-if value="{{ t.off }}" hint-placeholder-val="{{ false }}">
+            <span style="width:46px;height:28px;border-radius:14px;background:#eceae5;display:flex;align-items:center;padding:3px;box-sizing:border-box;flex:none"><span style="width:22px;height:22px;border-radius:11px;background:#ffffff"></span></span>
+          </sc-if>
+        </button>
+      </sc-for>
+    </div>
+
+    <div>
+      <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97;padding:0 6px 9px">LOCK THE APP AFTER</div>
+      <div style="display:flex;gap:7px">
+        <sc-for list="{{ lockOptions }}" as="o" hint-placeholder-count="4">
+          <button type="button" onClick="{{ o.pick }}" aria-pressed="{{ o.sel }}" style="flex:1;height:50px;border-radius:16px;border:1.5px solid {{ o.border }};background:{{ o.bg }};font:700 12.5px/1 'Plus Jakarta Sans',system-ui;color:{{ o.fg }};cursor:pointer;transition:background .14s ease">{{ o.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <div>
+      <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97;padding:0 6px 9px">CLEAR CLIPBOARD AFTER</div>
+      <div style="display:flex;gap:7px">
+        <sc-for list="{{ clipOptions }}" as="o" hint-placeholder-count="4">
+          <button type="button" onClick="{{ o.pick }}" aria-pressed="{{ o.sel }}" style="flex:1;height:50px;border-radius:16px;border:1.5px solid {{ o.border }};background:{{ o.bg }};font:700 12.5px/1 'Plus Jakarta Sans',system-ui;color:{{ o.fg }};cursor:pointer;transition:background .14s ease">{{ o.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="border-radius:22px;background:#ffffff;border:1.5px solid #eceae5;overflow:hidden">
+      <button type="button" style="width:100%;padding:16px 17px;border:none;background:#ffffff;display:flex;align-items:center;gap:13px;cursor:pointer;text-align:left" style-active="background:#f5f4f1">
+        <span style="flex:1;font:600 14.5px/1.2 'Plus Jakarta Sans',system-ui;color:#101010">Change PIN</span>
+        <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="#a09d97" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5L12.5 9 7 14.5"></path></svg>
+      </button>
+    </div>
+  </div>
+
+  <div style="padding:16px 20px 34px">
+    <div style="display:flex;gap:11px;align-items:flex-start;padding:15px 17px;border-radius:18px;background:#f5f4f1">
+      <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="#77746e" stroke-width="1.6" style="flex:none;margin-top:1px"><circle cx="9" cy="9" r="7.4"></circle><path d="M9 5.4v.1M9 8v4.6" stroke-linecap="round"></path></svg>
+      <span style="font:500 12.5px/1.55 'Plus Jakarta Sans',system-ui;color:#77746e;text-wrap:pretty">The private area always asks for your PIN, whatever these settings say.</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">SET 03</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Change password</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Rules validate as you type</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#ffffff">
+  <div style="padding:0 18px;display:flex;align-items:center;gap:12px">
+    <button type="button" aria-label="Back" style="width:42px;height:42px;border-radius:14px;border:none;background:#f5f4f1;display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#101010" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5L5.5 9l5.5 5.5"></path></svg>
+    </button>
+    <h1 style="margin:0;font:800 22px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#101010">Change password</h1>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:20px 22px 0;display:flex;flex-direction:column;gap:13px">
+    <p style="margin:0 0 4px;font:500 13.5px/1.55 'Plus Jakarta Sans',system-ui;color:#77746e;text-wrap:pretty">This is your identity on the Pi. Changing it signs you out everywhere else.</p>
+    <div>
+      <label for="cpOld" style="display:block;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#a09d97;margin:0 0 9px 4px">CURRENT PASSWORD</label>
+      <div style="height:56px;border-radius:18px;background:#f5f4f1;display:flex;align-items:center;padding:0 18px">
+        <input id="cpOld" type="password" autoComplete="current-password" value="{{ cpOld }}" onChange="{{ setCpOld }}" placeholder="••••••••" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font:500 16px/1 'Plus Jakarta Sans',system-ui;color:#101010" />
+      </div>
+    </div>
+    <div>
+      <label for="cpNew" style="display:block;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#a09d97;margin:0 0 9px 4px">NEW PASSWORD</label>
+      <div style="height:56px;border-radius:18px;background:#f5f4f1;display:flex;align-items:center;gap:4px;padding:0 8px 0 18px">
+        <input id="cpNew" type="{{ cpType }}" autoComplete="new-password" value="{{ cpNew }}" onChange="{{ setCpNew }}" placeholder="At least 10 characters" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font:500 16px/1 'Plus Jakarta Sans',system-ui;color:#101010" />
+        <button type="button" onClick="{{ cpToggle }}" aria-pressed="{{ cpShown }}" style="height:46px;min-width:52px;border:none;background:none;font:700 12.5px/1 'Plus Jakarta Sans',system-ui;color:#101010;cursor:pointer">{{ cpToggleLabel }}</button>
+      </div>
+    </div>
+    <div>
+      <label for="cpConf" style="display:block;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#a09d97;margin:0 0 9px 4px">CONFIRM NEW PASSWORD</label>
+      <div style="height:56px;border-radius:18px;background:#f5f4f1;border:1.5px solid {{ cpBorder }};display:flex;align-items:center;padding:0 18px;transition:border-color .14s ease">
+        <input id="cpConf" type="{{ cpType }}" autoComplete="new-password" value="{{ cpConf }}" onChange="{{ setCpConf }}" placeholder="Type it again" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font:500 16px/1 'Plus Jakarta Sans',system-ui;color:#101010" />
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px;padding:8px 4px 0">
+      <sc-for list="{{ cpRules }}" as="r" hint-placeholder-count="3">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="width:18px;height:18px;border-radius:50%;background:{{ r.bg }};border:1.5px solid {{ r.border }};display:flex;align-items:center;justify-content:center;flex:none">
+            <span style="font:700 10px/1 'Plus Jakarta Sans',system-ui;color:{{ r.tick }}">✓</span>
+          </span>
+          <span style="font:600 12.5px/1.4 'Plus Jakarta Sans',system-ui;color:{{ r.color }}">{{ r.label }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="padding:16px 22px 34px;display:flex;flex-direction:column;gap:12px">
+    <div style="display:flex;align-items:center;gap:9px;padding:12px 15px;border-radius:16px;background:#f5f4f1">
+      <span style="width:7px;height:7px;border-radius:50%;background:#0e7c66"></span>
+      <span style="font:600 11.5px/1.3 'Plus Jakarta Sans',system-ui;color:#77746e">Your admin can reset this if you lose it</span>
+    </div>
+    <button type="button" style="height:56px;border-radius:28px;border:none;background:{{ cpBtnBg }};color:{{ cpBtnFg }};font:700 15.5px/1 'Plus Jakarta Sans',system-ui;cursor:pointer;transition:background .16s ease">Save new password</button>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">SET 04</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Change PIN</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Current → new → confirm</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#ffffff;position:relative;overflow:hidden">
+  <div style="padding:0 18px;display:flex;align-items:center;gap:12px">
+    <button type="button" aria-label="Back" style="width:42px;height:42px;border-radius:14px;border:none;background:#f5f4f1;display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#101010" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5L5.5 9l5.5 5.5"></path></svg>
+    </button>
+    <h1 style="margin:0;font:800 22px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#101010">Change PIN</h1>
+  </div>
+
+  <div style="padding:20px 26px 0">
+    <div style="display:flex;gap:6px;margin-bottom:16px">
+      <sc-for list="{{ cpinSteps }}" as="s" hint-placeholder-count="3">
+        <span style="flex:1;height:4px;border-radius:2px;background:{{ s.bg }};transition:background .18s ease"></span>
+      </sc-for>
+    </div>
+    <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#77746e">{{ cpinStepLabel }}</div>
+    <div style="margin-top:10px;font:800 21px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#101010">{{ cpinTitle }}</div>
+    <p style="margin:8px 0 0;font:500 13px/1.5 'Plus Jakarta Sans',system-ui;color:#77746e;text-wrap:pretty">{{ cpinCopy }}</p>
+  </div>
+
+  <div role="status" aria-live="polite" aria-label="{{ cpinAria }}" style="display:flex;gap:8px;padding:20px 26px 0;animation:{{ cpinShake }}">
+    <sc-for list="{{ cpinDots }}" as="d" hint-placeholder-count="6">
+      <div style="flex:1;height:54px;border-radius:17px;background:{{ d.bg }};border:1.5px solid {{ d.border }};display:flex;align-items:center;justify-content:center;transition:border-color .12s ease,background .12s ease">
+        <span style="font:600 20px/1 'Plus Jakarta Sans',system-ui;color:#101010">{{ d.char }}</span>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="min-height:40px;padding:12px 26px 0"><sc-if value="{{ cpinErr }}" hint-placeholder-val="{{ false }}"><span style="font:600 12.5px/1.4 'Plus Jakarta Sans',system-ui;color:#8f2b12">{{ cpinErr }}</span></sc-if></div>
+
+  <div style="flex:1"></div>
+  <div style="background:#0e0f11;border-radius:30px;overflow:hidden;margin:0 12px 34px;padding:12px 0">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.1)">
+      <sc-for list="{{ cpinKeys }}" as="k" hint-placeholder-count="9">
+        <div style="height:74px;background:#0e0f11"><button type="button" onClick="{{ k.press }}" aria-label="{{ k.label }}" style="width:100%;height:100%;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .1s ease" style-active="background:rgba(255,255,255,0.14)"><span style="font:500 27px/1 'Plus Jakarta Sans',system-ui;color:#fdfdfd">{{ k.d }}</span></button></div>
+      </sc-for>
+      <div style="height:74px;background:#0e0f11"></div>
+      <div style="height:74px;background:#0e0f11"><button type="button" onClick="{{ cpinPress0 }}" aria-label="0" style="width:100%;height:100%;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .1s ease" style-active="background:rgba(255,255,255,0.14)"><span style="font:500 27px/1 'Plus Jakarta Sans',system-ui;color:#fdfdfd">0</span></button></div>
+      <div style="height:74px;background:#0e0f11"><button type="button" onClick="{{ cpinBack }}" aria-label="Delete" style="width:100%;height:100%;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .1s ease" style-active="background:rgba(255,255,255,0.14)">
+        <svg width="25" height="25" viewBox="0 0 26 26" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.8" stroke-linecap="round"><path d="M9 5h13v16H9L2 13z"></path><path d="M12.5 10l6 6M18.5 10l-6 6"></path></svg>
+      </button></div>
+    </div>
+  </div>
+
+  <sc-if value="{{ cpinDone }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;background:#0e0f11;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;animation:rise .25s ease-out">
+      <div style="width:66px;height:66px;border-radius:33px;background:#fdfdfd;display:flex;align-items:center;justify-content:center"><svg width="30" height="30" viewBox="0 0 30 30"><path d="M8 15.5l5 5 9.5-10" fill="none" stroke="#0e0f11" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+      <span style="font:800 22px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#fdfdfd">PIN changed</span>
+      <button type="button" onClick="{{ cpinReset }}" style="border:none;background:none;padding:14px;font:600 12.5px 'Plus Jakarta Sans',system-ui;color:rgba(255,255,255,0.6);cursor:pointer">Reset demo</button>
+    </div>
+  </sc-if>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">SET 05</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">About</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#fbfaf8">
+  <div style="padding:0 18px;display:flex;align-items:center;gap:12px">
+    <button type="button" aria-label="Back" style="width:42px;height:42px;border-radius:14px;border:1.5px solid #eceae5;background:#ffffff;display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#101010" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5L5.5 9l5.5 5.5"></path></svg>
+    </button>
+    <h1 style="margin:0;font:800 22px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#101010">About</h1>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:24px 20px 0;display:flex;flex-direction:column;gap:20px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:14px;padding:6px 0 4px">
+      <div style="width:66px;height:66px;border-radius:22px;background:#101010;display:flex;align-items:center;justify-content:center;font:800 30px/1 'Plus Jakarta Sans',system-ui;color:#fefefe">&#960;</div>
+      <div style="text-align:center">
+        <div style="font:800 20px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#101010">PiDrive</div>
+        <div style="margin-top:6px;font:500 12.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">Version 1.4.0 · build 2026.08.11</div>
+      </div>
+    </div>
+
+    <div style="border-radius:22px;background:#ffffff;border:1.5px solid #eceae5;overflow:hidden">
+      <sc-for list="{{ aboutRows }}" as="r" hint-placeholder-count="5">
+        <div style="padding:15px 17px;border-bottom:1.5px solid #f5f4f1;display:flex;align-items:center;gap:14px">
+          <span style="flex:1;font:600 13.5px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">{{ r.label }}</span>
+          <span style="font:500 12.5px/1.3 ui-monospace,monospace;color:#77746e;text-align:right">{{ r.value }}</span>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="border-radius:22px;background:#ffffff;border:1.5px solid #eceae5;overflow:hidden">
+      <sc-for list="{{ aboutLinks }}" as="l" hint-placeholder-count="3">
+        <button type="button" style="width:100%;padding:15px 17px;border:none;border-bottom:1.5px solid #f5f4f1;background:#ffffff;display:flex;align-items:center;gap:13px;cursor:pointer;text-align:left" style-active="background:#f5f4f1">
+          <span style="flex:1;font:600 14px/1.2 'Plus Jakarta Sans',system-ui;color:#101010">{{ l.label }}</span>
+          <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="#a09d97" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5L12.5 9 7 14.5"></path></svg>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="padding:16px 20px 34px">
+    <p style="margin:0;font:500 11.5px/1.6 'Plus Jakarta Sans',system-ui;color:#a09d97;text-align:center;text-wrap:pretty">Accounts are created by your administrator. There is no public sign-up.</p>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">SET 06</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Sign out and wipe</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#fbfaf8;position:relative">
+  <div style="padding:0 18px;display:flex;align-items:center;gap:12px;opacity:.4">
+    <div style="width:42px;height:42px;border-radius:14px;border:1.5px solid #eceae5;background:#ffffff"></div>
+    <h1 style="margin:0;font:800 22px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#101010">Settings</h1>
+  </div>
+  <div style="padding:20px 20px 0;opacity:.4;display:flex;flex-direction:column;gap:12px">
+    <sc-for list="{{ ghostRows }}" as="g" hint-placeholder-count="4">
+      <div style="padding:17px;border-radius:22px;background:#ffffff;border:1.5px solid #eceae5">
+        <span style="display:block;width:{{ g.w }};height:11px;border-radius:6px;background:#f5f4f1"></span>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="position:absolute;inset:0;background:rgba(16,16,16,0.45);display:flex;align-items:center;justify-content:center;padding:0 26px;animation:fade .16s ease-out">
+    <div style="width:100%;border-radius:28px;background:#ffffff;padding:28px 22px 18px;animation:rise .2s ease-out">
+      <div style="width:52px;height:52px;border-radius:18px;background:#fdeeea;display:flex;align-items:center;justify-content:center">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c23c1a" stroke-width="1.9" stroke-linecap="round"><path d="M14 6h4a1.5 1.5 0 011.5 1.5v9A1.5 1.5 0 0118 18h-4"></path><path d="M9.5 8.5L6 12l3.5 3.5M6 12h8"></path></svg>
+      </div>
+      <div style="margin-top:18px;font:800 20px/1.25 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#101010">Sign out?</div>
+      <p style="margin:10px 0 0;font:500 13.5px/1.55 'Plus Jakarta Sans',system-ui;color:#77746e;text-wrap:pretty">Nothing is stored on this phone, so there is nothing to lose. Signing out clears this session and the PIN that guards the app.</p>
+      <div style="margin-top:18px;border-radius:16px;background:#f5f4f1;overflow:hidden">
+        <sc-for list="{{ wipeRows }}" as="w" hint-placeholder-count="3">
+          <div style="padding:13px 15px;border-bottom:1.5px solid #eceae5;display:flex;align-items:center;gap:11px">
+            <span style="width:18px;font:600 12px/1 ui-monospace,monospace;color:{{ w.color }};flex:none">{{ w.glyph }}</span>
+            <span style="flex:1;font:600 12.5px/1.35 'Plus Jakarta Sans',system-ui;color:{{ w.color }}">{{ w.label }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="margin-top:18px;padding:13px 15px;border-radius:14px;background:#fdeeea;font:600 12px/1.45 'Plus Jakarta Sans',system-ui;color:#8f2b12;text-wrap:pretty">You will need your password to sign in again, then a new PIN.</div>
+      <div style="display:flex;gap:10px;padding-top:18px">
+        <button type="button" style="flex:1;height:52px;border-radius:26px;border:1.5px solid #eceae5;background:#ffffff;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#101010;cursor:pointer">Cancel</button>
+        <button type="button" style="flex:1;height:52px;border-radius:26px;border:none;background:#c23c1a;color:#fefefe;font:700 14px/1 'Plus Jakarta Sans',system-ui;cursor:pointer">Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;align-items:baseline;gap:10px;padding:56px 0 26px;width:100%">
+  <span style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#a09d97">DARK</span>
+  <span style="font:700 15px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.02em;color:#101010">Same eight screens, dark theme</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">PRIV 01</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Private vault — gate</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">App PIN again · 135790</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#101215;position:relative;overflow:hidden">
+  <div style="padding:0 18px">
+    <button type="button" aria-label="Back to Media" style="width:42px;height:42px;border-radius:14px;border:none;background:#1c1f23;display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#f2f1ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5L5.5 9l5.5 5.5"></path></svg>
+    </button>
+  </div>
+
+  <div style="padding:22px 26px 0;display:flex;flex-direction:column;align-items:center;gap:15px">
+    <div style="width:56px;height:56px;border-radius:19px;background:#1c1f23;border:1.5px solid #2b2f34;display:flex;align-items:center;justify-content:center">
+      <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#f2f1ee" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="10.5" width="16" height="10.5" rx="3"></rect><path d="M8 10.5V7.6a4 4 0 018 0v2.9"></path></svg>
+    </div>
+    <div style="text-align:center">
+      <div style="font:800 22px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#f2f1ee">Private area</div>
+      <div style="margin-top:7px;font:500 13.5px/1.5 'Plus Jakarta Sans',system-ui;color:#9b9ca1;max-width:280px;text-wrap:pretty">Enter your app PIN again to open the private area.</div>
+    </div>
+  </div>
+
+  <div role="status" aria-live="polite" aria-label="{{ gateAria }}" style="display:flex;gap:8px;padding:24px 26px 0;animation:{{ gateShake }}">
+    <sc-for list="{{ gateDotsD }}" as="d" hint-placeholder-count="6">
+      <div style="flex:1;height:56px;border-radius:17px;background:{{ d.bg }};border:1.5px solid {{ d.border }};display:flex;align-items:center;justify-content:center;transition:border-color .12s ease,background .12s ease">
+        <span style="font:600 21px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">{{ d.char }}</span>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="min-height:34px;display:flex;align-items:center;justify-content:center;padding-top:10px"><sc-if value="{{ gateErr }}" hint-placeholder-val="{{ false }}"><span style="font:600 12.5px/1.4 'Plus Jakarta Sans',system-ui;color:#ff9d80">{{ gateErr }}</span></sc-if></div>
+
+  <div style="flex:1"></div>
+  <div style="background:#1c1f23;border-radius:30px;overflow:hidden;margin:0 12px 34px;padding:12px 0">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.1)">
+      <sc-for list="{{ gateKeys }}" as="k" hint-placeholder-count="9">
+        <div style="height:76px;background:#1c1f23"><button type="button" onClick="{{ k.press }}" aria-label="{{ k.label }}" style="width:100%;height:100%;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .1s ease" style-active="background:rgba(255,255,255,0.14)"><span style="font:500 28px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">{{ k.d }}</span></button></div>
+      </sc-for>
+      <div style="height:76px;background:#1c1f23"></div>
+      <div style="height:76px;background:#1c1f23"><button type="button" onClick="{{ gatePress0 }}" aria-label="0" style="width:100%;height:100%;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .1s ease" style-active="background:rgba(255,255,255,0.14)"><span style="font:500 28px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">0</span></button></div>
+      <div style="height:76px;background:#1c1f23"><button type="button" onClick="{{ gateBack }}" aria-label="Delete" style="width:100%;height:100%;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .1s ease" style-active="background:rgba(255,255,255,0.14)">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.8" stroke-linecap="round"><path d="M9 5h13v16H9L2 13z"></path><path d="M12.5 10l6 6M18.5 10l-6 6"></path></svg>
+      </button></div>
+    </div>
+  </div>
+
+  <sc-if value="{{ gateOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;background:#1c1f23;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;animation:rise .25s ease-out">
+      <div style="width:66px;height:66px;border-radius:33px;background:#f2f1ee;display:flex;align-items:center;justify-content:center"><svg width="30" height="30" viewBox="0 0 30 30"><path d="M8 15.5l5 5 9.5-10" fill="none" stroke="#1c1f23" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+      <span style="font:800 22px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#f2f1ee">Private area open</span>
+      <button type="button" onClick="{{ gateReset }}" style="border:none;background:none;padding:14px;font:600 12.5px 'Plus Jakarta Sans',system-ui;color:rgba(255,255,255,0.6);cursor:pointer">Lock again</button>
+    </div>
+  </sc-if>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">PRIV 02</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Private vault — browse</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Separate tree, no tab bar</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#101215;position:relative">
+  <div style="padding:0 18px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+    <button type="button" aria-label="Lock and leave" style="height:42px;padding:0 15px;border-radius:21px;border:none;background:#1c1f23;display:flex;align-items:center;gap:8px;cursor:pointer">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f2f1ee" stroke-width="2.1" stroke-linecap="round"><rect x="4" y="10.5" width="16" height="10.5" rx="3"></rect><path d="M8 10.5V7.6a4 4 0 018 0v2.9"></path></svg>
+      <span style="font:700 12px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Lock</span>
+    </button>
+    <div style="display:flex;gap:8px">
+      <button type="button" style="height:42px;padding:0 15px;border-radius:21px;border:1.5px solid #2b2f34;background:#101215;font:700 12px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;cursor:pointer">Select</button>
+      <button type="button" aria-label="More options" style="width:42px;height:42px;border-radius:21px;border:1.5px solid #2b2f34;background:#101215;display:flex;align-items:center;justify-content:center;cursor:pointer">
+        <svg width="17" height="17" viewBox="0 0 18 18" fill="#f2f1ee"><circle cx="9" cy="4" r="1.5"></circle><circle cx="9" cy="9" r="1.5"></circle><circle cx="9" cy="14" r="1.5"></circle></svg>
+      </button>
+    </div>
+  </div>
+
+  <div style="padding:20px 22px 0">
+    <h1 style="margin:0;font:800 26px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#f2f1ee">Private</h1>
+    <div style="display:flex;align-items:center;gap:7px;margin-top:9px">
+      <span style="font:700 12.5px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Private root</span>
+      <span style="font:500 12.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">· 7 items · 96 MB</span>
+    </div>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:16px 22px 0">
+    <sc-for list="{{ privateFilesD }}" as="f" hint-placeholder-count="7">
+      <div style="display:flex;align-items:center;gap:13px;padding:12px 2px;border-bottom:1.5px solid #1c1f23">
+        <span style="width:42px;height:42px;border-radius:13px;background:#1c1f23;display:flex;align-items:center;justify-content:center;flex:none;position:relative;overflow:hidden">
+          <sc-if value="{{ f.isImage }}" hint-placeholder-val="{{ false }}">
+            <span style="position:absolute;inset:0;background:linear-gradient(135deg,#c9c6bf,#8d8a84);filter:blur(6px)"></span>
+          </sc-if>
+          <span style="position:relative;padding:3px 5px;border-radius:6px;background:{{ f.scrim }};font:700 10.5px/1 ui-monospace,monospace;color:{{ f.iconColor }}">{{ f.ext }}</span>
+        </span>
+        <span style="flex:1;min-width:0">
+          <span style="display:block;font:600 14.5px/1.2 'Plus Jakarta Sans',system-ui;color:#f2f1ee;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ f.name }}</span>
+          <span style="display:flex;align-items:center;gap:7px;margin-top:5px">
+            <span style="width:6px;height:6px;border-radius:50%;background:#35c39a;flex:none"></span>
+            <span style="font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">{{ f.meta }}</span>
+          </span>
+        </span>
+        <button type="button" aria-label="More options for {{ f.name }}" style="width:40px;height:40px;border-radius:13px;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none" style-active="background:#1c1f23">
+          <svg width="16" height="16" viewBox="0 0 18 18" fill="#7e8085"><circle cx="9" cy="4" r="1.5"></circle><circle cx="9" cy="9" r="1.5"></circle><circle cx="9" cy="14" r="1.5"></circle></svg>
+        </button>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="padding:14px 22px 34px">
+    <div style="display:flex;gap:11px;align-items:flex-start;padding:15px 17px;border-radius:18px;background:#1c1f23">
+      <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="#9b9ca1" stroke-width="1.6" style="flex:none;margin-top:1px"><rect x="3" y="7.6" width="12" height="7.4" rx="2.4"></rect><path d="M6 7.6V5.4a3 3 0 016 0v2.2"></path></svg>
+      <span style="font:500 12.5px/1.55 'Plus Jakarta Sans',system-ui;color:#9b9ca1;text-wrap:pretty">Nothing here appears in Media, search, or recents. Locks itself the moment you leave the app.</span>
+    </div>
+  </div>
+
+  <button type="button" aria-label="Add to private area" style="position:absolute;right:22px;bottom:118px;width:56px;height:56px;border-radius:28px;border:none;background:#f2f1ee;color:#101215;font:400 27px/1 'Plus Jakarta Sans',system-ui;cursor:pointer;box-shadow:0 12px 28px rgba(0,0,0,0.55)">+</button>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">STATE</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Server not answering</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Nothing loads until it does</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#16181c">
+  <div style="flex:1;overflow:hidden;display:flex;flex-direction:column">
+    <div style="padding:0 22px;display:flex;align-items:center;justify-content:space-between;gap:14px">
+      <div>
+        <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#7e8085">VAULT UNLOCKED</div>
+        <h1 style="margin:9px 0 0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#f2f1ee">Hello, Shivam</h1>
+      </div>
+      <div style="width:42px;height:42px;border-radius:15px;background:#f2f1ee;display:flex;align-items:center;justify-content:center;font:800 19px/1 'Plus Jakarta Sans',system-ui;color:#101215">&#960;</div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:9px;margin:18px 22px 0;padding:12px 16px;border-radius:16px;background:#331a12">
+      <span style="width:8px;height:8px;border-radius:50%;background:#e2603c"></span>
+      <span style="font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#ff9d80">Can't reach pi.local</span>
+      <div style="flex:1"></div>
+      <button type="button" style="height:32px;padding:0 13px;border-radius:16px;border:1.5px solid #e2603c;background:transparent;font:700 11px/1 'Plus Jakarta Sans',system-ui;color:#ff9d80;cursor:pointer">Retry</button>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px 22px 0">
+      <sc-for list="{{ offlineCardsD }}" as="c" hint-placeholder-count="3">
+        <div style="padding:16px;border-radius:20px;border:1.5px solid #2b2f34;background:{{ c.bg }};display:flex;flex-direction:column;gap:12px;min-height:96px;opacity:{{ c.opacity }}">
+          <span style="width:36px;height:36px;border-radius:12px;background:#1c1f23;display:flex;align-items:center;justify-content:center;font:700 15px/1 'Plus Jakarta Sans',system-ui;color:{{ c.fg }}">{{ c.glyph }}</span>
+          <span>
+            <span style="display:block;font:700 14.5px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.02em;color:{{ c.fg }}">{{ c.title }}</span>
+            <span style="display:block;margin-top:4px;font:500 12px/1.2 'Plus Jakarta Sans',system-ui;color:#9b9ca1">{{ c.count }}</span>
+          </span>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="margin:18px 22px 0;padding:18px;border-radius:20px;border:1.5px dashed #2b2f34;display:flex;gap:13px;align-items:flex-start">
+      <svg width="19" height="19" viewBox="0 0 22 22" fill="none" stroke="#9b9ca1" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:1px"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path><path d="M6 6l11 11" stroke="#e2603c"></path></svg>
+      <span>
+        <span style="display:block;font:700 13.5px/1.3 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Everything lives on your Pi</span>
+        <span style="display:block;margin-top:6px;font:500 12.5px/1.55 'Plus Jakarta Sans',system-ui;color:#9b9ca1;text-wrap:pretty">Passwords, notes and files are all read from the API — nothing is kept on this phone. Until pi.local answers, there is nothing to show.</span>
+      </span>
+    </div>
+  </div>
+
+  <div style="display:flex;align-items:center;justify-content:space-around;padding:10px 8px 30px;background:#101215;border-top:1.5px solid #2b2f34">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#f2f1ee" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l8-6 8 6v9a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 013 18z"></path></svg>
+      <span style="font:700 10px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Home</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round"><circle cx="8" cy="11" r="3.4"></circle><path d="M11.4 11H19M16 11v3"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Passwords</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round"><path d="M5 3h9l4 4v12H5z"></path><path d="M8 9h6M8 13h6"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Notes</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Media</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">SET 01</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Settings</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#16181c">
+  <div style="padding:0 18px;display:flex;align-items:center;gap:12px">
+    <button type="button" aria-label="Back" style="width:42px;height:42px;border-radius:14px;border:1.5px solid #2b2f34;background:#101215;display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#f2f1ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5L5.5 9l5.5 5.5"></path></svg>
+    </button>
+    <h1 style="margin:0;font:800 22px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#f2f1ee">Settings</h1>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:20px 20px 0;display:flex;flex-direction:column;gap:18px">
+    <div style="padding:18px;border-radius:22px;background:#101215;border:1.5px solid #2b2f34;display:flex;align-items:center;gap:14px">
+      <span style="width:50px;height:50px;border-radius:17px;background:#f2f1ee;display:flex;align-items:center;justify-content:center;font:800 19px/1 'Plus Jakarta Sans',system-ui;color:#101215">S</span>
+      <span style="flex:1;min-width:0">
+        <span style="display:block;font:700 15.5px/1.2 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Shivam</span>
+        <span style="display:block;margin-top:5px;font:500 12.5px/1.2 'Plus Jakarta Sans',system-ui;color:#9b9ca1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">shivam@pidrive.app</span>
+      </span>
+      <span style="padding:6px 10px;border-radius:10px;background:#1c1f23;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.14em;color:#9b9ca1;flex:none">MEMBER</span>
+    </div>
+
+    <sc-for list="{{ settingGroupsD }}" as="g" hint-placeholder-count="4">
+      <div>
+        <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#7e8085;padding:0 6px 9px">{{ g.label }}</div>
+        <div style="border-radius:22px;background:#101215;border:1.5px solid #2b2f34;overflow:hidden">
+          <sc-for list="{{ g.rows }}" as="r" hint-placeholder-count="2">
+            <button type="button" style="width:100%;padding:15px 17px;border:none;border-bottom:1.5px solid #1c1f23;background:#101215;display:flex;align-items:center;gap:13px;cursor:pointer;text-align:left" style-active="background:#1c1f23">
+              <span style="width:22px;font:600 14px/1 ui-monospace,monospace;color:{{ r.color }};flex:none">{{ r.glyph }}</span>
+              <span style="flex:1;min-width:0">
+                <span style="display:block;font:600 14.5px/1.2 'Plus Jakarta Sans',system-ui;color:{{ r.color }}">{{ r.label }}</span>
+                <span style="display:block;margin-top:5px;font:500 11.5px/1.2 'Plus Jakarta Sans',system-ui;color:#9b9ca1">{{ r.meta }}</span>
+              </span>
+              <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="#7e8085" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M7 3.5L12.5 9 7 14.5"></path></svg>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="padding:16px 20px 34px">
+    <div style="font:500 11.5px/1.5 'Plus Jakarta Sans',system-ui;color:#7e8085;text-align:center">PiDrive 1.4.0 · pi.local · users are added by your admin</div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">SET 02</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Security</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Toggles and pickers are live</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#16181c">
+  <div style="padding:0 18px;display:flex;align-items:center;gap:12px">
+    <button type="button" aria-label="Back" style="width:42px;height:42px;border-radius:14px;border:1.5px solid #2b2f34;background:#101215;display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#f2f1ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5L5.5 9l5.5 5.5"></path></svg>
+    </button>
+    <h1 style="margin:0;font:800 22px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#f2f1ee">Security</h1>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:20px 20px 0;display:flex;flex-direction:column;gap:16px">
+    <div style="border-radius:22px;background:#101215;border:1.5px solid #2b2f34;overflow:hidden">
+      <sc-for list="{{ securityToggles }}" as="t" hint-placeholder-count="3">
+        <button type="button" onClick="{{ t.toggle }}" aria-pressed="{{ t.on }}" style="width:100%;padding:16px 17px;border:none;border-bottom:1.5px solid #1c1f23;background:#101215;display:flex;align-items:center;gap:14px;cursor:pointer;text-align:left">
+          <span style="flex:1;min-width:0">
+            <span style="display:block;font:600 14.5px/1.2 'Plus Jakarta Sans',system-ui;color:#f2f1ee">{{ t.label }}</span>
+            <span style="display:block;margin-top:6px;font:500 11.5px/1.45 'Plus Jakarta Sans',system-ui;color:#9b9ca1;text-wrap:pretty">{{ t.meta }}</span>
+          </span>
+          <sc-if value="{{ t.on }}" hint-placeholder-val="{{ true }}">
+            <span style="width:46px;height:28px;border-radius:14px;background:#f2f1ee;display:flex;align-items:center;justify-content:flex-end;padding:3px;box-sizing:border-box;flex:none"><span style="width:22px;height:22px;border-radius:11px;background:#101215"></span></span>
+          </sc-if>
+          <sc-if value="{{ t.off }}" hint-placeholder-val="{{ false }}">
+            <span style="width:46px;height:28px;border-radius:14px;background:#2b2f34;display:flex;align-items:center;padding:3px;box-sizing:border-box;flex:none"><span style="width:22px;height:22px;border-radius:11px;background:#101215"></span></span>
+          </sc-if>
+        </button>
+      </sc-for>
+    </div>
+
+    <div>
+      <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#7e8085;padding:0 6px 9px">LOCK THE APP AFTER</div>
+      <div style="display:flex;gap:7px">
+        <sc-for list="{{ lockOptionsD }}" as="o" hint-placeholder-count="4">
+          <button type="button" onClick="{{ o.pick }}" aria-pressed="{{ o.sel }}" style="flex:1;height:50px;border-radius:16px;border:1.5px solid {{ o.border }};background:{{ o.bg }};font:700 12.5px/1 'Plus Jakarta Sans',system-ui;color:{{ o.fg }};cursor:pointer;transition:background .14s ease">{{ o.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <div>
+      <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#7e8085;padding:0 6px 9px">CLEAR CLIPBOARD AFTER</div>
+      <div style="display:flex;gap:7px">
+        <sc-for list="{{ clipOptionsD }}" as="o" hint-placeholder-count="4">
+          <button type="button" onClick="{{ o.pick }}" aria-pressed="{{ o.sel }}" style="flex:1;height:50px;border-radius:16px;border:1.5px solid {{ o.border }};background:{{ o.bg }};font:700 12.5px/1 'Plus Jakarta Sans',system-ui;color:{{ o.fg }};cursor:pointer;transition:background .14s ease">{{ o.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="border-radius:22px;background:#101215;border:1.5px solid #2b2f34;overflow:hidden">
+      <button type="button" style="width:100%;padding:16px 17px;border:none;background:#101215;display:flex;align-items:center;gap:13px;cursor:pointer;text-align:left" style-active="background:#1c1f23">
+        <span style="flex:1;font:600 14.5px/1.2 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Change PIN</span>
+        <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="#7e8085" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5L12.5 9 7 14.5"></path></svg>
+      </button>
+    </div>
+  </div>
+
+  <div style="padding:16px 20px 34px">
+    <div style="display:flex;gap:11px;align-items:flex-start;padding:15px 17px;border-radius:18px;background:#1c1f23">
+      <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="#9b9ca1" stroke-width="1.6" style="flex:none;margin-top:1px"><circle cx="9" cy="9" r="7.4"></circle><path d="M9 5.4v.1M9 8v4.6" stroke-linecap="round"></path></svg>
+      <span style="font:500 12.5px/1.55 'Plus Jakarta Sans',system-ui;color:#9b9ca1;text-wrap:pretty">The private area always asks for your PIN, whatever these settings say.</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">SET 03</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Change password</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Rules validate as you type</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#101215">
+  <div style="padding:0 18px;display:flex;align-items:center;gap:12px">
+    <button type="button" aria-label="Back" style="width:42px;height:42px;border-radius:14px;border:none;background:#1c1f23;display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#f2f1ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5L5.5 9l5.5 5.5"></path></svg>
+    </button>
+    <h1 style="margin:0;font:800 22px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#f2f1ee">Change password</h1>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:20px 22px 0;display:flex;flex-direction:column;gap:13px">
+    <p style="margin:0 0 4px;font:500 13.5px/1.55 'Plus Jakarta Sans',system-ui;color:#9b9ca1;text-wrap:pretty">This is your identity on the Pi. Changing it signs you out everywhere else.</p>
+    <div>
+      <label for="cpOld-d" style="display:block;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#7e8085;margin:0 0 9px 4px">CURRENT PASSWORD</label>
+      <div style="height:56px;border-radius:18px;background:#1c1f23;display:flex;align-items:center;padding:0 18px">
+        <input id="cpOld-d" type="password" autoComplete="current-password" value="{{ cpOld }}" onChange="{{ setCpOld }}" placeholder="••••••••" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font:500 16px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee" />
+      </div>
+    </div>
+    <div>
+      <label for="cpNew-d" style="display:block;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#7e8085;margin:0 0 9px 4px">NEW PASSWORD</label>
+      <div style="height:56px;border-radius:18px;background:#1c1f23;display:flex;align-items:center;gap:4px;padding:0 8px 0 18px">
+        <input id="cpNew-d" type="{{ cpType }}" autoComplete="new-password" value="{{ cpNew }}" onChange="{{ setCpNew }}" placeholder="At least 10 characters" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font:500 16px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee" />
+        <button type="button" onClick="{{ cpToggle }}" aria-pressed="{{ cpShown }}" style="height:46px;min-width:52px;border:none;background:none;font:700 12.5px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;cursor:pointer">{{ cpToggleLabel }}</button>
+      </div>
+    </div>
+    <div>
+      <label for="cpConf-d" style="display:block;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#7e8085;margin:0 0 9px 4px">CONFIRM NEW PASSWORD</label>
+      <div style="height:56px;border-radius:18px;background:#1c1f23;border:1.5px solid {{ cpBorderD }};display:flex;align-items:center;padding:0 18px;transition:border-color .14s ease">
+        <input id="cpConf-d" type="{{ cpType }}" autoComplete="new-password" value="{{ cpConf }}" onChange="{{ setCpConf }}" placeholder="Type it again" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font:500 16px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee" />
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px;padding:8px 4px 0">
+      <sc-for list="{{ cpRulesD }}" as="r" hint-placeholder-count="3">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="width:18px;height:18px;border-radius:50%;background:{{ r.bg }};border:1.5px solid {{ r.border }};display:flex;align-items:center;justify-content:center;flex:none">
+            <span style="font:700 10px/1 'Plus Jakarta Sans',system-ui;color:{{ r.tick }}">✓</span>
+          </span>
+          <span style="font:600 12.5px/1.4 'Plus Jakarta Sans',system-ui;color:{{ r.color }}">{{ r.label }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="padding:16px 22px 34px;display:flex;flex-direction:column;gap:12px">
+    <div style="display:flex;align-items:center;gap:9px;padding:12px 15px;border-radius:16px;background:#1c1f23">
+      <span style="width:7px;height:7px;border-radius:50%;background:#35c39a"></span>
+      <span style="font:600 11.5px/1.3 'Plus Jakarta Sans',system-ui;color:#9b9ca1">Your admin can reset this if you lose it</span>
+    </div>
+    <button type="button" style="height:56px;border-radius:28px;border:none;background:{{ cpBtnBgD }};color:{{ cpBtnFgD }};font:700 15.5px/1 'Plus Jakarta Sans',system-ui;cursor:pointer;transition:background .16s ease">Save new password</button>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">SET 04</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Change PIN</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Current → new → confirm</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#101215;position:relative;overflow:hidden">
+  <div style="padding:0 18px;display:flex;align-items:center;gap:12px">
+    <button type="button" aria-label="Back" style="width:42px;height:42px;border-radius:14px;border:none;background:#1c1f23;display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#f2f1ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5L5.5 9l5.5 5.5"></path></svg>
+    </button>
+    <h1 style="margin:0;font:800 22px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#f2f1ee">Change PIN</h1>
+  </div>
+
+  <div style="padding:20px 26px 0">
+    <div style="display:flex;gap:6px;margin-bottom:16px">
+      <sc-for list="{{ cpinStepsD }}" as="s" hint-placeholder-count="3">
+        <span style="flex:1;height:4px;border-radius:2px;background:{{ s.bg }};transition:background .18s ease"></span>
+      </sc-for>
+    </div>
+    <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#9b9ca1">{{ cpinStepLabel }}</div>
+    <div style="margin-top:10px;font:800 21px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#f2f1ee">{{ cpinTitle }}</div>
+    <p style="margin:8px 0 0;font:500 13px/1.5 'Plus Jakarta Sans',system-ui;color:#9b9ca1;text-wrap:pretty">{{ cpinCopy }}</p>
+  </div>
+
+  <div role="status" aria-live="polite" aria-label="{{ cpinAria }}" style="display:flex;gap:8px;padding:20px 26px 0;animation:{{ cpinShake }}">
+    <sc-for list="{{ cpinDotsD }}" as="d" hint-placeholder-count="6">
+      <div style="flex:1;height:54px;border-radius:17px;background:{{ d.bg }};border:1.5px solid {{ d.border }};display:flex;align-items:center;justify-content:center;transition:border-color .12s ease,background .12s ease">
+        <span style="font:600 20px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">{{ d.char }}</span>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="min-height:40px;padding:12px 26px 0"><sc-if value="{{ cpinErr }}" hint-placeholder-val="{{ false }}"><span style="font:600 12.5px/1.4 'Plus Jakarta Sans',system-ui;color:#ff9d80">{{ cpinErr }}</span></sc-if></div>
+
+  <div style="flex:1"></div>
+  <div style="background:#1c1f23;border-radius:30px;overflow:hidden;margin:0 12px 34px;padding:12px 0">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.1)">
+      <sc-for list="{{ cpinKeys }}" as="k" hint-placeholder-count="9">
+        <div style="height:74px;background:#1c1f23"><button type="button" onClick="{{ k.press }}" aria-label="{{ k.label }}" style="width:100%;height:100%;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .1s ease" style-active="background:rgba(255,255,255,0.14)"><span style="font:500 27px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">{{ k.d }}</span></button></div>
+      </sc-for>
+      <div style="height:74px;background:#1c1f23"></div>
+      <div style="height:74px;background:#1c1f23"><button type="button" onClick="{{ cpinPress0 }}" aria-label="0" style="width:100%;height:100%;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .1s ease" style-active="background:rgba(255,255,255,0.14)"><span style="font:500 27px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">0</span></button></div>
+      <div style="height:74px;background:#1c1f23"><button type="button" onClick="{{ cpinBack }}" aria-label="Delete" style="width:100%;height:100%;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .1s ease" style-active="background:rgba(255,255,255,0.14)">
+        <svg width="25" height="25" viewBox="0 0 26 26" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.8" stroke-linecap="round"><path d="M9 5h13v16H9L2 13z"></path><path d="M12.5 10l6 6M18.5 10l-6 6"></path></svg>
+      </button></div>
+    </div>
+  </div>
+
+  <sc-if value="{{ cpinDone }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;background:#1c1f23;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;animation:rise .25s ease-out">
+      <div style="width:66px;height:66px;border-radius:33px;background:#f2f1ee;display:flex;align-items:center;justify-content:center"><svg width="30" height="30" viewBox="0 0 30 30"><path d="M8 15.5l5 5 9.5-10" fill="none" stroke="#1c1f23" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+      <span style="font:800 22px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#f2f1ee">PIN changed</span>
+      <button type="button" onClick="{{ cpinReset }}" style="border:none;background:none;padding:14px;font:600 12.5px 'Plus Jakarta Sans',system-ui;color:rgba(255,255,255,0.6);cursor:pointer">Reset demo</button>
+    </div>
+  </sc-if>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">SET 05</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">About</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#16181c">
+  <div style="padding:0 18px;display:flex;align-items:center;gap:12px">
+    <button type="button" aria-label="Back" style="width:42px;height:42px;border-radius:14px;border:1.5px solid #2b2f34;background:#101215;display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#f2f1ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5L5.5 9l5.5 5.5"></path></svg>
+    </button>
+    <h1 style="margin:0;font:800 22px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#f2f1ee">About</h1>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:24px 20px 0;display:flex;flex-direction:column;gap:20px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:14px;padding:6px 0 4px">
+      <div style="width:66px;height:66px;border-radius:22px;background:#f2f1ee;display:flex;align-items:center;justify-content:center;font:800 30px/1 'Plus Jakarta Sans',system-ui;color:#101215">&#960;</div>
+      <div style="text-align:center">
+        <div style="font:800 20px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#f2f1ee">PiDrive</div>
+        <div style="margin-top:6px;font:500 12.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">Version 1.4.0 · build 2026.08.11</div>
+      </div>
+    </div>
+
+    <div style="border-radius:22px;background:#101215;border:1.5px solid #2b2f34;overflow:hidden">
+      <sc-for list="{{ aboutRows }}" as="r" hint-placeholder-count="5">
+        <div style="padding:15px 17px;border-bottom:1.5px solid #1c1f23;display:flex;align-items:center;gap:14px">
+          <span style="flex:1;font:600 13.5px/1.3 'Plus Jakarta Sans',system-ui;color:#f2f1ee">{{ r.label }}</span>
+          <span style="font:500 12.5px/1.3 ui-monospace,monospace;color:#9b9ca1;text-align:right">{{ r.value }}</span>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="border-radius:22px;background:#101215;border:1.5px solid #2b2f34;overflow:hidden">
+      <sc-for list="{{ aboutLinks }}" as="l" hint-placeholder-count="3">
+        <button type="button" style="width:100%;padding:15px 17px;border:none;border-bottom:1.5px solid #1c1f23;background:#101215;display:flex;align-items:center;gap:13px;cursor:pointer;text-align:left" style-active="background:#1c1f23">
+          <span style="flex:1;font:600 14px/1.2 'Plus Jakarta Sans',system-ui;color:#f2f1ee">{{ l.label }}</span>
+          <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="#7e8085" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5L12.5 9 7 14.5"></path></svg>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="padding:16px 20px 34px">
+    <p style="margin:0;font:500 11.5px/1.6 'Plus Jakarta Sans',system-ui;color:#7e8085;text-align:center;text-wrap:pretty">Accounts are created by your administrator. There is no public sign-up.</p>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">SET 06</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Sign out and wipe</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#16181c;position:relative">
+  <div style="padding:0 18px;display:flex;align-items:center;gap:12px;opacity:.4">
+    <div style="width:42px;height:42px;border-radius:14px;border:1.5px solid #2b2f34;background:#101215"></div>
+    <h1 style="margin:0;font:800 22px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#f2f1ee">Settings</h1>
+  </div>
+  <div style="padding:20px 20px 0;opacity:.4;display:flex;flex-direction:column;gap:12px">
+    <sc-for list="{{ ghostRows }}" as="g" hint-placeholder-count="4">
+      <div style="padding:17px;border-radius:22px;background:#101215;border:1.5px solid #2b2f34">
+        <span style="display:block;width:{{ g.w }};height:11px;border-radius:6px;background:#1c1f23"></span>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="position:absolute;inset:0;background:rgba(0,0,0,0.62);display:flex;align-items:center;justify-content:center;padding:0 26px;animation:fade .16s ease-out">
+    <div style="width:100%;border-radius:28px;background:#101215;padding:28px 22px 18px;animation:rise .2s ease-out">
+      <div style="width:52px;height:52px;border-radius:18px;background:#331a12;display:flex;align-items:center;justify-content:center">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e2603c" stroke-width="1.9" stroke-linecap="round"><path d="M14 6h4a1.5 1.5 0 011.5 1.5v9A1.5 1.5 0 0118 18h-4"></path><path d="M9.5 8.5L6 12l3.5 3.5M6 12h8"></path></svg>
+      </div>
+      <div style="margin-top:18px;font:800 20px/1.25 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#f2f1ee">Sign out?</div>
+      <p style="margin:10px 0 0;font:500 13.5px/1.55 'Plus Jakarta Sans',system-ui;color:#9b9ca1;text-wrap:pretty">Nothing is stored on this phone, so there is nothing to lose. Signing out clears this session and the PIN that guards the app.</p>
+      <div style="margin-top:18px;border-radius:16px;background:#1c1f23;overflow:hidden">
+        <sc-for list="{{ wipeRowsD }}" as="w" hint-placeholder-count="3">
+          <div style="padding:13px 15px;border-bottom:1.5px solid #2b2f34;display:flex;align-items:center;gap:11px">
+            <span style="width:18px;font:600 12px/1 ui-monospace,monospace;color:{{ w.color }};flex:none">{{ w.glyph }}</span>
+            <span style="flex:1;font:600 12.5px/1.35 'Plus Jakarta Sans',system-ui;color:{{ w.color }}">{{ w.label }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="margin-top:18px;padding:13px 15px;border-radius:14px;background:#331a12;font:600 12px/1.45 'Plus Jakarta Sans',system-ui;color:#ff9d80;text-wrap:pretty">You will need your password to sign in again, then a new PIN.</div>
+      <div style="display:flex;gap:10px;padding-top:18px">
+        <button type="button" style="flex:1;height:52px;border-radius:26px;border:1.5px solid #2b2f34;background:#101215;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;cursor:pointer">Cancel</button>
+        <button type="button" style="flex:1;height:52px;border-radius:26px;border:none;background:#e2603c;color:#101215;font:700 14px/1 'Plus Jakarta Sans',system-ui;cursor:pointer">Sign out</button>
+      </div>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="width:280px;padding-top:34px;display:flex;flex-direction:column;gap:22px">
+  <div>
+    <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#a09d97;margin-bottom:12px">MODEL AS BUILT</div>
+    <div style="font:500 12px/1.75 'Plus Jakarta Sans',system-ui;color:#5f5c57">
+      Password = your account on the Pi<br />PIN = app gate, asked again for private<br />Everything is stored on the Pi — Postgres and MinIO<br />The app is a thin client over the API<br />No sign-up — admin adds users by API
+    </div>
+  </div>
+  <div style="border-top:1px solid rgba(16,16,16,0.12);padding-top:16px;font:500 12px/1.7 'Plus Jakarta Sans',system-ui;color:#5f5c57">
+    The private area keeps its own tree, shows no trace in Media, search or recents, and relocks on leaving the app. There is no pairing screen: the server address ships with the build and appears read-only in About.
+  </div>
+</div>
+
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:1400},&quot;demoPin&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;135790&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Demo&quot;}}">
+class Component extends DCLogic {
+  state = {
+    gate: '', gateErr: '', gateShake: false, gateOpen: false, gateTries: 0,
+    bio: true, hideContents: true, blockShots: false,
+    lock: 1, clip: 1,
+    cpOld: '', cpNew: '', cpConf: '', cpShown: false,
+    cpinStep: 1, cpinCur: '', cpinNew: '', cpinConf: '', cpinErr: '', cpinShake: false, cpinDone: false
+  };
+
+  get PIN() { return this.props.demoPin || '135790'; }
+  componentWillUnmount() { [this.t1, this.t2].forEach(clearTimeout); }
+
+  pushGate = d => {
+    if (this.state.gateOpen || this.state.gate.length >= 6) return;
+    const gate = this.state.gate + d;
+    this.setState({ gate, gateErr: '' });
+    if (gate.length === 6) setTimeout(() => {
+      if (gate === this.PIN) return this.setState({ gateOpen: true });
+      const tries = this.state.gateTries + 1;
+      this.setState({ gate: '', gateShake: true, gateTries: tries, gateErr: tries >= 3 ? 'Wrong PIN. The area stays locked after five tries.' : 'Wrong PIN. Try again.' });
+      clearTimeout(this.t1);
+      this.t1 = setTimeout(() => this.setState({ gateShake: false }), 360);
+    }, 160);
+  };
+
+  pushCpin = d => {
+    const s = this.state;
+    if (s.cpinDone) return;
+    const key = s.cpinStep === 1 ? 'cpinCur' : (s.cpinStep === 2 ? 'cpinNew' : 'cpinConf');
+    if (s[key].length >= 6) return;
+    const val = s[key] + d;
+    this.setState({ [key]: val, cpinErr: '' });
+    if (val.length < 6) return;
+    setTimeout(() => {
+      if (s.cpinStep === 1) {
+        if (val !== this.PIN) return this.fail('cpinCur', 'That is not your current PIN.');
+        return this.setState({ cpinStep: 2 });
+      }
+      if (s.cpinStep === 2) {
+        if (/^(\d)\1{5}$/.test(val) || '0123456789'.includes(val)) return this.fail('cpinNew', 'Repeats and runs are guessed first. Pick something less regular.');
+        if (val === this.PIN) return this.fail('cpinNew', 'That is your current PIN. Choose a different one.');
+        return this.setState({ cpinStep: 3 });
+      }
+      if (val !== s.cpinNew) return this.fail('cpinConf', "Those didn't match. Enter the new PIN again.");
+      this.setState({ cpinDone: true });
+    }, 160);
+  };
+
+  fail(key, msg) {
+    this.setState({ [key]: '', cpinErr: msg, cpinShake: true });
+    clearTimeout(this.t2);
+    this.t2 = setTimeout(() => this.setState({ cpinShake: false }), 360);
+  }
+
+  boxes(str, len, d) {
+    const T = d
+      ? { fill: '#1c1f23', empty: '#101215', on: '#f2f1ee', next: 'rgba(242,241,238,0.42)', off: '#2b2f34' }
+      : { fill: '#f5f4f1', empty: '#ffffff', on: '#101010', next: 'rgba(16,16,16,0.35)', off: '#eceae5' };
+    return Array.from({ length: len }, (_, i) => {
+      const filled = i < str.length;
+      return { bg: filled ? T.fill : T.empty, border: filled ? T.on : (i === str.length ? T.next : T.off), char: filled ? '•' : '' };
+    });
+  }
+
+  seg(list, sel, pick, d) {
+    return list.map((label, i) => ({
+      label, sel: sel === i, pick: () => pick(i),
+      bg: sel === i ? (d ? '#f2f1ee' : '#101010') : (d ? '#101215' : '#ffffff'),
+      fg: sel === i ? (d ? '#101215' : '#fefefe') : (d ? '#f2f1ee' : '#101010'),
+      border: sel === i ? (d ? '#f2f1ee' : '#101010') : (d ? '#2b2f34' : '#eceae5')
+    }));
+  }
+
+  groups(d) {
+    const ink = d ? '#f2f1ee' : '#101010', danger = d ? '#ff9d80' : '#8f2b12';
+    return [
+      { label: 'ACCOUNT', rows: [
+        { glyph: '✳', label: 'Change password', meta: 'Signs you out on other devices', color: ink },
+        { glyph: '⚿', label: 'Change PIN', meta: 'Six digits', color: ink }
+      ]},
+      { label: 'SECURITY', rows: [
+        { glyph: '◉', label: 'Security', meta: 'Face ID, auto-lock, clipboard', color: ink },
+        { glyph: '⚿', label: 'Private area', meta: 'Asks for your PIN', color: ink }
+      ]},
+      { label: 'SERVER', rows: [
+        { glyph: '⌂', label: 'pi.local', meta: 'Set by your build', color: ink }
+      ]},
+      { label: 'APP', rows: [
+        { glyph: 'ⓘ', label: 'About', meta: 'Version 1.4.0', color: ink },
+        { glyph: '⇤', label: 'Sign out and wipe local data', meta: 'Removes passwords and notes here', color: danger }
+      ]}
+    ];
+  }
+
+  privFiles(d) {
+    return [
+      { name: 'aadhaar-full.pdf', ext: 'PDF', meta: '1.8 MB' },
+      { name: 'locker-key.jpg', ext: 'JPG', meta: '2.1 MB', image: true },
+      { name: 'will-draft.pdf', ext: 'PDF', meta: '640 KB' },
+      { name: 'medical-2025.jpg', ext: 'JPG', meta: '3.4 MB', image: true },
+      { name: 'crypto-seed.txt', ext: 'TXT', meta: '2 KB' },
+      { name: 'property-papers', ext: 'DIR', meta: '4 items' },
+      { name: 'passport-old.jpg', ext: 'JPG', meta: '2.9 MB', image: true }
+    ].map(f => ({
+      name: f.name, ext: f.ext, meta: f.meta, isImage: !!f.image,
+      scrim: f.image ? 'rgba(14,15,17,0.62)' : 'transparent',
+      iconColor: f.image ? '#fdfdfd' : (d ? '#f2f1ee' : '#101010')
+    }));
+  }
+
+  renderVals() {
+    const s = this.state;
+    const cur = s.cpinStep === 1 ? s.cpinCur : (s.cpinStep === 2 ? s.cpinNew : s.cpinConf);
+    const npLen = s.cpNew.length >= 10, npMix = /[a-z]/.test(s.cpNew) && /[A-Z0-9]/.test(s.cpNew);
+    const npMatch = s.cpNew.length > 0 && s.cpNew === s.cpConf, npOld = s.cpOld.length > 0;
+    const ready = npLen && npMix && npMatch && npOld;
+    const rule = (pass, label, d) => ({
+      label,
+      bg: pass ? (d ? '#f2f1ee' : '#101010') : 'transparent',
+      border: pass ? (d ? '#f2f1ee' : '#101010') : (d ? '#2b2f34' : '#eceae5'),
+      tick: pass ? (d ? '#101215' : '#fefefe') : 'transparent',
+      color: pass ? (d ? '#f2f1ee' : '#101010') : (d ? '#9b9ca1' : '#77746e')
+    });
+    const toggleDefs = [
+      { key: 'bio', label: 'Unlock with Face ID', meta: 'PIN still works as the fallback' },
+      { key: 'hideContents', label: 'Hide contents in the app switcher', meta: 'Blanks the preview when you leave the app' },
+      { key: 'blockShots', label: 'Block screenshots', meta: 'Android only — iOS cannot enforce this' }
+    ];
+    const lockLabels = ['Instantly', '1 min', '5 min', '15 min'];
+    const clipLabels = ['15 s', '30 s', '60 s', 'Never'];
+
+    return {
+      ghostRows: [{ w: '58%' }, { w: '72%' }, { w: '46%' }, { w: '66%' }],
+
+      gateDots: this.boxes(s.gate, 6, false),
+      gateDotsD: this.boxes(s.gate, 6, true),
+      gateAria: s.gate.length + ' of 6 digits entered',
+      gateErr: s.gateErr,
+      gateShake: s.gateShake ? 'shake .32s ease-in-out' : 'none',
+      gateOpen: s.gateOpen,
+      gateKeys: [1, 2, 3, 4, 5, 6, 7, 8, 9].map(d => ({ d: String(d), label: String(d), press: () => this.pushGate(String(d)) })),
+      gatePress0: () => this.pushGate('0'),
+      gateBack: () => this.setState({ gate: s.gate.slice(0, -1), gateErr: '' }),
+      gateReset: () => this.setState({ gate: '', gateErr: '', gateOpen: false, gateTries: 0 }),
+
+      privateFiles: this.privFiles(false), privateFilesD: this.privFiles(true),
+
+      offlineCards: [
+        { glyph: '••', title: 'Passwords', count: 'Unavailable', bg: '#ffffff', fg: '#101010', opacity: '0.55' },
+        { glyph: '¶', title: 'Notes', count: 'Unavailable', bg: '#ffffff', fg: '#101010', opacity: '0.55' },
+        { glyph: '▤', title: 'Media', count: 'Unavailable', bg: '#fbfaf8', fg: '#77746e', opacity: '0.55' }
+      ],
+      offlineCardsD: [
+        { glyph: '••', title: 'Passwords', count: 'Unavailable', bg: '#101215', fg: '#f2f1ee', opacity: '0.55' },
+        { glyph: '¶', title: 'Notes', count: 'Unavailable', bg: '#101215', fg: '#f2f1ee', opacity: '0.55' },
+        { glyph: '▤', title: 'Media', count: 'Unavailable', bg: '#16181c', fg: '#9b9ca1', opacity: '0.55' }
+      ],
+
+      settingGroups: this.groups(false), settingGroupsD: this.groups(true),
+
+      securityToggles: toggleDefs.map(t => ({
+        label: t.label, meta: t.meta, on: !!s[t.key], off: !s[t.key],
+        toggle: () => this.setState({ [t.key]: !s[t.key] })
+      })),
+      lockOptions: this.seg(lockLabels, s.lock, i => this.setState({ lock: i }), false),
+      lockOptionsD: this.seg(lockLabels, s.lock, i => this.setState({ lock: i }), true),
+      clipOptions: this.seg(clipLabels, s.clip, i => this.setState({ clip: i }), false),
+      clipOptionsD: this.seg(clipLabels, s.clip, i => this.setState({ clip: i }), true),
+
+      cpOld: s.cpOld, cpNew: s.cpNew, cpConf: s.cpConf, cpShown: s.cpShown,
+      cpType: s.cpShown ? 'text' : 'password',
+      cpToggleLabel: s.cpShown ? 'Hide' : 'Show',
+      cpToggle: () => this.setState({ cpShown: !s.cpShown }),
+      setCpOld: e => this.setState({ cpOld: e.target.value }),
+      setCpNew: e => this.setState({ cpNew: e.target.value }),
+      setCpConf: e => this.setState({ cpConf: e.target.value }),
+      cpBorder: s.cpConf.length === 0 ? 'transparent' : (npMatch ? '#101010' : '#c23c1a'),
+      cpBorderD: s.cpConf.length === 0 ? 'transparent' : (npMatch ? '#f2f1ee' : '#e2603c'),
+      cpRules: [rule(npLen, 'At least 10 characters', false), rule(npMix, 'Mixes cases or numbers', false), rule(npMatch, 'Both new entries match', false)],
+      cpRulesD: [rule(npLen, 'At least 10 characters', true), rule(npMix, 'Mixes cases or numbers', true), rule(npMatch, 'Both new entries match', true)],
+      cpBtnBg: ready ? '#101010' : '#f5f4f1',
+      cpBtnFg: ready ? '#fefefe' : '#a09d97',
+      cpBtnBgD: ready ? '#f2f1ee' : '#1c1f23',
+      cpBtnFgD: ready ? '#101215' : '#7e8085',
+
+      cpinKeys: [1, 2, 3, 4, 5, 6, 7, 8, 9].map(d => ({ d: String(d), label: String(d), press: () => this.pushCpin(String(d)) })),
+      cpinPress0: () => this.pushCpin('0'),
+      cpinBack: () => {
+        const key = s.cpinStep === 1 ? 'cpinCur' : (s.cpinStep === 2 ? 'cpinNew' : 'cpinConf');
+        this.setState({ [key]: s[key].slice(0, -1), cpinErr: '' });
+      },
+      cpinDots: this.boxes(cur, 6, false), cpinDotsD: this.boxes(cur, 6, true),
+      cpinAria: cur.length + ' of 6 digits entered',
+      cpinSteps: [1, 2, 3].map(n => ({ bg: n <= s.cpinStep ? '#101010' : '#eceae5' })),
+      cpinStepsD: [1, 2, 3].map(n => ({ bg: n <= s.cpinStep ? '#f2f1ee' : '#2b2f34' })),
+      cpinStepLabel: 'STEP ' + s.cpinStep + ' OF 3',
+      cpinTitle: ['Current PIN', 'New PIN', 'Confirm new PIN'][s.cpinStep - 1],
+      cpinCopy: [
+        'Enter the PIN you use now. Demo PIN is 135790.',
+        'Six digits. Avoid repeats and simple runs.',
+        'Enter the new PIN once more.'
+      ][s.cpinStep - 1],
+      cpinErr: s.cpinErr,
+      cpinShake: s.cpinShake ? 'shake .32s ease-in-out' : 'none',
+      cpinDone: s.cpinDone,
+      cpinReset: () => this.setState({ cpinStep: 1, cpinCur: '', cpinNew: '', cpinConf: '', cpinErr: '', cpinDone: false }),
+
+      aboutRows: [
+        { label: 'Server', value: 'pi.local' },
+        { label: 'Account', value: 'shivam@pidrive.app' },
+        { label: 'Vault encryption', value: 'AES-256-GCM' },
+        { label: 'Storage', value: 'Postgres · MinIO' },
+        { label: 'API', value: 'FastAPI' }
+      ],
+      aboutLinks: [
+        { label: 'Open-source licences' },
+        { label: 'Privacy and data handling' },
+        { label: 'Diagnostics log' }
+      ],
+
+      wipeRows: [
+        { glyph: '×', label: 'Session token cleared', color: '#101010' },
+        { glyph: '×', label: 'PIN removed from this phone', color: '#101010' },
+        { glyph: '✓', label: 'Vault untouched on pi.local', color: '#101010' }
+      ],
+      wipeRowsD: [
+        { glyph: '×', label: 'Session token cleared', color: '#f2f1ee' },
+        { glyph: '×', label: 'PIN removed from this phone', color: '#f2f1ee' },
+        { glyph: '✓', label: 'Vault untouched on pi.local', color: '#f2f1ee' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

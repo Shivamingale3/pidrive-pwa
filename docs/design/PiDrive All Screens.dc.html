@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>
+body{margin:0;background:#e7e5e0;font-family:'Plus Jakarta Sans',system-ui,sans-serif}
+a{color:#101010}a:hover{color:#000}
+</style></helmet>
+
+<section style="padding:52px 48px 30px">
+  <div style="max-width:1080px">
+    <div style="display:flex;align-items:baseline;gap:12px">
+      <span style="width:38px;height:38px;border-radius:13px;background:#101010;display:flex;align-items:center;justify-content:center;font:800 18px/1 'Plus Jakarta Sans',system-ui;color:#fefefe">&#960;</span>
+      <h1 style="margin:0;font:800 30px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#101010">PiDrive — every screen, one page</h1>
+    </div>
+    <p style="margin:16px 0 0;font:500 14.5px/1.65 'Plus Jakarta Sans',system-ui;color:#5f5c57;text-wrap:pretty">Five modules, 50 screens, light and dark throughout. Everything below is the same source the individual files render — this page mounts them in build order so the whole design can be handed over in one go.</p>
+
+    <div style="margin-top:30px;padding:26px 28px;border-radius:24px;background:#ffffff;border:1.5px solid #d9d6d0">
+      <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#a09d97">THE SYSTEM IN ELEVEN LINES</div>
+      <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:11px 34px;font:500 13px/1.6 'Plus Jakarta Sans',system-ui;color:#101010">
+        <div><strong style="font-weight:700">Architecture.</strong> A Raspberry Pi on the home network runs FastAPI over Postgres, with MinIO for media. The app is a thin client — every read and write is an HTTP call, nothing is cached on the phone.</div>
+        <div><strong style="font-weight:700">Identity.</strong> The password is the account on the Pi. There is no sign-up; an admin creates users through the API.</div>
+        <div><strong style="font-weight:700">The gate.</strong> Face ID unlocks the app, and the six-digit PIN is the fallback after three failures. The PIN also guards the private area on its own.</div>
+        <div><strong style="font-weight:700">Lockouts.</strong> Five wrong passwords starts an escalating cooldown — 30 seconds, then 5 minutes, then an hour — with a live countdown that names the next wait.</div>
+        <div><strong style="font-weight:700">Private area.</strong> Invisible outside its PIN gate, holding a folder tree of its own.</div>
+        <div><strong style="font-weight:700">Saving.</strong> Passwords and notes autosave as you type. Notes take bold, lists and checkboxes.</div>
+        <div><strong style="font-weight:700">Copying.</strong> Every copy action toasts, and the clipboard clears itself after 30 seconds.</div>
+        <div><strong style="font-weight:700">Deleting.</strong> Permanent, behind a confirm. No trash, no undo.</div>
+        <div><strong style="font-weight:700">Failures.</strong> Full screen when the app cannot go on, inline banner when one request failed, sheet when the user has to choose. Each one says what was written and offers one action.</div>
+        <div><strong style="font-weight:700">Host.</strong> pi.local is baked in at build time and shown, not edited.</div>
+        <div style="grid-column:1 / -1;padding-top:11px;border-top:1px solid #eceae5"><strong style="font-weight:700">Type and colour.</strong> Plus Jakarta Sans throughout, monospace for labels and metadata. Warm neutrals — #101010 ink on #fbfaf8, #16181c surfaces in dark — with rust #c23c1a for failure and #0e7c66 for success. Inline styles only.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:22px;display:flex;flex-wrap:wrap;gap:10px">
+      <a href="#m1" style="padding:11px 17px;border-radius:20px;background:#101010;color:#fefefe;font:700 12.5px/1 'Plus Jakarta Sans',system-ui;text-decoration:none">01 Auth · 9</a>
+      <a href="#m2" style="padding:11px 17px;border-radius:20px;background:#ffffff;border:1.5px solid #d9d6d0;color:#101010;font:700 12.5px/1 'Plus Jakarta Sans',system-ui;text-decoration:none">02 Vault · 6</a>
+      <a href="#m3" style="padding:11px 17px;border-radius:20px;background:#ffffff;border:1.5px solid #d9d6d0;color:#101010;font:700 12.5px/1 'Plus Jakarta Sans',system-ui;text-decoration:none">03 CRUD · 13</a>
+      <a href="#m4" style="padding:11px 17px;border-radius:20px;background:#ffffff;border:1.5px solid #d9d6d0;color:#101010;font:700 12.5px/1 'Plus Jakarta Sans',system-ui;text-decoration:none">04 Private and settings · 9</a>
+      <a href="#m5" style="padding:11px 17px;border-radius:20px;background:#ffffff;border:1.5px solid #d9d6d0;color:#101010;font:700 12.5px/1 'Plus Jakarta Sans',system-ui;text-decoration:none">05 States · 13</a>
+    </div>
+  </div>
+</section>
+
+<section id="m1" style="padding:0 0 10px">
+  <div style="margin:0 48px;padding:20px 26px;border-radius:20px;background:#101010;display:flex;align-items:center;gap:16px">
+    <span style="font:800 15px/1 ui-monospace,monospace;color:rgba(255,255,255,0.45)">01</span>
+    <span style="font:800 19px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#fefefe">Auth</span>
+    <span style="font:500 13px/1.4 'Plus Jakarta Sans',system-ui;color:rgba(255,255,255,0.6)">Sign in, cooldown lockout, password reset by mailed code, PIN unlock, PIN setup</span>
+  </div>
+  <dc-import name="PiDrive Auth" hint-size="100%,1800px"></dc-import>
+</section>
+
+<section id="m2" style="padding:0 0 10px">
+  <div style="margin:0 48px;padding:20px 26px;border-radius:20px;background:#101010;display:flex;align-items:center;gap:16px">
+    <span style="font:800 15px/1 ui-monospace,monospace;color:rgba(255,255,255,0.45)">02</span>
+    <span style="font:800 19px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#fefefe">Vault</span>
+    <span style="font:500 13px/1.4 'Plus Jakarta Sans',system-ui;color:rgba(255,255,255,0.6)">Home dashboard, passwords, notes, media file manager, search, viewer, plus empty states</span>
+  </div>
+  <dc-import name="PiDrive Vault" hint-size="100%,1800px"></dc-import>
+</section>
+
+<section id="m3" style="padding:0 0 10px">
+  <div style="margin:0 48px;padding:20px 26px;border-radius:20px;background:#101010;display:flex;align-items:center;gap:16px">
+    <span style="font:800 15px/1 ui-monospace,monospace;color:rgba(255,255,255,0.45)">03</span>
+    <span style="font:800 19px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#fefefe">Create, read, update, delete</span>
+    <span style="font:500 13px/1.4 'Plus Jakarta Sans',system-ui;color:rgba(255,255,255,0.6)">Password detail and editor, note reader and editor, upload, new folder, rename, move, delete confirms, action sheets</span>
+  </div>
+  <dc-import name="PiDrive CRUD" hint-size="100%,1800px"></dc-import>
+</section>
+
+<section id="m4" style="padding:0 0 10px">
+  <div style="margin:0 48px;padding:20px 26px;border-radius:20px;background:#101010;display:flex;align-items:center;gap:16px">
+    <span style="font:800 15px/1 ui-monospace,monospace;color:rgba(255,255,255,0.45)">04</span>
+    <span style="font:800 19px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#fefefe">Private area and settings</span>
+    <span style="font:500 13px/1.4 'Plus Jakarta Sans',system-ui;color:rgba(255,255,255,0.6)">PIN gate, private folder tree, settings home, change password, change PIN, security, about, sign out, server unreachable</span>
+  </div>
+  <dc-import name="PiDrive Private and Settings" hint-size="100%,1800px"></dc-import>
+</section>
+
+<section id="m5" style="padding:0 0 60px">
+  <div style="margin:0 48px;padding:20px 26px;border-radius:20px;background:#101010;display:flex;align-items:center;gap:16px">
+    <span style="font:800 15px/1 ui-monospace,monospace;color:rgba(255,255,255,0.45)">05</span>
+    <span style="font:800 19px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#fefefe">Failures and the rest</span>
+    <span style="font:500 13px/1.4 'Plus Jakarta Sans',system-ui;color:rgba(255,255,255,0.6)">Version mismatch, expired session, decrypt failure, timeout, disk full, quota, 403, corrupt file, duplicate name, Face ID, sort and filter, grid or list</span>
+  </div>
+  <dc-import name="PiDrive States" hint-size="100%,1800px"></dc-import>
+</section>
+</x-dc>
+</body>
+</html>

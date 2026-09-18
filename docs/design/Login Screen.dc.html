@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>
+body{margin:0;background:#eceae5;font-family:'Plus Jakarta Sans',system-ui,sans-serif}
+a{color:#101010}a:hover{color:#000}
+input::placeholder{color:#9c9a95;opacity:1}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #101010;outline-offset:3px;border-radius:8px}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes shake{10%,90%{transform:translateX(-3px)}30%,70%{transform:translateX(4px)}50%{transform:translateX(-4px)}}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.06);opacity:1}}
+</style></helmet>
+
+<section style="padding:44px 48px 40px">
+<div style="display:flex;align-items:baseline;gap:10px;margin:0 0 20px">
+  <span style="font:700 10px/1 ui-monospace,monospace;padding:3px 7px;background:#101010;color:#fff;border-radius:4px">4</span>
+  <span style="font:700 13px/1.2 'Plus Jakarta Sans',system-ui;color:#101010">PiDrive sign-in — minimalist kit. Live — <span style="font-family:ui-monospace,monospace">letmein123</span> signs in, PIN is <span style="font-family:ui-monospace,monospace">135790</span>, or tap Face ID.</span>
+</div>
+
+<div style="display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap">
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;display:flex;flex-direction:column;background:#fff;position:relative;overflow:hidden">
+
+  <div style="position:relative;height:342px;padding:60px 14px 14px;box-sizing:border-box;flex:none">
+    <div style="position:relative;width:100%;height:100%;border-radius:26px;overflow:hidden;background:#101010">
+      <div style="position:absolute;top:-70px;right:-90px;width:300px;height:300px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,0.16),transparent 72%)"></div>
+      <div style="position:absolute;bottom:-190px;left:-70px;width:340px;height:340px;border-radius:50%;border:1px solid rgba(255,255,255,0.14)"></div>
+      <div style="position:absolute;bottom:-150px;left:-30px;width:260px;height:260px;border-radius:50%;border:1px solid rgba(255,255,255,0.1)"></div>
+      <div style="position:absolute;bottom:-110px;left:10px;width:180px;height:180px;border-radius:50%;border:1px solid rgba(255,255,255,0.07)"></div>
+      <div style="position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,0.05) 0 1px,transparent 1px 26px)"></div>
+      <div style="position:absolute;left:20px;right:20px;bottom:22px;display:flex;align-items:flex-end;justify-content:space-between;gap:16px">
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+            <div style="width:34px;height:34px;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;font:800 17px/1 'Plus Jakarta Sans',system-ui;color:#101010">&#960;</div>
+            <span style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.22em;color:rgba(255,255,255,0.55)">DRIVE SMARTER</span>
+          </div>
+          <div style="font:800 40px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#fff">PiDrive</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="flex:1;padding:24px 26px 28px;display:flex;flex-direction:column">
+    <h1 style="margin:0 0 6px;font:800 32px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#101010">Sign in</h1>
+    <p style="margin:0 0 22px;font:500 14.5px/1.5 'Plus Jakarta Sans',system-ui;color:#77746e;text-wrap:pretty">Pick up where you left off.</p>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div>
+        <label for="email" style="display:block;font:600 12px/1 'Plus Jakarta Sans',system-ui;color:#101010;margin:0 0 8px 4px">Email</label>
+        <div style="height:60px;border-radius:18px;background:{{ emailBg }};border:1.5px solid {{ emailBorder }};display:flex;align-items:center;gap:10px;padding:0 18px;transition:border-color .16s ease,background .16s ease">
+          <svg width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="#8d8a84" stroke-width="1.4"><rect x="1.2" y="3" width="13.6" height="10" rx="2.6"></rect><path d="M1.8 4.6L8 9l6.2-4.4"></path></svg>
+          <input id="email" type="email" name="email" autoComplete="email" inputMode="email" autoCapitalize="none" autoCorrect="off" spellCheck="{{ false }}" placeholder="you@email.com" value="{{ email }}" onChange="{{ setEmail }}" onFocus="{{ focusEmail }}" onBlur="{{ blurEmail }}" onKeyDown="{{ key }}" aria-invalid="{{ emailBad }}" aria-describedby="form-err" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font:500 16.5px/1 'Plus Jakarta Sans',system-ui;color:#101010" />
+          <sc-if value="{{ emailOk }}" hint-placeholder-val="{{ false }}"><svg width="17" height="17" viewBox="0 0 17 17" role="img" aria-label="Email looks valid"><circle cx="8.5" cy="8.5" r="8.5" fill="#101010"></circle><path d="M4.7 8.8l2.5 2.5 5-5.2" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round"></path></svg></sc-if>
+        </div>
+      </div>
+
+      <div>
+        <label for="pw" style="display:block;font:600 12px/1 'Plus Jakarta Sans',system-ui;color:#101010;margin:0 0 8px 4px">Password</label>
+        <div style="height:60px;border-radius:18px;background:{{ pwBg }};border:1.5px solid {{ pwBorder }};display:flex;align-items:center;gap:10px;padding:0 8px 0 18px;transition:border-color .16s ease,background .16s ease">
+          <svg width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="#8d8a84" stroke-width="1.4"><rect x="2.6" y="7" width="10.8" height="7.2" rx="2.2"></rect><path d="M5.1 7V4.9a2.9 2.9 0 015.8 0V7"></path></svg>
+          <input id="pw" type="{{ pwType }}" name="password" autoComplete="current-password" placeholder="••••••••" value="{{ pw }}" onChange="{{ setPw }}" onFocus="{{ focusPw }}" onBlur="{{ blurPw }}" onKeyDown="{{ key }}" onKeyUp="{{ caps }}" aria-describedby="form-err" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font:500 16.5px/1 'Plus Jakarta Sans',system-ui;color:#101010;letter-spacing:0.04em" />
+          <button type="button" onClick="{{ toggle }}" aria-pressed="{{ show }}" aria-controls="pw" style="height:48px;min-width:52px;border:none;background:none;font:700 12.5px/1 'Plus Jakarta Sans',system-ui;color:#101010;cursor:pointer">{{ toggleLabel }}</button>
+        </div>
+        <div style="min-height:20px;padding:7px 4px 0"><sc-if value="{{ capsOn }}" hint-placeholder-val="{{ false }}"><span style="font:600 11.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e;animation:rise .16s ease-out">⇪ Caps lock is on</span></sc-if></div>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:flex-end;margin:-4px 0 0"><button type="button" onClick="{{ forgot }}" style="border:none;background:none;padding:16px 4px;margin:-7px 0;font:700 13px/1 'Plus Jakarta Sans',system-ui;color:#101010;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Forgot password?</button></div>
+
+    <div id="form-err" role="status" aria-live="polite" style="min-height:56px;padding-top:8px">
+      <sc-if value="{{ err }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;gap:9px;align-items:flex-start;padding:11px 13px;border-radius:14px;background:#fdeeea;animation:rise .18s ease-out">
+          <span style="width:16px;height:16px;border-radius:50%;background:#c23c1a;color:#fff;font:700 11px/16px 'Plus Jakarta Sans',system-ui;text-align:center;flex:none">!</span>
+          <span style="font:600 12.5px/1.4 'Plus Jakarta Sans',system-ui;color:#8f2b12">{{ err }}</span>
+        </div>
+      </sc-if>
+    </div>
+
+    <button type="button" onClick="{{ submit }}" style="height:60px;border-radius:30px;border:none;background:#101010;color:#fff;font:700 16px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.01em;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;box-shadow:0 10px 26px rgba(16,16,16,0.18);transition:transform .12s ease" style-active="transform:scale(0.985)">
+      <sc-if value="{{ busy }}" hint-placeholder-val="{{ false }}"><span style="width:15px;height:15px;border-radius:50%;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;animation:spin .7s linear infinite"></span></sc-if>{{ btn }}
+    </button>
+
+    <div style="flex:1"></div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:5px;padding-top:14px">
+      <span style="font:500 13.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">New to PiDrive?</span>
+      <a href="#4" style="display:inline-block;padding:16px 6px;margin:-16px 0;font:700 13.5px/1 'Plus Jakarta Sans',system-ui;color:#101010;text-decoration:underline;text-underline-offset:3px">Create an account</a>
+    </div>
+  </div>
+
+  <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;background:#101010;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;animation:rise .25s ease-out">
+      <div style="width:70px;height:70px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><svg width="32" height="32" viewBox="0 0 30 30"><path d="M8 15.5l5 5 9.5-10" fill="none" stroke="#101010" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+      <span style="font:800 24px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#fff">You're in</span>
+      <button type="button" onClick="{{ reset }}" style="border:none;background:none;padding:14px;font:600 12.5px 'Plus Jakarta Sans',system-ui;color:rgba(255,255,255,0.65);cursor:pointer">Reset demo</button>
+    </div>
+  </sc-if>
+</div>
+</x-import>
+
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:104px 0 0;display:flex;flex-direction:column;background:#fff;position:relative;overflow:hidden">
+  <div style="padding:0 26px;display:flex;flex-direction:column;align-items:center;gap:16px">
+    <div style="width:54px;height:54px;border-radius:19px;background:#101010;display:flex;align-items:center;justify-content:center;font:800 25px/1 'Plus Jakarta Sans',system-ui;color:#fff">&#960;</div>
+    <div style="text-align:center">
+      <div style="font:800 23px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#101010">Welcome back, Shivam</div>
+      <div style="margin-top:6px;font:500 14px/1 'Plus Jakarta Sans',system-ui;color:#77746e">{{ l2Prompt }}</div>
+    </div>
+  </div>
+
+  <div role="status" aria-live="polite" aria-label="{{ l2Aria }}" style="display:flex;gap:8px;padding:26px 26px 0;animation:{{ l2Shake }}">
+    <sc-for list="{{ l2Dots }}" as="dot" hint-placeholder-count="6">
+      <div style="flex:1;height:58px;border-radius:17px;background:{{ dot.bg }};border:1.5px solid {{ dot.border }};display:flex;align-items:center;justify-content:center;transition:border-color .12s ease,background .12s ease">
+        <span style="font:600 22px/1 'Plus Jakarta Sans',system-ui;color:#101010">{{ dot.char }}</span>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="display:flex;justify-content:center;padding-top:4px">
+    <button type="button" onClick="{{ l2Toggle }}" aria-pressed="{{ l2Shown }}" style="border:none;background:none;padding:14px 12px;font:700 12.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e;cursor:pointer">{{ l2ToggleLabel }}</button>
+  </div>
+
+  <div style="min-height:32px;display:flex;align-items:center;justify-content:center"><sc-if value="{{ l2Err }}" hint-placeholder-val="{{ false }}"><span style="font:600 12.5px/1.4 'Plus Jakarta Sans',system-ui;color:#8f2b12;animation:rise .16s ease-out">{{ l2Err }}</span></sc-if></div>
+
+  <div style="flex:1"></div>
+
+  <div style="background:#101010;border-radius:30px;overflow:hidden;margin:0 12px 30px;padding:12px 0 12px">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.1)">
+      <sc-for list="{{ l2Keys }}" as="k" hint-placeholder-count="9">
+        <div style="height:84px;background:#101010"><button type="button" onClick="{{ k.press }}" aria-label="{{ k.label }}" style="width:100%;height:100%;border:none;background:transparent;color:#101010;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .1s ease" style-active="background:rgba(255,255,255,0.14)"><span style="font:500 29px/1 'Plus Jakarta Sans',system-ui;color:#fff;letter-spacing:-0.02em">{{ k.d }}</span></button></div>
+      </sc-for>
+      <div style="height:84px;background:#101010"><button type="button" onClick="{{ l2Bio }}" aria-label="Unlock with Face ID" style="width:100%;height:100%;border:none;background:transparent;color:#101010;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .1s ease" style-active="background:rgba(255,255,255,0.14)">
+        <svg width="29" height="29" viewBox="0 0 46 46" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" style="animation:{{ l2Pulse }}"><path d="M3 14V7a4 4 0 014-4h7M43 14V7a4 4 0 00-4-4h-7M3 32v7a4 4 0 004 4h7M43 32v7a4 4 0 01-4 4h-7"></path><path d="M16 18v5M30 18v5M23 17v10M16 32c2.4 2.2 4.6 3 7 3s4.6-.8 7-3"></path></svg>
+      </button></div>
+      <div style="height:84px;background:#101010"><button type="button" onClick="{{ l2Press0 }}" aria-label="0" style="width:100%;height:100%;border:none;background:transparent;color:#101010;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .1s ease" style-active="background:rgba(255,255,255,0.14)"><span style="font:500 29px/1 'Plus Jakarta Sans',system-ui;color:#fff;letter-spacing:-0.02em">0</span></button></div>
+      <div style="height:84px;background:#101010"><button type="button" onClick="{{ l2Back }}" aria-label="Delete" style="width:100%;height:100%;border:none;background:transparent;color:#101010;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .1s ease" style-active="background:rgba(255,255,255,0.14)">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.8" stroke-linecap="round"><path d="M9 5h13v16H9L2 13z"></path><path d="M12.5 10l6 6M18.5 10l-6 6"></path></svg>
+      </button></div>
+    </div>
+  </div>
+
+  <sc-if value="{{ l2Unlocked }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;background:#101010;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;animation:rise .25s ease-out">
+      <div style="width:70px;height:70px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><svg width="32" height="32" viewBox="0 0 30 30"><path d="M8 15.5l5 5 9.5-10" fill="none" stroke="#101010" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+      <span style="font:800 24px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#fff">Unlocked</span>
+      <button type="button" onClick="{{ l2Reset }}" style="border:none;background:none;padding:14px;font:600 12.5px 'Plus Jakarta Sans',system-ui;color:rgba(255,255,255,0.65);cursor:pointer">Reset demo</button>
+    </div>
+  </sc-if>
+</div>
+</x-import>
+
+<div style="width:250px;padding-top:4px;display:flex;flex-direction:column;gap:18px">
+  <div>
+    <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:rgba(16,16,16,0.45);margin-bottom:11px">TOKENS</div>
+    <div style="display:flex;flex-direction:column;gap:7px;font:400 11px/1 ui-monospace,monospace;color:rgba(16,16,16,0.7)">
+      <div style="display:flex;align-items:center;gap:10px"><span style="width:26px;height:26px;border-radius:8px;background:#101010"></span>#101010 ink / CTA</div>
+      <div style="display:flex;align-items:center;gap:10px"><span style="width:26px;height:26px;border-radius:8px;background:#f5f4f1;border:1px solid rgba(0,0,0,.1)"></span>#F5F4F1 field</div>
+      <div style="display:flex;align-items:center;gap:10px"><span style="width:26px;height:26px;border-radius:8px;background:#fff;border:1px solid rgba(0,0,0,.1)"></span>#FFFFFF page</div>
+      <div style="display:flex;align-items:center;gap:10px"><span style="width:26px;height:26px;border-radius:8px;background:#c23c1a"></span>#C23C1A error</div>
+    </div>
+  </div>
+  <div style="font:500 12px/1.7 'Plus Jakarta Sans',system-ui;color:rgba(16,16,16,0.72)">
+    Plus Jakarta Sans · 32px title / 16.5px input<br />60px fields, 30px pill CTA, 18px radius<br />26px brand panel, 14px gutter
+  </div>
+  <div style="font:500 12px/1.7 'Plus Jakarta Sans',system-ui;color:rgba(16,16,16,0.6);border-top:1px solid rgba(16,16,16,0.12);padding-top:14px">Brand panel is CSS-drawn — no image needed. Say the word if you'd rather drop a photo in behind the wordmark.</div>
+</div>
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;demoPassword&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;letmein123&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Demo&quot;},&quot;demoPin&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;135790&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Demo&quot;},&quot;latencyMs&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1100,&quot;min&quot;:0,&quot;max&quot;:3000,&quot;step&quot;:100,&quot;unit&quot;:&quot;ms&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Demo&quot;}}">
+class Component extends DCLogic {
+  state = { email: '', pw: '', show: false, focus: '', bad: false, caps: false, err: '', status: 'idle' };
+
+  up(p) { this.setState(p); }
+  ok(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()); }
+
+  go = () => {
+    const { email, pw } = this.state;
+    if (!this.ok(email)) return this.up({ bad: true, err: 'That email address looks incomplete.' });
+    if (!pw) return this.up({ err: 'Enter your password to continue.' });
+    this.up({ status: 'loading', err: '', bad: false });
+    clearTimeout(this.t);
+    this.t = setTimeout(() => {
+      if (pw === (this.props.demoPassword || 'letmein123')) this.up({ status: 'done' });
+      else this.up({ status: 'idle', err: "That email and password don't match. Check both and try again." });
+    }, this.props.latencyMs ?? 1100);
+  };
+
+  get PIN() { return this.props.demoPin || '135790'; }
+
+  pad2 = { pin: '', err: '', shake: false, unlocked: false, busy: false, tries: 0, shown: false };
+  up2(p) { this.pad2 = Object.assign({}, this.pad2, p); this.forceUpdate(); }
+  push2 = d => {
+    if (this.pad2.unlocked || this.pad2.pin.length >= 6) return;
+    const pin = this.pad2.pin + d;
+    this.up2({ pin, err: '' });
+    if (pin.length === 6) setTimeout(() => {
+      if (pin === this.PIN) return this.up2({ unlocked: true });
+      const tries = this.pad2.tries + 1;
+      this.up2({ pin: '', shake: true, tries, err: tries >= 3 ? 'Wrong PIN. 2 attempts left before lockout.' : 'Wrong PIN. Try again.' });
+      clearTimeout(this.tShake2);
+      this.tShake2 = setTimeout(() => this.up2({ shake: false }), 360);
+    }, 160);
+  };
+  bio2 = () => {
+    if (this.pad2.unlocked || this.pad2.busy) return;
+    this.up2({ busy: true, err: '' });
+    clearTimeout(this.tBio2);
+    this.tBio2 = setTimeout(() => this.up2({ busy: false, unlocked: true }), 900);
+  };
+
+  componentWillUnmount() { clearTimeout(this.t); clearTimeout(this.tShake2); clearTimeout(this.tBio2); }
+
+  renderVals() {
+    const s = this.state;
+    return {
+      email: s.email, pw: s.pw, err: s.err, emailBad: s.bad, capsOn: s.caps, show: s.show,
+      emailOk: this.ok(s.email), busy: s.status === 'loading', done: s.status === 'done',
+      pwType: s.show ? 'text' : 'password', toggleLabel: s.show ? 'Hide' : 'Show',
+      btn: s.status === 'loading' ? 'Signing in' : 'Sign in',
+      emailBorder: s.bad ? '#c23c1a' : (s.focus === 'email' ? '#101010' : 'transparent'),
+      pwBorder: s.focus === 'pw' ? '#101010' : 'transparent',
+      emailBg: s.focus === 'email' ? '#fff' : '#f5f4f1',
+      pwBg: s.focus === 'pw' ? '#fff' : '#f5f4f1',
+      setEmail: e => this.up({ email: e.target.value, err: '', bad: false }),
+      setPw: e => this.up({ pw: e.target.value, err: '' }),
+      focusEmail: () => this.up({ focus: 'email', bad: false }),
+      blurEmail: () => this.up({ focus: '', bad: s.email.trim() !== '' && !this.ok(s.email) }),
+      focusPw: () => this.up({ focus: 'pw' }),
+      blurPw: () => this.up({ focus: '', caps: false }),
+      caps: e => { const on = !!(e.getModifierState && e.getModifierState('CapsLock')); if (on !== s.caps) this.up({ caps: on }); },
+      toggle: () => this.up({ show: !s.show }),
+      key: e => { if (e.key === 'Enter') this.go(); },
+      submit: this.go,
+      forgot: () => this.up({ err: '' }),
+      reset: () => this.up({ email: '', pw: '', show: false, focus: '', bad: false, caps: false, err: '', status: 'idle' }),
+
+      l2Keys: [1, 2, 3, 4, 5, 6, 7, 8, 9].map(d => ({ d: String(d), label: String(d), press: () => this.push2(String(d)) })),
+      l2Press0: () => this.push2('0'),
+      l2Back: () => this.up2({ pin: this.pad2.pin.slice(0, -1), err: '' }),
+      l2Bio: this.bio2,
+      l2Dots: [0, 1, 2, 3, 4, 5].map(i => {
+        const filled = i < this.pad2.pin.length;
+        return {
+          bg: filled ? '#f5f4f1' : '#fff',
+          border: filled ? '#101010' : (i === this.pad2.pin.length ? 'rgba(16,16,16,0.35)' : '#eceae5'),
+          char: filled ? (this.pad2.shown ? this.pad2.pin[i] : '•') : ''
+        };
+      }),
+      l2Shown: !!this.pad2.shown,
+      l2ToggleLabel: this.pad2.shown ? 'Hide PIN' : 'Show PIN',
+      l2Toggle: () => this.up2({ shown: !this.pad2.shown }),
+      l2Aria: this.pad2.pin.length + ' of 6 digits entered',
+      l2Err: this.pad2.err,
+      l2Shake: this.pad2.shake ? 'shake .32s ease-in-out' : 'none',
+      l2Pulse: this.pad2.busy ? 'pulse .9s ease-in-out infinite' : 'none',
+      l2Prompt: this.pad2.busy ? 'Looking for your face…' : 'Enter your 6-digit PIN',
+      l2Unlocked: this.pad2.unlocked,
+      l2Forgot: () => this.up2({ err: '', pin: '' }),
+      l2Password: () => this.up2({ err: '', pin: '' }),
+      l2Reset: () => this.up2({ pin: '', err: '', shake: false, unlocked: false, busy: false, tries: 0 })
+    };
+  }
+}
+</script>
+</body>
+</html>

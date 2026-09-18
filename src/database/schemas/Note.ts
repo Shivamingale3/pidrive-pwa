@@ -27,7 +27,7 @@ export const noteSchema: RxJsonSchema<Note> = {
       format: "date-time",
     },
     deletedAt: {
-      type: ["string", null],
+      type: ["string", "null"],
       format: "date-time",
     },
   },

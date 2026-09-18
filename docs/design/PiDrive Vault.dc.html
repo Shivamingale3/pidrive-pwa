@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240"><rect width="240" height="240" fill="#101010"/><text x="120" y="118" font-family="ui-monospace,monospace" font-size="30" font-weight="700" fill="#fefefe" text-anchor="middle">02</text><text x="120" y="152" font-family="system-ui" font-size="17" font-weight="600" fill="#a09d97" text-anchor="middle">Vault</text></svg></template>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>
+body{margin:0;background:#e7e5e0;font-family:'Plus Jakarta Sans',system-ui,sans-serif}
+a{color:#101010}a:hover{color:#000}
+input::placeholder{color:#a3a19c;opacity:1}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #101010;outline-offset:3px;border-radius:8px}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+</style></helmet>
+
+<section style="padding:44px 48px 60px">
+<div style="display:flex;align-items:baseline;gap:12px;margin:0 0 8px">
+  <span style="font:700 10px/1 ui-monospace,monospace;padding:4px 8px;background:#101010;color:#fefefe;border-radius:5px">6</span>
+  <h2 style="margin:0;font:800 20px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#101010">PiDrive — vault module</h2>
+</div>
+<p style="margin:0 0 34px;max-width:760px;font:500 13.5px/1.6 'Plus Jakarta Sans',system-ui;color:#5f5c57;text-wrap:pretty">Six screens and three empty states. Live: reveal and copy on password rows, list/grid and selection on Media, typing in Search filters real results, tapping a blurred thumbnail opens the viewer. Dark row below.</p>
+
+<div style="display:flex;gap:40px;flex-wrap:wrap;align-items:flex-start">
+<div style="display:flex;align-items:baseline;gap:10px;padding:0 0 26px;width:100%">
+  <span style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#a09d97">LIGHT</span>
+  <span style="font:700 15px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.02em;color:#101010">Nine screens, light theme</span>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">SCREEN 01</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Home — dashboard</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#fbfaf8">
+  <div style="flex:1;overflow:hidden;display:flex;flex-direction:column">
+    <div style="padding:0 22px;display:flex;align-items:center;justify-content:space-between;gap:14px">
+      <div>
+        <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#a09d97">VAULT UNLOCKED</div>
+        <h1 style="margin:9px 0 0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#101010">Hello, Shivam</h1>
+      </div>
+      <div style="width:42px;height:42px;border-radius:15px;background:#101010;display:flex;align-items:center;justify-content:center;font:800 19px/1 'Plus Jakarta Sans',system-ui;color:#fefefe">&#960;</div>
+    </div>
+
+    <div style="margin:18px 22px 0;height:54px;border-radius:27px;background:#ffffff;border:1.5px solid #eceae5;display:flex;align-items:center;gap:11px;padding:0 20px;box-shadow:0 4px 14px rgba(16,16,16,0.04)">
+      <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="#a09d97" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="8" r="5.6"></circle><path d="M12.2 12.2L16 16"></path></svg>
+      <span style="font:500 14.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">Search passwords, notes, files</span>
+    </div>
+
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px 22px 0">
+      <sc-for list="{{ homeCards }}" as="c" hint-placeholder-count="3">
+        <button type="button" style="padding:16px;border-radius:20px;border:1.5px solid #eceae5;background:#ffffff;display:flex;flex-direction:column;gap:12px;align-items:flex-start;cursor:pointer;text-align:left;min-height:96px;transition:transform .12s ease" style-active="transform:scale(0.985)">
+          <span style="width:36px;height:36px;border-radius:12px;background:#f5f4f1;display:flex;align-items:center;justify-content:center;font:700 15px/1 'Plus Jakarta Sans',system-ui;color:#101010">{{ c.glyph }}</span>
+          <span style="display:block">
+            <span style="display:block;font:700 14.5px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.02em;color:#101010">{{ c.title }}</span>
+            <span style="display:block;margin-top:4px;font:500 12px/1.2 'Plus Jakarta Sans',system-ui;color:#77746e">{{ c.count }}</span>
+          </span>
+        </button>
+      </sc-for>
+      <div style="padding:16px;border-radius:20px;border:1.5px dashed #eceae5;display:flex;flex-direction:column;justify-content:space-between;min-height:96px">
+        <span style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#a09d97">ON YOUR PI</span>
+        <span>
+          <span style="display:block;font:700 17px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#101010">312 MB</span>
+          <span style="display:block;margin-top:6px;height:4px;border-radius:2px;background:#eceae5;overflow:hidden"><span style="display:block;width:31%;height:100%;background:#101010"></span></span>
+        </span>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:baseline;justify-content:space-between;padding:22px 22px 10px">
+      <span style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#a09d97">RECENTLY OPENED</span>
+      <button type="button" style="border:none;background:none;padding:6px 0;font:700 11.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e;cursor:pointer">Clear</button>
+    </div>
+    <div style="padding:0 22px;display:flex;flex-direction:column;gap:2px">
+      <sc-for list="{{ recents }}" as="r" hint-placeholder-count="3">
+        <button type="button" style="display:flex;align-items:center;gap:13px;padding:11px 4px;border:none;background:transparent;cursor:pointer;text-align:left">
+          <span style="width:34px;height:34px;border-radius:11px;background:#f5f4f1;display:flex;align-items:center;justify-content:center;flex:none;font:700 12px/1 'Plus Jakarta Sans',system-ui;color:#101010">{{ r.glyph }}</span>
+          <span style="flex:1;min-width:0">
+            <span style="display:block;font:600 14px/1.2 'Plus Jakarta Sans',system-ui;color:#101010;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ r.title }}</span>
+            <span style="display:block;margin-top:3px;font:500 11.5px/1.2 'Plus Jakarta Sans',system-ui;color:#77746e">{{ r.meta }}</span>
+          </span>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="display:flex;align-items:center;justify-content:space-around;padding:10px 8px 30px;background:#ffffff;border-top:1.5px solid #eceae5">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#101010" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l8-6 8 6v9a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 013 18z"></path></svg>
+      <span style="font:700 10px/1 'Plus Jakarta Sans',system-ui;color:#101010">Home</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round"><circle cx="8" cy="11" r="3.4"></circle><path d="M11.4 11H19M16 11v3"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Passwords</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round"><path d="M5 3h9l4 4v12H5z"></path><path d="M8 9h6M8 13h6"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Notes</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Media</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">SCREEN 02</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Passwords</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Reveal and copy are live</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#ffffff;position:relative">
+  <div style="padding:0 22px;display:flex;align-items:flex-end;justify-content:space-between;gap:14px">
+    <div>
+      <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#101010">Passwords</h1>
+      <div style="margin-top:7px;font:500 12.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">42 items · most recent first</div>
+    </div>
+    <button type="button" style="height:38px;padding:0 14px;border-radius:19px;border:1.5px solid #eceae5;background:#ffffff;display:flex;align-items:center;gap:7px;font:700 11.5px/1 'Plus Jakarta Sans',system-ui;color:#101010;cursor:pointer">
+      <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="#101010" stroke-width="1.7" stroke-linecap="round"><path d="M2 4h10M4 7h6M6 10h2"></path></svg>Sort
+    </button>
+  </div>
+
+  <div style="margin:16px 22px 0;height:48px;border-radius:24px;background:#f5f4f1;display:flex;align-items:center;gap:10px;padding:0 18px">
+    <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="#a09d97" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="8" r="5.6"></circle><path d="M12.2 12.2L16 16"></path></svg>
+    <span style="font:500 14px/1 'Plus Jakarta Sans',system-ui;color:#77746e">Filter this list</span>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:8px 14px 0;display:flex;flex-direction:column">
+    <sc-for list="{{ pwRows }}" as="p" hint-placeholder-count="6">
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 8px;border-radius:18px">
+        <span style="width:42px;height:42px;border-radius:14px;background:#f5f4f1;display:flex;align-items:center;justify-content:center;flex:none;font:700 16px/1 'Plus Jakarta Sans',system-ui;color:#101010">{{ p.letter }}</span>
+        <span style="flex:1;min-width:0">
+          <span style="display:block;font:700 15px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.01em;color:#101010;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ p.site }}</span>
+          <span style="display:block;margin-top:4px;font:500 12.5px/1.2 'Plus Jakarta Sans',system-ui;color:#77746e;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ p.user }}</span>
+          <span style="display:block;margin-top:6px;font:600 13px/1 ui-monospace,monospace;letter-spacing:{{ p.spacing }};color:#101010">{{ p.secret }}</span>
+        </span>
+        <button type="button" onClick="{{ p.reveal }}" aria-label="{{ p.revealLabel }}" aria-pressed="{{ p.shown }}" style="width:44px;height:44px;border-radius:14px;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none" style-active="background:#f5f4f1">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="#77746e" stroke-width="1.7" stroke-linecap="round"><path d="M1.8 10S4.9 4.8 10 4.8 18.2 10 18.2 10 15.1 15.2 10 15.2 1.8 10 1.8 10z"></path><circle cx="10" cy="10" r="2.4"></circle><path d="{{ p.slash }}"></path></svg>
+        </button>
+        <button type="button" onClick="{{ p.copy }}" aria-label="Copy password for {{ p.site }}" style="width:44px;height:44px;border-radius:14px;border:1.5px solid #eceae5;background:#ffffff;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none" style-active="background:#f5f4f1">
+          <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="#101010" stroke-width="1.6" stroke-linejoin="round"><rect x="6" y="6" width="9.5" height="9.5" rx="2.4"></rect><path d="M12 4.2A2.2 2.2 0 009.8 2H5a2.4 2.4 0 00-2.4 2.4v5.4"></path></svg>
+        </button>
+      </div>
+    </sc-for>
+  </div>
+
+  <sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+    <div role="status" aria-live="polite" style="position:absolute;left:18px;right:18px;bottom:112px;padding:15px 18px;border-radius:20px;background:#0e0f11;display:flex;align-items:center;gap:12px;animation:rise .2s ease-out;box-shadow:0 14px 34px rgba(16,16,16,0.28)">
+      <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="#fdfdfd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.4l3.2 3.2L14 5.6"></path></svg>
+      <span style="flex:1;font:600 13px/1.3 'Plus Jakarta Sans',system-ui;color:#fdfdfd">{{ toast }}</span>
+      <button type="button" onClick="{{ clearNow }}" style="border:none;background:none;padding:8px;font:700 12px/1 'Plus Jakarta Sans',system-ui;color:rgba(255,255,255,0.65);cursor:pointer">Clear now</button>
+    </div>
+  </sc-if>
+
+  <div style="display:flex;align-items:center;justify-content:space-around;padding:10px 8px 30px;background:#ffffff;border-top:1.5px solid #eceae5">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l8-6 8 6v9a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 013 18z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Home</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#101010" stroke-width="1.9" stroke-linecap="round"><circle cx="8" cy="11" r="3.4"></circle><path d="M11.4 11H19M16 11v3"></path></svg>
+      <span style="font:700 10px/1 'Plus Jakarta Sans',system-ui;color:#101010">Passwords</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round"><path d="M5 3h9l4 4v12H5z"></path><path d="M8 9h6M8 13h6"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Notes</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Media</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">SCREEN 03</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Notes</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#ffffff;position:relative">
+  <div style="padding:0 22px">
+    <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#101010">Notes</h1>
+    <div style="margin-top:7px;font:500 12.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">12 notes · stored on your Pi</div>
+  </div>
+
+  <div style="margin:16px 22px 0;height:48px;border-radius:24px;background:#f5f4f1;display:flex;align-items:center;gap:10px;padding:0 18px">
+    <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="#a09d97" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="8" r="5.6"></circle><path d="M12.2 12.2L16 16"></path></svg>
+    <span style="font:500 14px/1 'Plus Jakarta Sans',system-ui;color:#77746e">Filter this list</span>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:12px 22px 0;display:flex;flex-direction:column">
+    <sc-for list="{{ notes }}" as="n" hint-placeholder-count="8">
+      <button type="button" style="display:flex;align-items:center;gap:12px;padding:17px 4px;border:none;border-bottom:1.5px solid #f5f4f1;background:transparent;cursor:pointer;text-align:left;width:100%">
+        <span style="flex:1;min-width:0;font:600 15.5px/1.3 'Plus Jakarta Sans',system-ui;letter-spacing:-0.01em;color:#101010;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ n.title }}</span>
+        <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="#a09d97" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M7 3.5L12.5 9 7 14.5"></path></svg>
+      </button>
+    </sc-for>
+  </div>
+
+  <button type="button" aria-label="New note" style="position:absolute;right:22px;bottom:120px;width:58px;height:58px;border-radius:29px;border:none;background:#101010;color:#fefefe;font:400 28px/1 'Plus Jakarta Sans',system-ui;cursor:pointer;box-shadow:0 12px 28px rgba(16,16,16,0.24)">+</button>
+
+  <div style="display:flex;align-items:center;justify-content:space-around;padding:10px 8px 30px;background:#ffffff;border-top:1.5px solid #eceae5">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l8-6 8 6v9a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 013 18z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Home</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round"><circle cx="8" cy="11" r="3.4"></circle><path d="M11.4 11H19M16 11v3"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Passwords</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#101010" stroke-width="1.9" stroke-linecap="round"><path d="M5 3h9l4 4v12H5z"></path><path d="M8 9h6M8 13h6"></path></svg>
+      <span style="font:700 10px/1 'Plus Jakarta Sans',system-ui;color:#101010">Notes</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Media</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">SCREEN 04</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Media vault — file manager</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">List/grid, select mode, overflow menu</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#ffffff;position:relative">
+  <sc-if value="{{ notSelecting }}" hint-placeholder-val="{{ true }}">
+    <div style="padding:0 22px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+      <div>
+        <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#101010">Media</h1>
+        <div style="display:flex;align-items:center;gap:6px;margin-top:8px">
+          <span style="font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">Vault</span>
+          <svg width="11" height="11" viewBox="0 0 18 18" fill="none" stroke="#a09d97" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5L12.5 9 7 14.5"></path></svg>
+          <span style="font:700 12.5px/1 'Plus Jakarta Sans',system-ui;color:#101010">Documents</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button type="button" onClick="{{ startSelect }}" style="height:38px;padding:0 13px;border-radius:19px;border:1.5px solid #eceae5;background:#ffffff;font:700 11.5px/1 'Plus Jakarta Sans',system-ui;color:#101010;cursor:pointer">Select</button>
+        <button type="button" onClick="{{ toggleMenu }}" aria-label="More options" aria-expanded="{{ menuOpen }}" style="width:38px;height:38px;border-radius:19px;border:1.5px solid #eceae5;background:#ffffff;display:flex;align-items:center;justify-content:center;cursor:pointer">
+          <svg width="17" height="17" viewBox="0 0 18 18" fill="#101010"><circle cx="9" cy="4" r="1.5"></circle><circle cx="9" cy="9" r="1.5"></circle><circle cx="9" cy="14" r="1.5"></circle></svg>
+        </button>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ selecting }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:0 22px;animation:fade .15s ease-out">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <button type="button" onClick="{{ cancelSelect }}" style="border:none;background:none;padding:10px 0;font:700 13.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e;cursor:pointer">Cancel</button>
+        <span style="font:800 15px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.02em;color:#101010">{{ selCount }}</span>
+        <button type="button" onClick="{{ selectAll }}" style="border:none;background:none;padding:10px 0;font:700 13.5px/1 'Plus Jakarta Sans',system-ui;color:#101010;cursor:pointer">Select all</button>
+      </div>
+      <div style="display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:12px 0 2px;margin:0 -22px;padding-left:22px;padding-right:22px">
+        <sc-for list="{{ selActions }}" as="a" hint-placeholder-count="4">
+          <button type="button" style="height:36px;padding:0 14px;border-radius:18px;border:1.5px solid {{ a.border }};background:{{ a.bg }};font:700 11.5px/1 'Plus Jakarta Sans',system-ui;color:{{ a.color }};cursor:pointer;white-space:nowrap">{{ a.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <div style="display:flex;align-items:center;gap:10px;padding:16px 22px 0">
+    <div style="flex:1;display:flex;align-items:center;gap:8px">
+      <span style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#a09d97">14 ITEMS · 214 MB</span>
+    </div>
+    <div style="display:flex;padding:3px;border-radius:16px;background:#f5f4f1;gap:2px">
+      <button type="button" onClick="{{ setList }}" aria-pressed="{{ isList }}" aria-label="List view" style="width:40px;height:32px;border-radius:13px;border:none;background:{{ listBg }};display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .14s ease">
+        <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="{{ listFg }}" stroke-width="1.9" stroke-linecap="round"><path d="M3 5h12M3 9h12M3 13h12"></path></svg>
+      </button>
+      <button type="button" onClick="{{ setGrid }}" aria-pressed="{{ isGrid }}" aria-label="Grid view" style="width:40px;height:32px;border-radius:13px;border:none;background:{{ gridBg }};display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .14s ease">
+        <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="{{ gridFg }}" stroke-width="1.8"><rect x="3" y="3" width="5" height="5" rx="1.4"></rect><rect x="10" y="3" width="5" height="5" rx="1.4"></rect><rect x="3" y="10" width="5" height="5" rx="1.4"></rect><rect x="10" y="10" width="5" height="5" rx="1.4"></rect></svg>
+      </button>
+    </div>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:10px 22px 0">
+    <sc-if value="{{ isList }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;flex-direction:column">
+        <sc-for list="{{ files }}" as="f" hint-placeholder-count="7">
+          <div style="display:flex;align-items:center;gap:13px;padding:12px 2px;border-bottom:1.5px solid #f5f4f1">
+            <sc-if value="{{ selecting }}" hint-placeholder-val="{{ false }}">
+              <span style="width:22px;height:22px;border-radius:11px;border:1.5px solid {{ f.checkBorder }};background:{{ f.checkBg }};display:flex;align-items:center;justify-content:center;flex:none">
+                <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="{{ f.checkTick }}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.4l2.6 2.6L11 4.4"></path></svg>
+              </span>
+            </sc-if>
+            <span style="width:42px;height:42px;border-radius:13px;background:#f5f4f1;display:flex;align-items:center;justify-content:center;flex:none;overflow:hidden;position:relative">
+              <sc-if value="{{ f.isImage }}" hint-placeholder-val="{{ false }}">
+                <span style="position:absolute;inset:0;background:linear-gradient(135deg,#c9c6bf,#8d8a84);filter:blur({{ tileBlur }})"></span>
+              </sc-if>
+              <span style="position:relative;padding:3px 5px;border-radius:6px;background:{{ f.iconScrim }};font:700 11px/1 ui-monospace,monospace;color:{{ f.iconColor }}">{{ f.ext }}</span>
+            </span>
+            <span style="flex:1;min-width:0">
+              <span style="display:block;font:600 14.5px/1.2 'Plus Jakarta Sans',system-ui;color:#101010;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ f.name }}</span>
+              <span style="display:flex;align-items:center;gap:7px;margin-top:5px">
+                <span style="font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">{{ f.meta }}</span>
+              </span>
+            </span>
+            <button type="button" aria-label="More options for {{ f.name }}" style="width:40px;height:40px;border-radius:13px;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none" style-active="background:#f5f4f1">
+              <svg width="16" height="16" viewBox="0 0 18 18" fill="#a09d97"><circle cx="9" cy="4" r="1.5"></circle><circle cx="9" cy="9" r="1.5"></circle><circle cx="9" cy="14" r="1.5"></circle></svg>
+            </button>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isGrid }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+        <sc-for list="{{ files }}" as="f" hint-placeholder-count="9">
+          <button type="button" onClick="{{ f.open }}" style="position:relative;aspect-ratio:1;border-radius:16px;border:1.5px solid #eceae5;background:#f5f4f1;overflow:hidden;cursor:pointer;padding:0">
+            <sc-if value="{{ f.isImage }}" hint-placeholder-val="{{ false }}">
+              <span style="position:absolute;inset:0;background:linear-gradient(135deg,#c9c6bf,#807d77);filter:blur({{ gridBlur }})"></span>
+            </sc-if>
+            <span style="position:absolute;left:8px;bottom:8px;right:8px;text-align:left;font:600 10.5px/1.25 'Plus Jakarta Sans',system-ui;color:{{ f.gridLabel }};overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ f.name }}</span>
+            <sc-if value="{{ f.isFolder }}" hint-placeholder-val="{{ false }}">
+              <span style="position:absolute;left:8px;top:8px;font:700 10px/1 ui-monospace,monospace;color:#101010">DIR</span>
+            </sc-if>
+          </button>
+        </sc-for>
+      </div>
+    </sc-if>
+  </div>
+
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;background:rgba(16,16,16,0.35);animation:fade .14s ease-out">
+      <button type="button" onClick="{{ toggleMenu }}" aria-label="Close menu" style="position:absolute;inset:0;border:none;background:transparent;cursor:default"></button>
+      <div style="position:absolute;right:20px;top:150px;width:236px;border-radius:22px;background:#ffffff;border:1.5px solid #eceae5;overflow:hidden;box-shadow:0 20px 44px rgba(16,16,16,0.22);animation:rise .16s ease-out">
+        <sc-for list="{{ menuItems }}" as="m" hint-placeholder-count="4">
+          <button type="button" style="width:100%;padding:15px 18px;border:none;border-bottom:1.5px solid #f5f4f1;background:#ffffff;display:flex;align-items:center;gap:11px;cursor:pointer;text-align:left" style-active="background:#f5f4f1">
+            <span style="font:700 12px/1 ui-monospace,monospace;color:{{ m.glyphColor }};width:18px;flex:none">{{ m.glyph }}</span>
+            <span style="flex:1;font:600 13.5px/1.3 'Plus Jakarta Sans',system-ui;color:{{ m.color }}">{{ m.label }}</span>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <button type="button" aria-label="Import files" style="position:absolute;right:22px;bottom:120px;width:58px;height:58px;border-radius:29px;border:none;background:#101010;color:#fefefe;font:400 28px/1 'Plus Jakarta Sans',system-ui;cursor:pointer;box-shadow:0 12px 28px rgba(16,16,16,0.24)">+</button>
+
+  <div style="display:flex;align-items:center;justify-content:space-around;padding:10px 8px 30px;background:#ffffff;border-top:1.5px solid #eceae5">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l8-6 8 6v9a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 013 18z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Home</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round"><circle cx="8" cy="11" r="3.4"></circle><path d="M11.4 11H19M16 11v3"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Passwords</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round"><path d="M5 3h9l4 4v12H5z"></path><path d="M8 9h6M8 13h6"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Notes</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#101010" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path></svg>
+      <span style="font:700 10px/1 'Plus Jakarta Sans',system-ui;color:#101010">Media</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">SCREEN 05</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Search</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Type to filter — try "pi"</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#ffffff">
+  <div style="padding:0 18px;display:flex;align-items:center;gap:10px">
+    <div style="flex:1;height:52px;border-radius:26px;background:#f5f4f1;display:flex;align-items:center;gap:10px;padding:0 18px">
+      <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="#77746e" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="8" r="5.6"></circle><path d="M12.2 12.2L16 16"></path></svg>
+      <input id="q" type="search" aria-label="Search your vault" placeholder="Search your vault" value="{{ q }}" onChange="{{ setQ }}" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font:500 15.5px/1 'Plus Jakarta Sans',system-ui;color:#101010" />
+      <sc-if value="{{ hasQ }}" hint-placeholder-val="{{ false }}">
+        <button type="button" onClick="{{ clearQ }}" aria-label="Clear search" style="width:26px;height:26px;border-radius:13px;border:none;background:#eceae5;color:#77746e;font:700 13px/1 'Plus Jakarta Sans',system-ui;cursor:pointer;flex:none">×</button>
+      </sc-if>
+    </div>
+    <button type="button" style="border:none;background:none;padding:14px 6px;font:700 13.5px/1 'Plus Jakarta Sans',system-ui;color:#101010;cursor:pointer">Done</button>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:6px 22px 0">
+    <sc-if value="{{ noQuery }}" hint-placeholder-val="{{ true }}">
+      <div style="padding-top:14px">
+        <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#a09d97;padding-bottom:6px">RECENT SEARCHES</div>
+        <sc-for list="{{ recentQueries }}" as="r" hint-placeholder-count="4">
+          <button type="button" onClick="{{ r.pick }}" style="width:100%;display:flex;align-items:center;gap:12px;padding:15px 2px;border:none;border-bottom:1.5px solid #f5f4f1;background:transparent;cursor:pointer;text-align:left">
+            <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="#a09d97" stroke-width="1.7" stroke-linecap="round" style="flex:none"><circle cx="9" cy="9" r="6.6"></circle><path d="M9 5.6V9l2.4 1.6"></path></svg>
+            <span style="flex:1;font:600 14.5px/1.2 'Plus Jakarta Sans',system-ui;color:#101010">{{ r.label }}</span>
+            <span style="font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">{{ r.scope }}</span>
+          </button>
+        </sc-for>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ hasQ }}" hint-placeholder-val="{{ false }}">
+      <div style="animation:fade .14s ease-out">
+        <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
+          <div style="padding-top:16px">
+            <div style="display:flex;align-items:baseline;gap:8px;padding-bottom:4px">
+              <span style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#a09d97">{{ g.label }}</span>
+              <span style="font:600 10px/1 ui-monospace,monospace;color:#a09d97">{{ g.count }}</span>
+            </div>
+            <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="2">
+              <button type="button" style="width:100%;display:flex;align-items:center;gap:12px;padding:13px 2px;border:none;border-bottom:1.5px solid #f5f4f1;background:transparent;cursor:pointer;text-align:left">
+                <span style="width:36px;height:36px;border-radius:12px;background:#f5f4f1;display:flex;align-items:center;justify-content:center;flex:none;font:700 12px/1 ui-monospace,monospace;color:#101010">{{ it.glyph }}</span>
+                <span style="flex:1;min-width:0">
+                  <span style="display:block;font:600 14.5px/1.2 'Plus Jakarta Sans',system-ui;color:#101010;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ it.title }}</span>
+                  <span style="display:block;margin-top:4px;font:500 11.5px/1.2 'Plus Jakarta Sans',system-ui;color:#77746e">{{ it.meta }}</span>
+                </span>
+              </button>
+            </sc-for>
+          </div>
+        </sc-for>
+        <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:60px 20px;text-align:center">
+            <div style="font:700 15.5px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Nothing matches “{{ q }}”</div>
+            <div style="margin-top:8px;font:500 13px/1.5 'Plus Jakarta Sans',system-ui;color:#77746e">Search covers titles and usernames only — note bodies stay encrypted.</div>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">SCREEN 06</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Media viewer</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Tap the image to reveal</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#0e0f11">
+  <div style="padding:0 18px;display:flex;align-items:center;gap:12px">
+    <button type="button" aria-label="Back" style="width:42px;height:42px;border-radius:14px;border:none;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#fdfdfd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5L5.5 9l5.5 5.5"></path></svg>
+    </button>
+    <span style="flex:1;min-width:0">
+      <span style="display:block;font:700 14.5px/1.2 'Plus Jakarta Sans',system-ui;color:#fdfdfd;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">passport-scan.jpg</span>
+      <span style="display:flex;align-items:center;gap:7px;margin-top:4px">
+        <span style="font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:rgba(255,255,255,0.55)">2.4 MB · 3024×4032</span>
+      </span>
+    </span>
+    <button type="button" aria-label="File options" style="width:42px;height:42px;border-radius:14px;border:none;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none">
+      <svg width="17" height="17" viewBox="0 0 18 18" fill="#fdfdfd"><circle cx="9" cy="4" r="1.5"></circle><circle cx="9" cy="9" r="1.5"></circle><circle cx="9" cy="14" r="1.5"></circle></svg>
+    </button>
+  </div>
+
+  <button type="button" onClick="{{ toggleBlur }}" aria-label="{{ blurLabel }}" style="flex:1;margin:20px 18px;border:none;border-radius:24px;background:#1c1f23;position:relative;overflow:hidden;cursor:pointer;padding:0">
+    <span style="position:absolute;inset:-20px;background:linear-gradient(150deg,#5a5f66,#c9c6bf 45%,#7d766c);filter:blur({{ blurPx }});transition:filter .3s ease"></span>
+    <sc-if value="{{ blurred }}" hint-placeholder-val="{{ true }}">
+      <span style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px">
+        <span style="width:54px;height:54px;border-radius:27px;background:rgba(14,15,17,0.6);display:flex;align-items:center;justify-content:center">
+          <svg width="24" height="24" viewBox="0 0 20 20" fill="none" stroke="#fdfdfd" stroke-width="1.7" stroke-linecap="round"><path d="M1.8 10S4.9 4.8 10 4.8 18.2 10 18.2 10 15.1 15.2 10 15.2 1.8 10 1.8 10z"></path><circle cx="10" cy="10" r="2.4"></circle></svg>
+        </span>
+        <span style="font:700 12.5px/1 'Plus Jakarta Sans',system-ui;color:#fdfdfd">Tap to reveal</span>
+      </span>
+    </sc-if>
+  </button>
+
+  <div style="display:flex;align-items:center;justify-content:space-around;padding:0 12px 40px">
+    <sc-for list="{{ viewerActions }}" as="a" hint-placeholder-count="4">
+      <button type="button" style="display:flex;flex-direction:column;align-items:center;gap:7px;padding:12px 14px;min-width:60px;border:none;background:transparent;cursor:pointer">
+        <span style="font:600 17px/1 ui-monospace,monospace;color:{{ a.color }}">{{ a.glyph }}</span>
+        <span style="font:600 10.5px/1 'Plus Jakarta Sans',system-ui;color:{{ a.color }}">{{ a.label }}</span>
+      </button>
+    </sc-for>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">EMPTY 01</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Passwords — empty</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#ffffff">
+  <div style="padding:0 22px">
+    <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#101010">Passwords</h1>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:0 40px">
+    <div style="width:64px;height:64px;border-radius:22px;background:#f5f4f1;display:flex;align-items:center;justify-content:center">
+      <svg width="28" height="28" viewBox="0 0 22 22" fill="none" stroke="#101010" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="11" r="3.4"></circle><path d="M11.4 11H19M16 11v3"></path></svg>
+    </div>
+    <div style="text-align:center">
+      <div style="font:800 19px/1.25 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#101010">No passwords yet</div>
+      <p style="margin:9px 0 0;font:500 13.5px/1.55 'Plus Jakarta Sans',system-ui;color:#77746e;text-wrap:pretty">Add your first login and it is encrypted here before it ever reaches your Pi.</p>
+    </div>
+    <button type="button" style="height:54px;padding:0 26px;border-radius:27px;border:none;background:#101010;color:#fefefe;font:700 14.5px/1 'Plus Jakarta Sans',system-ui;cursor:pointer;box-shadow:0 10px 24px rgba(16,16,16,0.18)">Add a password</button>
+    <button type="button" style="border:none;background:none;padding:14px 12px;font:700 13px/1 'Plus Jakarta Sans',system-ui;color:#77746e;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Restore from Pi backup</button>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:space-around;padding:10px 8px 30px;background:#ffffff;border-top:1.5px solid #eceae5">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l8-6 8 6v9a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 013 18z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Home</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#101010" stroke-width="1.9" stroke-linecap="round"><circle cx="8" cy="11" r="3.4"></circle><path d="M11.4 11H19M16 11v3"></path></svg>
+      <span style="font:700 10px/1 'Plus Jakarta Sans',system-ui;color:#101010">Passwords</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round"><path d="M5 3h9l4 4v12H5z"></path><path d="M8 9h6M8 13h6"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Notes</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Media</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">EMPTY 02</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Notes — empty</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#ffffff">
+  <div style="padding:0 22px">
+    <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#101010">Notes</h1>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:0 40px">
+    <div style="width:64px;height:64px;border-radius:22px;background:#f5f4f1;display:flex;align-items:center;justify-content:center">
+      <svg width="28" height="28" viewBox="0 0 22 22" fill="none" stroke="#101010" stroke-width="1.8" stroke-linecap="round"><path d="M5 3h9l4 4v12H5z"></path><path d="M8 9h6M8 13h6"></path></svg>
+    </div>
+    <div style="text-align:center">
+      <div style="font:800 19px/1.25 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#101010">No notes yet</div>
+      <p style="margin:9px 0 0;font:500 13.5px/1.55 'Plus Jakarta Sans',system-ui;color:#77746e;text-wrap:pretty">Recovery codes, licence keys, anything you would not put in a plain notes app.</p>
+    </div>
+    <button type="button" style="height:54px;padding:0 26px;border-radius:27px;border:none;background:#101010;color:#fefefe;font:700 14.5px/1 'Plus Jakarta Sans',system-ui;cursor:pointer;box-shadow:0 10px 24px rgba(16,16,16,0.18)">Write a note</button>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:space-around;padding:10px 8px 30px;background:#ffffff;border-top:1.5px solid #eceae5">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l8-6 8 6v9a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 013 18z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Home</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round"><circle cx="8" cy="11" r="3.4"></circle><path d="M11.4 11H19M16 11v3"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Passwords</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#101010" stroke-width="1.9" stroke-linecap="round"><path d="M5 3h9l4 4v12H5z"></path><path d="M8 9h6M8 13h6"></path></svg>
+      <span style="font:700 10px/1 'Plus Jakarta Sans',system-ui;color:#101010">Notes</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Media</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">EMPTY 03</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Media — empty</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#ffffff">
+  <div style="padding:0 22px">
+    <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#101010">Media</h1>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:0 40px">
+    <div style="width:64px;height:64px;border-radius:22px;background:#f5f4f1;display:flex;align-items:center;justify-content:center">
+      <svg width="28" height="28" viewBox="0 0 22 22" fill="none" stroke="#101010" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path></svg>
+    </div>
+    <div style="text-align:center">
+      <div style="font:800 19px/1.25 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#101010">Nothing on your Pi yet</div>
+      <p style="margin:9px 0 0;font:500 13.5px/1.55 'Plus Jakarta Sans',system-ui;color:#77746e;text-wrap:pretty">Import documents and photos, or make a folder first. Files are encrypted here, then uploaded to your Pi.</p>
+    </div>
+    <div style="display:flex;gap:10px">
+      <button type="button" style="height:54px;padding:0 22px;border-radius:27px;border:none;background:#101010;color:#fefefe;font:700 14px/1 'Plus Jakarta Sans',system-ui;cursor:pointer;box-shadow:0 10px 24px rgba(16,16,16,0.18)">Import files</button>
+      <button type="button" style="height:54px;padding:0 22px;border-radius:27px;border:1.5px solid #eceae5;background:#ffffff;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#101010;cursor:pointer">New folder</button>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:space-around;padding:10px 8px 30px;background:#ffffff;border-top:1.5px solid #eceae5">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l8-6 8 6v9a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 013 18z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Home</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round"><circle cx="8" cy="11" r="3.4"></circle><path d="M11.4 11H19M16 11v3"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Passwords</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#a09d97" stroke-width="1.9" stroke-linecap="round"><path d="M5 3h9l4 4v12H5z"></path><path d="M8 9h6M8 13h6"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#a09d97">Notes</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#101010" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path></svg>
+      <span style="font:700 10px/1 'Plus Jakarta Sans',system-ui;color:#101010">Media</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;align-items:baseline;gap:10px;padding:56px 0 26px;width:100%">
+  <span style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#a09d97">DARK</span>
+  <span style="font:700 15px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.02em;color:#101010">Same nine screens, dark theme</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">SCREEN 01</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Home — dashboard</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#16181c">
+  <div style="flex:1;overflow:hidden;display:flex;flex-direction:column">
+    <div style="padding:0 22px;display:flex;align-items:center;justify-content:space-between;gap:14px">
+      <div>
+        <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#7e8085">VAULT UNLOCKED</div>
+        <h1 style="margin:9px 0 0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#f2f1ee">Hello, Shivam</h1>
+      </div>
+      <div style="width:42px;height:42px;border-radius:15px;background:#f2f1ee;display:flex;align-items:center;justify-content:center;font:800 19px/1 'Plus Jakarta Sans',system-ui;color:#101215">&#960;</div>
+    </div>
+
+    <div style="margin:18px 22px 0;height:54px;border-radius:27px;background:#101215;border:1.5px solid #2b2f34;display:flex;align-items:center;gap:11px;padding:0 20px;box-shadow:0 4px 14px rgba(0,0,0,0.4)">
+      <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="#7e8085" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="8" r="5.6"></circle><path d="M12.2 12.2L16 16"></path></svg>
+      <span style="font:500 14.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">Search passwords, notes, files</span>
+    </div>
+
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px 22px 0">
+      <sc-for list="{{ homeCards }}" as="c" hint-placeholder-count="3">
+        <button type="button" style="padding:16px;border-radius:20px;border:1.5px solid #2b2f34;background:#101215;display:flex;flex-direction:column;gap:12px;align-items:flex-start;cursor:pointer;text-align:left;min-height:96px;transition:transform .12s ease" style-active="transform:scale(0.985)">
+          <span style="width:36px;height:36px;border-radius:12px;background:#1c1f23;display:flex;align-items:center;justify-content:center;font:700 15px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">{{ c.glyph }}</span>
+          <span style="display:block">
+            <span style="display:block;font:700 14.5px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.02em;color:#f2f1ee">{{ c.title }}</span>
+            <span style="display:block;margin-top:4px;font:500 12px/1.2 'Plus Jakarta Sans',system-ui;color:#9b9ca1">{{ c.count }}</span>
+          </span>
+        </button>
+      </sc-for>
+      <div style="padding:16px;border-radius:20px;border:1.5px dashed #2b2f34;display:flex;flex-direction:column;justify-content:space-between;min-height:96px">
+        <span style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#7e8085">ON YOUR PI</span>
+        <span>
+          <span style="display:block;font:700 17px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#f2f1ee">312 MB</span>
+          <span style="display:block;margin-top:6px;height:4px;border-radius:2px;background:#2b2f34;overflow:hidden"><span style="display:block;width:31%;height:100%;background:#f2f1ee"></span></span>
+        </span>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:baseline;justify-content:space-between;padding:22px 22px 10px">
+      <span style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#7e8085">RECENTLY OPENED</span>
+      <button type="button" style="border:none;background:none;padding:6px 0;font:700 11.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1;cursor:pointer">Clear</button>
+    </div>
+    <div style="padding:0 22px;display:flex;flex-direction:column;gap:2px">
+      <sc-for list="{{ recents }}" as="r" hint-placeholder-count="3">
+        <button type="button" style="display:flex;align-items:center;gap:13px;padding:11px 4px;border:none;background:transparent;cursor:pointer;text-align:left">
+          <span style="width:34px;height:34px;border-radius:11px;background:#1c1f23;display:flex;align-items:center;justify-content:center;flex:none;font:700 12px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">{{ r.glyph }}</span>
+          <span style="flex:1;min-width:0">
+            <span style="display:block;font:600 14px/1.2 'Plus Jakarta Sans',system-ui;color:#f2f1ee;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ r.title }}</span>
+            <span style="display:block;margin-top:3px;font:500 11.5px/1.2 'Plus Jakarta Sans',system-ui;color:#9b9ca1">{{ r.meta }}</span>
+          </span>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="display:flex;align-items:center;justify-content:space-around;padding:10px 8px 30px;background:#101215;border-top:1.5px solid #2b2f34">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#f2f1ee" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l8-6 8 6v9a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 013 18z"></path></svg>
+      <span style="font:700 10px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Home</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round"><circle cx="8" cy="11" r="3.4"></circle><path d="M11.4 11H19M16 11v3"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Passwords</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round"><path d="M5 3h9l4 4v12H5z"></path><path d="M8 9h6M8 13h6"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Notes</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Media</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">SCREEN 02</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Passwords</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Reveal and copy are live</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#101215;position:relative">
+  <div style="padding:0 22px;display:flex;align-items:flex-end;justify-content:space-between;gap:14px">
+    <div>
+      <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#f2f1ee">Passwords</h1>
+      <div style="margin-top:7px;font:500 12.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">42 items · most recent first</div>
+    </div>
+    <button type="button" style="height:38px;padding:0 14px;border-radius:19px;border:1.5px solid #2b2f34;background:#101215;display:flex;align-items:center;gap:7px;font:700 11.5px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;cursor:pointer">
+      <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="#f2f1ee" stroke-width="1.7" stroke-linecap="round"><path d="M2 4h10M4 7h6M6 10h2"></path></svg>Sort
+    </button>
+  </div>
+
+  <div style="margin:16px 22px 0;height:48px;border-radius:24px;background:#1c1f23;display:flex;align-items:center;gap:10px;padding:0 18px">
+    <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="#7e8085" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="8" r="5.6"></circle><path d="M12.2 12.2L16 16"></path></svg>
+    <span style="font:500 14px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">Filter this list</span>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:8px 14px 0;display:flex;flex-direction:column">
+    <sc-for list="{{ pwRows }}" as="p" hint-placeholder-count="6">
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 8px;border-radius:18px">
+        <span style="width:42px;height:42px;border-radius:14px;background:#1c1f23;display:flex;align-items:center;justify-content:center;flex:none;font:700 16px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">{{ p.letter }}</span>
+        <span style="flex:1;min-width:0">
+          <span style="display:block;font:700 15px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.01em;color:#f2f1ee;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ p.site }}</span>
+          <span style="display:block;margin-top:4px;font:500 12.5px/1.2 'Plus Jakarta Sans',system-ui;color:#9b9ca1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ p.user }}</span>
+          <span style="display:block;margin-top:6px;font:600 13px/1 ui-monospace,monospace;letter-spacing:{{ p.spacing }};color:#f2f1ee">{{ p.secret }}</span>
+        </span>
+        <button type="button" onClick="{{ p.reveal }}" aria-label="{{ p.revealLabel }}" aria-pressed="{{ p.shown }}" style="width:44px;height:44px;border-radius:14px;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none" style-active="background:#1c1f23">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="#9b9ca1" stroke-width="1.7" stroke-linecap="round"><path d="M1.8 10S4.9 4.8 10 4.8 18.2 10 18.2 10 15.1 15.2 10 15.2 1.8 10 1.8 10z"></path><circle cx="10" cy="10" r="2.4"></circle><path d="{{ p.slash }}"></path></svg>
+        </button>
+        <button type="button" onClick="{{ p.copy }}" aria-label="Copy password for {{ p.site }}" style="width:44px;height:44px;border-radius:14px;border:1.5px solid #2b2f34;background:#101215;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none" style-active="background:#1c1f23">
+          <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="#f2f1ee" stroke-width="1.6" stroke-linejoin="round"><rect x="6" y="6" width="9.5" height="9.5" rx="2.4"></rect><path d="M12 4.2A2.2 2.2 0 009.8 2H5a2.4 2.4 0 00-2.4 2.4v5.4"></path></svg>
+        </button>
+      </div>
+    </sc-for>
+  </div>
+
+  <sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+    <div role="status" aria-live="polite" style="position:absolute;left:18px;right:18px;bottom:112px;padding:15px 18px;border-radius:20px;background:#1c1f23;display:flex;align-items:center;gap:12px;animation:rise .2s ease-out;box-shadow:0 14px 34px rgba(0,0,0,0.6)">
+      <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="#f2f1ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.4l3.2 3.2L14 5.6"></path></svg>
+      <span style="flex:1;font:600 13px/1.3 'Plus Jakarta Sans',system-ui;color:#f2f1ee">{{ toast }}</span>
+      <button type="button" onClick="{{ clearNow }}" style="border:none;background:none;padding:8px;font:700 12px/1 'Plus Jakarta Sans',system-ui;color:rgba(255,255,255,0.65);cursor:pointer">Clear now</button>
+    </div>
+  </sc-if>
+
+  <div style="display:flex;align-items:center;justify-content:space-around;padding:10px 8px 30px;background:#101215;border-top:1.5px solid #2b2f34">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l8-6 8 6v9a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 013 18z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Home</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#f2f1ee" stroke-width="1.9" stroke-linecap="round"><circle cx="8" cy="11" r="3.4"></circle><path d="M11.4 11H19M16 11v3"></path></svg>
+      <span style="font:700 10px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Passwords</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round"><path d="M5 3h9l4 4v12H5z"></path><path d="M8 9h6M8 13h6"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Notes</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Media</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">SCREEN 03</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Notes</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#101215;position:relative">
+  <div style="padding:0 22px">
+    <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#f2f1ee">Notes</h1>
+    <div style="margin-top:7px;font:500 12.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">12 notes · stored on your Pi</div>
+  </div>
+
+  <div style="margin:16px 22px 0;height:48px;border-radius:24px;background:#1c1f23;display:flex;align-items:center;gap:10px;padding:0 18px">
+    <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="#7e8085" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="8" r="5.6"></circle><path d="M12.2 12.2L16 16"></path></svg>
+    <span style="font:500 14px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">Filter this list</span>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:12px 22px 0;display:flex;flex-direction:column">
+    <sc-for list="{{ notes }}" as="n" hint-placeholder-count="8">
+      <button type="button" style="display:flex;align-items:center;gap:12px;padding:17px 4px;border:none;border-bottom:1.5px solid #1c1f23;background:transparent;cursor:pointer;text-align:left;width:100%">
+        <span style="flex:1;min-width:0;font:600 15.5px/1.3 'Plus Jakarta Sans',system-ui;letter-spacing:-0.01em;color:#f2f1ee;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ n.title }}</span>
+        <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="#7e8085" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M7 3.5L12.5 9 7 14.5"></path></svg>
+      </button>
+    </sc-for>
+  </div>
+
+  <button type="button" aria-label="New note" style="position:absolute;right:22px;bottom:120px;width:58px;height:58px;border-radius:29px;border:none;background:#f2f1ee;color:#101215;font:400 28px/1 'Plus Jakarta Sans',system-ui;cursor:pointer;box-shadow:0 12px 28px rgba(0,0,0,0.55)">+</button>
+
+  <div style="display:flex;align-items:center;justify-content:space-around;padding:10px 8px 30px;background:#101215;border-top:1.5px solid #2b2f34">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l8-6 8 6v9a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 013 18z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Home</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round"><circle cx="8" cy="11" r="3.4"></circle><path d="M11.4 11H19M16 11v3"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Passwords</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#f2f1ee" stroke-width="1.9" stroke-linecap="round"><path d="M5 3h9l4 4v12H5z"></path><path d="M8 9h6M8 13h6"></path></svg>
+      <span style="font:700 10px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Notes</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Media</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">SCREEN 04</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Media vault — file manager</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">List/grid, select mode, overflow menu</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#101215;position:relative">
+  <sc-if value="{{ notSelecting }}" hint-placeholder-val="{{ true }}">
+    <div style="padding:0 22px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+      <div>
+        <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#f2f1ee">Media</h1>
+        <div style="display:flex;align-items:center;gap:6px;margin-top:8px">
+          <span style="font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">Vault</span>
+          <svg width="11" height="11" viewBox="0 0 18 18" fill="none" stroke="#7e8085" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5L12.5 9 7 14.5"></path></svg>
+          <span style="font:700 12.5px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Documents</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button type="button" onClick="{{ startSelect }}" style="height:38px;padding:0 13px;border-radius:19px;border:1.5px solid #2b2f34;background:#101215;font:700 11.5px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;cursor:pointer">Select</button>
+        <button type="button" onClick="{{ toggleMenu }}" aria-label="More options" aria-expanded="{{ menuOpen }}" style="width:38px;height:38px;border-radius:19px;border:1.5px solid #2b2f34;background:#101215;display:flex;align-items:center;justify-content:center;cursor:pointer">
+          <svg width="17" height="17" viewBox="0 0 18 18" fill="#f2f1ee"><circle cx="9" cy="4" r="1.5"></circle><circle cx="9" cy="9" r="1.5"></circle><circle cx="9" cy="14" r="1.5"></circle></svg>
+        </button>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ selecting }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:0 22px;animation:fade .15s ease-out">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <button type="button" onClick="{{ cancelSelect }}" style="border:none;background:none;padding:10px 0;font:700 13.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1;cursor:pointer">Cancel</button>
+        <span style="font:800 15px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.02em;color:#f2f1ee">{{ selCount }}</span>
+        <button type="button" onClick="{{ selectAll }}" style="border:none;background:none;padding:10px 0;font:700 13.5px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;cursor:pointer">Select all</button>
+      </div>
+      <div style="display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:12px 0 2px;margin:0 -22px;padding-left:22px;padding-right:22px">
+        <sc-for list="{{ selActionsD }}" as="a" hint-placeholder-count="4">
+          <button type="button" style="height:36px;padding:0 14px;border-radius:18px;border:1.5px solid {{ a.border }};background:{{ a.bg }};font:700 11.5px/1 'Plus Jakarta Sans',system-ui;color:{{ a.color }};cursor:pointer;white-space:nowrap">{{ a.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <div style="display:flex;align-items:center;gap:10px;padding:16px 22px 0">
+    <div style="flex:1;display:flex;align-items:center;gap:8px">
+      <span style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#7e8085">14 ITEMS · 214 MB</span>
+    </div>
+    <div style="display:flex;padding:3px;border-radius:16px;background:#1c1f23;gap:2px">
+      <button type="button" onClick="{{ setList }}" aria-pressed="{{ isList }}" aria-label="List view" style="width:40px;height:32px;border-radius:13px;border:none;background:{{ listBgD }};display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .14s ease">
+        <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="{{ listFgD }}" stroke-width="1.9" stroke-linecap="round"><path d="M3 5h12M3 9h12M3 13h12"></path></svg>
+      </button>
+      <button type="button" onClick="{{ setGrid }}" aria-pressed="{{ isGrid }}" aria-label="Grid view" style="width:40px;height:32px;border-radius:13px;border:none;background:{{ gridBgD }};display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .14s ease">
+        <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="{{ gridFgD }}" stroke-width="1.8"><rect x="3" y="3" width="5" height="5" rx="1.4"></rect><rect x="10" y="3" width="5" height="5" rx="1.4"></rect><rect x="3" y="10" width="5" height="5" rx="1.4"></rect><rect x="10" y="10" width="5" height="5" rx="1.4"></rect></svg>
+      </button>
+    </div>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:10px 22px 0">
+    <sc-if value="{{ isList }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;flex-direction:column">
+        <sc-for list="{{ filesD }}" as="f" hint-placeholder-count="7">
+          <div style="display:flex;align-items:center;gap:13px;padding:12px 2px;border-bottom:1.5px solid #1c1f23">
+            <sc-if value="{{ selecting }}" hint-placeholder-val="{{ false }}">
+              <span style="width:22px;height:22px;border-radius:11px;border:1.5px solid {{ f.checkBorder }};background:{{ f.checkBg }};display:flex;align-items:center;justify-content:center;flex:none">
+                <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="{{ f.checkTick }}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.4l2.6 2.6L11 4.4"></path></svg>
+              </span>
+            </sc-if>
+            <span style="width:42px;height:42px;border-radius:13px;background:#1c1f23;display:flex;align-items:center;justify-content:center;flex:none;overflow:hidden;position:relative">
+              <sc-if value="{{ f.isImage }}" hint-placeholder-val="{{ false }}">
+                <span style="position:absolute;inset:0;background:linear-gradient(135deg,#c9c6bf,#8d8a84);filter:blur({{ tileBlur }})"></span>
+              </sc-if>
+              <span style="position:relative;padding:3px 5px;border-radius:6px;background:{{ f.iconScrim }};font:700 11px/1 ui-monospace,monospace;color:{{ f.iconColor }}">{{ f.ext }}</span>
+            </span>
+            <span style="flex:1;min-width:0">
+              <span style="display:block;font:600 14.5px/1.2 'Plus Jakarta Sans',system-ui;color:#f2f1ee;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ f.name }}</span>
+              <span style="display:flex;align-items:center;gap:7px;margin-top:5px">
+                <span style="font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">{{ f.meta }}</span>
+              </span>
+            </span>
+            <button type="button" aria-label="More options for {{ f.name }}" style="width:40px;height:40px;border-radius:13px;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none" style-active="background:#1c1f23">
+              <svg width="16" height="16" viewBox="0 0 18 18" fill="#7e8085"><circle cx="9" cy="4" r="1.5"></circle><circle cx="9" cy="9" r="1.5"></circle><circle cx="9" cy="14" r="1.5"></circle></svg>
+            </button>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isGrid }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+        <sc-for list="{{ filesD }}" as="f" hint-placeholder-count="9">
+          <button type="button" onClick="{{ f.open }}" style="position:relative;aspect-ratio:1;border-radius:16px;border:1.5px solid #2b2f34;background:#1c1f23;overflow:hidden;cursor:pointer;padding:0">
+            <sc-if value="{{ f.isImage }}" hint-placeholder-val="{{ false }}">
+              <span style="position:absolute;inset:0;background:linear-gradient(135deg,#c9c6bf,#807d77);filter:blur({{ gridBlur }})"></span>
+            </sc-if>
+            <span style="position:absolute;left:8px;bottom:8px;right:8px;text-align:left;font:600 10.5px/1.25 'Plus Jakarta Sans',system-ui;color:{{ f.gridLabel }};overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ f.name }}</span>
+            <sc-if value="{{ f.isFolder }}" hint-placeholder-val="{{ false }}">
+              <span style="position:absolute;left:8px;top:8px;font:700 10px/1 ui-monospace,monospace;color:#f2f1ee">DIR</span>
+            </sc-if>
+          </button>
+        </sc-for>
+      </div>
+    </sc-if>
+  </div>
+
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.6);animation:fade .14s ease-out">
+      <button type="button" onClick="{{ toggleMenu }}" aria-label="Close menu" style="position:absolute;inset:0;border:none;background:transparent;cursor:default"></button>
+      <div style="position:absolute;right:20px;top:150px;width:236px;border-radius:22px;background:#101215;border:1.5px solid #2b2f34;overflow:hidden;box-shadow:0 20px 44px rgba(0,0,0,0.55);animation:rise .16s ease-out">
+        <sc-for list="{{ menuItemsD }}" as="m" hint-placeholder-count="4">
+          <button type="button" style="width:100%;padding:15px 18px;border:none;border-bottom:1.5px solid #1c1f23;background:#101215;display:flex;align-items:center;gap:11px;cursor:pointer;text-align:left" style-active="background:#1c1f23">
+            <span style="font:700 12px/1 ui-monospace,monospace;color:{{ m.glyphColor }};width:18px;flex:none">{{ m.glyph }}</span>
+            <span style="flex:1;font:600 13.5px/1.3 'Plus Jakarta Sans',system-ui;color:{{ m.color }}">{{ m.label }}</span>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <button type="button" aria-label="Import files" style="position:absolute;right:22px;bottom:120px;width:58px;height:58px;border-radius:29px;border:none;background:#f2f1ee;color:#101215;font:400 28px/1 'Plus Jakarta Sans',system-ui;cursor:pointer;box-shadow:0 12px 28px rgba(0,0,0,0.55)">+</button>
+
+  <div style="display:flex;align-items:center;justify-content:space-around;padding:10px 8px 30px;background:#101215;border-top:1.5px solid #2b2f34">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l8-6 8 6v9a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 013 18z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Home</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round"><circle cx="8" cy="11" r="3.4"></circle><path d="M11.4 11H19M16 11v3"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Passwords</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round"><path d="M5 3h9l4 4v12H5z"></path><path d="M8 9h6M8 13h6"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Notes</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#f2f1ee" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path></svg>
+      <span style="font:700 10px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Media</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">SCREEN 05</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Search</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Type to filter — try "pi"</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#101215">
+  <div style="padding:0 18px;display:flex;align-items:center;gap:10px">
+    <div style="flex:1;height:52px;border-radius:26px;background:#1c1f23;display:flex;align-items:center;gap:10px;padding:0 18px">
+      <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="#9b9ca1" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="8" r="5.6"></circle><path d="M12.2 12.2L16 16"></path></svg>
+      <input id="q-d" type="search" aria-label="Search your vault" placeholder="Search your vault" value="{{ q }}" onChange="{{ setQ }}" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font:500 15.5px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee" />
+      <sc-if value="{{ hasQ }}" hint-placeholder-val="{{ false }}">
+        <button type="button" onClick="{{ clearQ }}" aria-label="Clear search" style="width:26px;height:26px;border-radius:13px;border:none;background:#2b2f34;color:#9b9ca1;font:700 13px/1 'Plus Jakarta Sans',system-ui;cursor:pointer;flex:none">×</button>
+      </sc-if>
+    </div>
+    <button type="button" style="border:none;background:none;padding:14px 6px;font:700 13.5px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;cursor:pointer">Done</button>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:6px 22px 0">
+    <sc-if value="{{ noQuery }}" hint-placeholder-val="{{ true }}">
+      <div style="padding-top:14px">
+        <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#7e8085;padding-bottom:6px">RECENT SEARCHES</div>
+        <sc-for list="{{ recentQueries }}" as="r" hint-placeholder-count="4">
+          <button type="button" onClick="{{ r.pick }}" style="width:100%;display:flex;align-items:center;gap:12px;padding:15px 2px;border:none;border-bottom:1.5px solid #1c1f23;background:transparent;cursor:pointer;text-align:left">
+            <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="#7e8085" stroke-width="1.7" stroke-linecap="round" style="flex:none"><circle cx="9" cy="9" r="6.6"></circle><path d="M9 5.6V9l2.4 1.6"></path></svg>
+            <span style="flex:1;font:600 14.5px/1.2 'Plus Jakarta Sans',system-ui;color:#f2f1ee">{{ r.label }}</span>
+            <span style="font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">{{ r.scope }}</span>
+          </button>
+        </sc-for>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ hasQ }}" hint-placeholder-val="{{ false }}">
+      <div style="animation:fade .14s ease-out">
+        <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
+          <div style="padding-top:16px">
+            <div style="display:flex;align-items:baseline;gap:8px;padding-bottom:4px">
+              <span style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#7e8085">{{ g.label }}</span>
+              <span style="font:600 10px/1 ui-monospace,monospace;color:#7e8085">{{ g.count }}</span>
+            </div>
+            <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="2">
+              <button type="button" style="width:100%;display:flex;align-items:center;gap:12px;padding:13px 2px;border:none;border-bottom:1.5px solid #1c1f23;background:transparent;cursor:pointer;text-align:left">
+                <span style="width:36px;height:36px;border-radius:12px;background:#1c1f23;display:flex;align-items:center;justify-content:center;flex:none;font:700 12px/1 ui-monospace,monospace;color:#f2f1ee">{{ it.glyph }}</span>
+                <span style="flex:1;min-width:0">
+                  <span style="display:block;font:600 14.5px/1.2 'Plus Jakarta Sans',system-ui;color:#f2f1ee;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ it.title }}</span>
+                  <span style="display:block;margin-top:4px;font:500 11.5px/1.2 'Plus Jakarta Sans',system-ui;color:#9b9ca1">{{ it.meta }}</span>
+                </span>
+              </button>
+            </sc-for>
+          </div>
+        </sc-for>
+        <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:60px 20px;text-align:center">
+            <div style="font:700 15.5px/1.3 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Nothing matches “{{ q }}”</div>
+            <div style="margin-top:8px;font:500 13px/1.5 'Plus Jakarta Sans',system-ui;color:#9b9ca1">Search covers titles and usernames only — note bodies stay encrypted.</div>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">SCREEN 06</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Media viewer</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Tap the image to reveal</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#1c1f23">
+  <div style="padding:0 18px;display:flex;align-items:center;gap:12px">
+    <button type="button" aria-label="Back" style="width:42px;height:42px;border-radius:14px;border:none;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#f2f1ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5L5.5 9l5.5 5.5"></path></svg>
+    </button>
+    <span style="flex:1;min-width:0">
+      <span style="display:block;font:700 14.5px/1.2 'Plus Jakarta Sans',system-ui;color:#f2f1ee;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">passport-scan.jpg</span>
+      <span style="display:flex;align-items:center;gap:7px;margin-top:4px">
+        <span style="font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:rgba(255,255,255,0.55)">2.4 MB · 3024×4032</span>
+      </span>
+    </span>
+    <button type="button" aria-label="File options" style="width:42px;height:42px;border-radius:14px;border:none;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none">
+      <svg width="17" height="17" viewBox="0 0 18 18" fill="#f2f1ee"><circle cx="9" cy="4" r="1.5"></circle><circle cx="9" cy="9" r="1.5"></circle><circle cx="9" cy="14" r="1.5"></circle></svg>
+    </button>
+  </div>
+
+  <button type="button" onClick="{{ toggleBlur }}" aria-label="{{ blurLabel }}" style="flex:1;margin:20px 18px;border:none;border-radius:24px;background:#1c1f23;position:relative;overflow:hidden;cursor:pointer;padding:0">
+    <span style="position:absolute;inset:-20px;background:linear-gradient(150deg,#5a5f66,#c9c6bf 45%,#7d766c);filter:blur({{ blurPx }});transition:filter .3s ease"></span>
+    <sc-if value="{{ blurred }}" hint-placeholder-val="{{ true }}">
+      <span style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px">
+        <span style="width:54px;height:54px;border-radius:27px;background:rgba(14,15,17,0.6);display:flex;align-items:center;justify-content:center">
+          <svg width="24" height="24" viewBox="0 0 20 20" fill="none" stroke="#f2f1ee" stroke-width="1.7" stroke-linecap="round"><path d="M1.8 10S4.9 4.8 10 4.8 18.2 10 18.2 10 15.1 15.2 10 15.2 1.8 10 1.8 10z"></path><circle cx="10" cy="10" r="2.4"></circle></svg>
+        </span>
+        <span style="font:700 12.5px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Tap to reveal</span>
+      </span>
+    </sc-if>
+  </button>
+
+  <div style="display:flex;align-items:center;justify-content:space-around;padding:0 12px 40px">
+    <sc-for list="{{ viewerActions }}" as="a" hint-placeholder-count="4">
+      <button type="button" style="display:flex;flex-direction:column;align-items:center;gap:7px;padding:12px 14px;min-width:60px;border:none;background:transparent;cursor:pointer">
+        <span style="font:600 17px/1 ui-monospace,monospace;color:{{ a.color }}">{{ a.glyph }}</span>
+        <span style="font:600 10.5px/1 'Plus Jakarta Sans',system-ui;color:{{ a.color }}">{{ a.label }}</span>
+      </button>
+    </sc-for>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">EMPTY 01</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Passwords — empty</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#101215">
+  <div style="padding:0 22px">
+    <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#f2f1ee">Passwords</h1>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:0 40px">
+    <div style="width:64px;height:64px;border-radius:22px;background:#1c1f23;display:flex;align-items:center;justify-content:center">
+      <svg width="28" height="28" viewBox="0 0 22 22" fill="none" stroke="#f2f1ee" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="11" r="3.4"></circle><path d="M11.4 11H19M16 11v3"></path></svg>
+    </div>
+    <div style="text-align:center">
+      <div style="font:800 19px/1.25 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#f2f1ee">No passwords yet</div>
+      <p style="margin:9px 0 0;font:500 13.5px/1.55 'Plus Jakarta Sans',system-ui;color:#9b9ca1;text-wrap:pretty">Add your first login and it is encrypted here before it ever reaches your Pi.</p>
+    </div>
+    <button type="button" style="height:54px;padding:0 26px;border-radius:27px;border:none;background:#f2f1ee;color:#101215;font:700 14.5px/1 'Plus Jakarta Sans',system-ui;cursor:pointer;box-shadow:0 10px 24px rgba(0,0,0,0.5)">Add a password</button>
+    <button type="button" style="border:none;background:none;padding:14px 12px;font:700 13px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Restore from Pi backup</button>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:space-around;padding:10px 8px 30px;background:#101215;border-top:1.5px solid #2b2f34">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l8-6 8 6v9a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 013 18z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Home</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#f2f1ee" stroke-width="1.9" stroke-linecap="round"><circle cx="8" cy="11" r="3.4"></circle><path d="M11.4 11H19M16 11v3"></path></svg>
+      <span style="font:700 10px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Passwords</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round"><path d="M5 3h9l4 4v12H5z"></path><path d="M8 9h6M8 13h6"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Notes</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Media</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">EMPTY 02</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Notes — empty</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#101215">
+  <div style="padding:0 22px">
+    <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#f2f1ee">Notes</h1>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:0 40px">
+    <div style="width:64px;height:64px;border-radius:22px;background:#1c1f23;display:flex;align-items:center;justify-content:center">
+      <svg width="28" height="28" viewBox="0 0 22 22" fill="none" stroke="#f2f1ee" stroke-width="1.8" stroke-linecap="round"><path d="M5 3h9l4 4v12H5z"></path><path d="M8 9h6M8 13h6"></path></svg>
+    </div>
+    <div style="text-align:center">
+      <div style="font:800 19px/1.25 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#f2f1ee">No notes yet</div>
+      <p style="margin:9px 0 0;font:500 13.5px/1.55 'Plus Jakarta Sans',system-ui;color:#9b9ca1;text-wrap:pretty">Recovery codes, licence keys, anything you would not put in a plain notes app.</p>
+    </div>
+    <button type="button" style="height:54px;padding:0 26px;border-radius:27px;border:none;background:#f2f1ee;color:#101215;font:700 14.5px/1 'Plus Jakarta Sans',system-ui;cursor:pointer;box-shadow:0 10px 24px rgba(0,0,0,0.5)">Write a note</button>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:space-around;padding:10px 8px 30px;background:#101215;border-top:1.5px solid #2b2f34">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l8-6 8 6v9a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 013 18z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Home</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round"><circle cx="8" cy="11" r="3.4"></circle><path d="M11.4 11H19M16 11v3"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Passwords</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#f2f1ee" stroke-width="1.9" stroke-linecap="round"><path d="M5 3h9l4 4v12H5z"></path><path d="M8 9h6M8 13h6"></path></svg>
+      <span style="font:700 10px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Notes</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Media</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">EMPTY 03</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Media — empty</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#101215">
+  <div style="padding:0 22px">
+    <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#f2f1ee">Media</h1>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:0 40px">
+    <div style="width:64px;height:64px;border-radius:22px;background:#1c1f23;display:flex;align-items:center;justify-content:center">
+      <svg width="28" height="28" viewBox="0 0 22 22" fill="none" stroke="#f2f1ee" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path></svg>
+    </div>
+    <div style="text-align:center">
+      <div style="font:800 19px/1.25 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#f2f1ee">Nothing on your Pi yet</div>
+      <p style="margin:9px 0 0;font:500 13.5px/1.55 'Plus Jakarta Sans',system-ui;color:#9b9ca1;text-wrap:pretty">Import documents and photos, or make a folder first. Files are encrypted here, then uploaded to your Pi.</p>
+    </div>
+    <div style="display:flex;gap:10px">
+      <button type="button" style="height:54px;padding:0 22px;border-radius:27px;border:none;background:#f2f1ee;color:#101215;font:700 14px/1 'Plus Jakarta Sans',system-ui;cursor:pointer;box-shadow:0 10px 24px rgba(0,0,0,0.5)">Import files</button>
+      <button type="button" style="height:54px;padding:0 22px;border-radius:27px;border:1.5px solid #2b2f34;background:#101215;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;cursor:pointer">New folder</button>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:space-around;padding:10px 8px 30px;background:#101215;border-top:1.5px solid #2b2f34">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l8-6 8 6v9a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 013 18z"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Home</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round"><circle cx="8" cy="11" r="3.4"></circle><path d="M11.4 11H19M16 11v3"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Passwords</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#7e8085" stroke-width="1.9" stroke-linecap="round"><path d="M5 3h9l4 4v12H5z"></path><path d="M8 9h6M8 13h6"></path></svg>
+      <span style="font:600 10px/1 'Plus Jakarta Sans',system-ui;color:#7e8085">Notes</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px;min-width:56px">
+      <svg width="21" height="21" viewBox="0 0 22 22" fill="none" stroke="#f2f1ee" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path></svg>
+      <span style="font:700 10px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Media</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="width:280px;padding-top:34px;display:flex;flex-direction:column;gap:22px">
+  <div>
+    <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#a09d97;margin-bottom:12px">CARRIED FROM AUTH</div>
+    <div style="display:flex;flex-direction:column;gap:8px;font:400 11px/1 ui-monospace,monospace;color:#5f5c57">
+      <div style="display:flex;align-items:center;gap:10px"><span style="width:26px;height:26px;border-radius:8px;background:#101010"></span>#101010 ink · CTA</div>
+      <div style="display:flex;align-items:center;gap:10px"><span style="width:26px;height:26px;border-radius:8px;background:#0e0f11"></span>#0E0F11 secure surface</div>
+      <div style="display:flex;align-items:center;gap:10px"><span style="width:26px;height:26px;border-radius:8px;background:#f5f4f1;border:1px solid #eceae5"></span>#F5F4F1 field · avatar</div>
+      <div style="display:flex;align-items:center;gap:10px"><span style="width:26px;height:26px;border-radius:8px;background:#fbfaf8;border:1px solid #eceae5"></span>#FBFAF8 dashboard</div>
+      <div style="display:flex;align-items:center;gap:10px"><span style="width:26px;height:26px;border-radius:8px;background:#0e7c66"></span>#0E7C66 success</div>
+      <div style="display:flex;align-items:center;gap:10px"><span style="width:26px;height:26px;border-radius:8px;background:#a09d97"></span>#A09D97 muted meta</div>
+    </div>
+  </div>
+  <div style="font:500 12px/1.75 'Plus Jakarta Sans',system-ui;color:#5f5c57">
+    27px screen title · 15px row title · 12.5px meta<br />44px minimum touch on every control<br />Rows 66–70px · cards 20px · sheets 22px<br />Tab bar 4 items, ink for active, #A09D97 idle<br />Secure surface reused for the toast and viewer
+  </div>
+  <div style="border-top:1px solid rgba(16,16,16,0.12);padding-top:16px;font:500 12px/1.7 'Plus Jakarta Sans',system-ui;color:#5f5c57">
+    Decisions held: search is its own screen, passwords sort by recent use, copy clears the clipboard in 30 seconds, thumbnails stay blurred until the viewer, the private area is reachable only from the overflow menu and asks for the PIN again.
+  </div>
+</div>
+
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:1400},&quot;clipboardSeconds&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:30,&quot;min&quot;:10,&quot;max&quot;:120,&quot;step&quot;:5,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Passwords&quot;},&quot;blurThumbnails&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Media&quot;}}">
+class Component extends DCLogic {
+  state = { revealed: {}, toast: '', view: 'list', selecting: false, picked: {}, menuOpen: false, q: '', blurred: true };
+
+  copy = site => {
+    clearTimeout(this.tt);
+    const secs = this.props.clipboardSeconds ?? 30;
+    this.setState({ toast: site + ' password copied · clipboard clears in ' + secs + 's' });
+    this.tt = setTimeout(() => this.setState({ toast: '' }), 3200);
+  };
+  componentWillUnmount() { clearTimeout(this.tt); }
+
+  DATA = [
+    { site: 'GitHub', user: 'shivam@pidrive.app', secret: 'r7$Kq2mL!vXz' },
+    { site: 'Raspberry Pi Forums', user: 'shivam.builds', secret: 'p1Dr!ve-home' },
+    { site: 'Nextcloud', user: 'admin@pi.local', secret: 'C9tWq*3zLmA4' },
+    { site: 'Tailscale', user: 'shivam@pidrive.app', secret: 'ts-8Kd!2pQw' },
+    { site: 'Cloudflare', user: 'shivam@pidrive.app', secret: 'Zn4!kPq7Lm2s' },
+    { site: 'Bank of Baroda', user: '••4821', secret: '6Rm!Kw9zQp' }
+  ];
+  FILES = [
+    { name: 'Aadhaar', ext: 'DIR', meta: '6 items', folder: true },
+    { name: 'Insurance', ext: 'DIR', meta: '3 items', folder: true },
+    { name: 'passport-scan.jpg', ext: 'JPG', meta: '2.4 MB', image: true },
+    { name: 'lease-agreement.pdf', ext: 'PDF', meta: '1.1 MB' },
+    { name: 'pi-ssh-key.pem', ext: 'PEM', meta: '3 KB' },
+    { name: 'medical-report.jpg', ext: 'JPG', meta: '3.8 MB', image: true },
+    { name: 'tax-2025.zip', ext: 'ZIP', meta: '18 MB' }
+  ];
+  NOTES = ['Pi server SSH notes', 'Recovery codes — GitHub', 'Wi-Fi passwords at home', 'Insurance policy numbers', 'Passport and visa details', 'Old bank locker details', 'Windows licence keys', 'Emergency contacts'];
+
+  files(d) {
+    const sel = this.state.selecting, picked = this.state.picked;
+    return this.FILES.map((f, i) => ({
+      name: f.name, ext: f.ext, meta: f.meta,
+      isImage: !!f.image, isFolder: !!f.folder,
+      iconColor: f.image ? '#fdfdfd' : (d ? '#f2f1ee' : '#101010'),
+      iconScrim: f.image ? 'rgba(14,15,17,0.62)' : 'transparent',
+      gridLabel: f.image ? '#fefefe' : (d ? '#f2f1ee' : '#101010'),
+      checkBg: sel && picked[i] ? (d ? '#f2f1ee' : '#101010') : 'transparent',
+      checkBorder: sel && picked[i] ? (d ? '#f2f1ee' : '#101010') : (d ? '#2b2f34' : '#eceae5'),
+      checkTick: sel && picked[i] ? (d ? '#101215' : '#fefefe') : 'transparent',
+      open: () => this.setState({ blurred: true })
+    }));
+  }
+
+  actions(d) {
+    const ink = d ? '#f2f1ee' : '#101010', on = d ? '#101215' : '#fefefe', bd = d ? '#2b2f34' : '#eceae5', danger = d ? '#ff9d80' : '#8f2b12';
+    return [
+      { label: 'Move', bg: 'transparent', border: bd, color: ink },
+      { label: 'Hide', bg: ink, border: ink, color: on },
+      { label: 'Export', bg: 'transparent', border: bd, color: ink },
+      { label: 'Move', bg: 'transparent', border: bd, color: ink },
+      { label: 'Rename', bg: 'transparent', border: bd, color: ink },
+      { label: 'Delete', bg: 'transparent', border: bd, color: danger }
+    ];
+  }
+
+  menu(d) {
+    const ink = d ? '#f2f1ee' : '#101010', mut = d ? '#9b9ca1' : '#77746e', danger = d ? '#ff9d80' : '#8f2b12';
+    return [
+      { label: 'Private area — needs PIN', glyph: '⚿', color: ink, glyphColor: ink },
+      { label: 'New folder', glyph: '+', color: ink, glyphColor: mut },
+      { label: 'Import from device', glyph: '↓', color: ink, glyphColor: mut },
+      { label: 'Sort and view options', glyph: '≡', color: ink, glyphColor: mut },
+      { label: 'Refresh from server', glyph: '↻', color: ink, glyphColor: mut },
+      { label: 'Empty trash', glyph: '×', color: danger, glyphColor: danger }
+    ];
+  }
+
+  results() {
+    const q = this.state.q.trim().toLowerCase();
+    if (!q) return [];
+    const pw = this.DATA.filter(p => (p.site + ' ' + p.user).toLowerCase().includes(q))
+      .map(p => ({ glyph: '••', title: p.site, meta: p.user }));
+    const nt = this.NOTES.filter(n => n.toLowerCase().includes(q)).map(n => ({ glyph: '¶', title: n, meta: 'Note' }));
+    const fl = this.FILES.filter(f => f.name.toLowerCase().includes(q)).map(f => ({ glyph: f.ext === 'DIR' ? '▸' : f.ext, title: f.name, meta: f.meta }));
+    return [
+      { label: 'PASSWORDS', count: pw.length, items: pw },
+      { label: 'NOTES', count: nt.length, items: nt },
+      { label: 'FILES', count: fl.length, items: fl }
+    ].filter(g => g.items.length > 0);
+  }
+
+  renderVals() {
+    const s = this.state, groups = this.results();
+    const nPicked = Object.values(s.picked).filter(Boolean).length;
+    return {
+      homeCards: [
+        { glyph: '••', title: 'Passwords', count: '42 items' },
+        { glyph: '¶', title: 'Notes', count: '12 notes' },
+        { glyph: '▤', title: 'Media', count: '8 files · 214 MB' }
+      ],
+      recents: [
+        { glyph: '••', title: 'Raspberry Pi Forums', meta: 'Password · opened 12 min ago' },
+        { glyph: '¶', title: 'Recovery codes — GitHub', meta: 'Note · opened yesterday' },
+        { glyph: 'JPG', title: 'passport-scan.jpg', meta: 'File · opened 2 days ago' }
+      ],
+      notes: this.NOTES.map(t => ({ title: t })),
+
+      pwRows: this.DATA.map((p, i) => ({
+        site: p.site, user: p.user, letter: p.site[0],
+        shown: !!s.revealed[i],
+        secret: s.revealed[i] ? p.secret : '••••••••••••',
+        spacing: s.revealed[i] ? '0.02em' : '0.14em',
+        slash: s.revealed[i] ? 'M3 17L17 3' : '',
+        revealLabel: (s.revealed[i] ? 'Hide' : 'Reveal') + ' password for ' + p.site,
+        reveal: () => this.setState(st => ({ revealed: Object.assign({}, st.revealed, { [i]: !st.revealed[i] }) })),
+        copy: () => this.copy(p.site)
+      })),
+      toast: s.toast,
+      clearNow: () => this.setState({ toast: '' }),
+
+      isList: s.view === 'list', isGrid: s.view === 'grid',
+      setList: () => this.setState({ view: 'list' }),
+      setGrid: () => this.setState({ view: 'grid' }),
+      listBg: s.view === 'list' ? '#ffffff' : 'transparent',
+      listFg: s.view === 'list' ? '#101010' : '#a09d97',
+      gridBg: s.view === 'grid' ? '#ffffff' : 'transparent',
+      gridFg: s.view === 'grid' ? '#101010' : '#a09d97',
+      listBgD: s.view === 'list' ? '#101215' : 'transparent',
+      listFgD: s.view === 'list' ? '#f2f1ee' : '#7e8085',
+      gridBgD: s.view === 'grid' ? '#101215' : 'transparent',
+      gridFgD: s.view === 'grid' ? '#f2f1ee' : '#7e8085',
+
+      files: this.files(false), filesD: this.files(true),
+      selActions: this.actions(false), selActionsD: this.actions(true),
+      menuItems: this.menu(false), menuItemsD: this.menu(true),
+
+      selecting: s.selecting, notSelecting: !s.selecting,
+      selCount: nPicked === 0 ? 'Select items' : nPicked + ' selected',
+      startSelect: () => this.setState({ selecting: true, picked: { 2: true, 4: true } }),
+      cancelSelect: () => this.setState({ selecting: false, picked: {} }),
+      selectAll: () => this.setState(st => {
+        const all = Object.keys(st.picked).filter(k => st.picked[k]).length === this.FILES.length;
+        const next = {};
+        if (!all) this.FILES.forEach((_, i) => { next[i] = true; });
+        return { picked: next };
+      }),
+      menuOpen: s.menuOpen,
+      toggleMenu: () => this.setState({ menuOpen: !s.menuOpen }),
+
+      q: s.q, hasQ: s.q.trim().length > 0, noQuery: s.q.trim().length === 0,
+      setQ: e => this.setState({ q: e.target.value }),
+      clearQ: () => this.setState({ q: '' }),
+      groups: groups, noResults: s.q.trim().length > 0 && groups.length === 0,
+      recentQueries: [
+        { label: 'pi', scope: 'all', pick: () => this.setState({ q: 'pi' }) },
+        { label: 'passport', scope: 'files', pick: () => this.setState({ q: 'passport' }) },
+        { label: 'recovery', scope: 'notes', pick: () => this.setState({ q: 'recovery' }) },
+        { label: 'bank', scope: 'passwords', pick: () => this.setState({ q: 'bank' }) }
+      ],
+
+      tileBlur: (this.props.blurThumbnails ?? true) ? '6px' : '0px',
+      gridBlur: (this.props.blurThumbnails ?? true) ? '9px' : '0px',
+      blurred: s.blurred && (this.props.blurThumbnails ?? true),
+      blurPx: (s.blurred && (this.props.blurThumbnails ?? true)) ? '26px' : '0px',
+      blurLabel: s.blurred ? 'Reveal this file' : 'Blur this file',
+      toggleBlur: () => this.setState({ blurred: !s.blurred }),
+      viewerActions: [
+        { glyph: '↓', label: 'Export', color: '#fdfdfd' },
+        { glyph: '⚿', label: 'Hide', color: '#fdfdfd' },
+        { glyph: '⇄', label: 'Move', color: '#fdfdfd' },
+        { glyph: 'ⓘ', label: 'Info', color: '#fdfdfd' },
+        { glyph: '×', label: 'Delete', color: '#ff9d80' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

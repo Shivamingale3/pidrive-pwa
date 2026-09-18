@@ -1,4 +1,4 @@
-import DatabaseContext from "@/contexts/database.context";
+import { DatabaseContext } from "@/contexts/database.context";
 import { AppDatabase } from "@/database";
 import { useEffect, useState, type PropsWithChildren } from "react";
 

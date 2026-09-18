@@ -1,8 +1,9 @@
 import { useContext } from "react";
 
-import { AppDatabase } from "@/database";
-import DatabaseContext from "@/contexts/database.context";
-function useDatabase(): AppDatabase {
+import type { AppDatabase } from "@/database";
+import { DatabaseContext } from "@/contexts/database.context";
+
+export function useDatabase(): AppDatabase {
   const database = useContext(DatabaseContext);
 
   if (!database) {
@@ -11,4 +12,3 @@ function useDatabase(): AppDatabase {
 
   return database;
 }
-export default useDatabase;

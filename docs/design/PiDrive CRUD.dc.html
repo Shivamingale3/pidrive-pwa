@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240"><rect width="240" height="240" fill="#101010"/><text x="120" y="118" font-family="ui-monospace,monospace" font-size="30" font-weight="700" fill="#fefefe" text-anchor="middle">03</text><text x="120" y="152" font-family="system-ui" font-size="17" font-weight="600" fill="#a09d97" text-anchor="middle">CRUD</text></svg></template>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>
+body{margin:0;background:#e7e5e0;font-family:'Plus Jakarta Sans',system-ui,sans-serif}
+a{color:#101010}a:hover{color:#000}
+input::placeholder,textarea::placeholder{color:#77746e;opacity:1}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #101010;outline-offset:3px;border-radius:8px}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+</style></helmet>
+
+<section style="padding:44px 48px 60px">
+<div style="display:flex;align-items:baseline;gap:12px;margin:0 0 8px">
+  <span style="font:700 10px/1 ui-monospace,monospace;padding:4px 8px;background:#101010;color:#fefefe;border-radius:5px">7</span>
+  <h2 style="margin:0;font:800 20px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#101010">PiDrive — CRUD, sheets and dialogs</h2>
+</div>
+<p style="margin:0 0 34px;max-width:760px;font:500 13.5px/1.6 'Plus Jakarta Sans',system-ui;color:#5f5c57;text-wrap:pretty">Thirteen screens. Live: type in the password form and the autosave chip reacts, the dice rerolls, the generator sheet's slider and toggles rebuild the password, note checkboxes tick, upload progress runs, sort and move selections respond. Dark row below.</p>
+
+<div style="display:flex;gap:40px;flex-wrap:wrap;align-items:flex-start">
+<div style="display:flex;align-items:baseline;gap:10px;padding:0 0 26px;width:100%">
+  <span style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#a09d97">LIGHT</span>
+  <span style="font:700 15px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.02em;color:#101010">Thirteen screens, light theme</span>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">CRUD 01</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Password detail</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#ffffff">
+  <div style="padding:0 18px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+    <button type="button" aria-label="Back" style="width:44px;height:44px;border-radius:15px;border:none;background:#f5f4f1;display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#101010" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5L5.5 9l5.5 5.5"></path></svg>
+    </button>
+    <div style="display:flex;gap:8px">
+      <button type="button" style="height:44px;padding:0 17px;border-radius:22px;border:1.5px solid #eceae5;background:#ffffff;font:700 12.5px/1 'Plus Jakarta Sans',system-ui;color:#101010;cursor:pointer">Edit</button>
+      <button type="button" aria-label="More options" style="width:44px;height:44px;border-radius:15px;border:1.5px solid #eceae5;background:#ffffff;display:flex;align-items:center;justify-content:center;cursor:pointer">
+        <svg width="17" height="17" viewBox="0 0 18 18" fill="#101010"><circle cx="9" cy="4" r="1.5"></circle><circle cx="9" cy="9" r="1.5"></circle><circle cx="9" cy="14" r="1.5"></circle></svg>
+      </button>
+    </div>
+  </div>
+
+  <div style="padding:22px 22px 0;display:flex;align-items:center;gap:14px">
+    <span style="width:56px;height:56px;border-radius:19px;background:#f5f4f1;display:flex;align-items:center;justify-content:center;font:800 22px/1 'Plus Jakarta Sans',system-ui;color:#101010">G</span>
+    <span style="min-width:0">
+      <span style="display:block;font:800 24px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#101010">GitHub</span>
+      <span style="display:block;margin-top:6px;font:500 13px/1 'Plus Jakarta Sans',system-ui;color:#77746e">github.com</span>
+    </span>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:20px 22px 0;display:flex;flex-direction:column;gap:10px">
+    <sc-for list="{{ detailFields }}" as="f" hint-placeholder-count="4">
+      <div style="border-radius:20px;border:1.5px solid #eceae5;background:#ffffff;padding:15px 16px;display:flex;align-items:center;gap:12px">
+        <span style="flex:1;min-width:0">
+          <span style="display:block;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#a09d97">{{ f.label }}</span>
+          <span style="display:block;margin-top:8px;font:{{ f.font }};color:#101010;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ f.value }}</span>
+        </span>
+        <sc-if value="{{ f.canReveal }}" hint-placeholder-val="{{ false }}">
+          <button type="button" onClick="{{ f.reveal }}" aria-label="{{ f.revealLabel }}" style="width:44px;height:44px;border-radius:14px;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none" style-active="background:#f5f4f1">
+            <svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="#77746e" stroke-width="1.7" stroke-linecap="round"><path d="M1.8 10S4.9 4.8 10 4.8 18.2 10 18.2 10 15.1 15.2 10 15.2 1.8 10 1.8 10z"></path><circle cx="10" cy="10" r="2.4"></circle><path d="{{ f.slash }}"></path></svg>
+          </button>
+        </sc-if>
+        <sc-if value="{{ f.canCopy }}" hint-placeholder-val="{{ true }}">
+          <button type="button" onClick="{{ f.copy }}" aria-label="Copy {{ f.label }}" style="width:44px;height:44px;border-radius:14px;border:1.5px solid #eceae5;background:#ffffff;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none" style-active="background:#f5f4f1">
+            <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="#101010" stroke-width="1.6" stroke-linejoin="round"><rect x="6" y="6" width="9.5" height="9.5" rx="2.4"></rect><path d="M12 4.2A2.2 2.2 0 009.8 2H5a2.4 2.4 0 00-2.4 2.4v5.4"></path></svg>
+          </button>
+        </sc-if>
+      </div>
+    </sc-for>
+    <div style="display:flex;gap:26px;padding:8px 4px 0">
+      <span><span style="display:block;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#a09d97">CREATED</span><span style="display:block;margin-top:7px;font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">14 Mar 2024</span></span>
+      <span><span style="display:block;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#a09d97">MODIFIED</span><span style="display:block;margin-top:7px;font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">2 days ago</span></span>
+    </div>
+  </div>
+
+  <div style="padding:0 22px 34px">
+    <div style="display:flex;align-items:center;gap:9px;padding:13px 16px;border-radius:16px;background:#f5f4f1">
+      <span style="width:7px;height:7px;border-radius:50%;background:#0e7c66"></span>
+      <span style="font:600 12px/1.3 'Plus Jakarta Sans',system-ui;color:#77746e">Saved on your Pi · encrypted at rest</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">CRUD 02</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Password form — autosaves</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Type in it; roll the dice</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#ffffff">
+  <div style="padding:0 18px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+    <button type="button" aria-label="Back" style="width:44px;height:44px;border-radius:15px;border:none;background:#f5f4f1;display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#101010" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5L5.5 9l5.5 5.5"></path></svg>
+    </button>
+    <div role="status" aria-live="polite" style="display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:18px;background:#f5f4f1">
+      <span style="width:6px;height:6px;border-radius:50%;background:{{ saveDot }}"></span>
+      <span style="font:600 11.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">{{ saveLabel }}</span>
+    </div>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:20px 22px 0;display:flex;flex-direction:column;gap:14px">
+    <div>
+      <label for="fName" style="display:block;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#a09d97;margin:0 0 9px 4px">NAME</label>
+      <div style="height:56px;border-radius:18px;background:#f5f4f1;display:flex;align-items:center;padding:0 18px">
+        <input id="fName" type="text" value="{{ fName }}" onChange="{{ setName }}" placeholder="GitHub" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font:600 16px/1 'Plus Jakarta Sans',system-ui;color:#101010" />
+      </div>
+    </div>
+    <div>
+      <label for="fUser" style="display:block;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#a09d97;margin:0 0 9px 4px">USERNAME</label>
+      <div style="height:56px;border-radius:18px;background:#f5f4f1;display:flex;align-items:center;padding:0 18px">
+        <input id="fUser" type="text" autoCapitalize="none" value="{{ fUser }}" onChange="{{ setUser }}" placeholder="you@email.com" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font:500 16px/1 'Plus Jakarta Sans',system-ui;color:#101010" />
+      </div>
+    </div>
+    <div>
+      <label for="fPass" style="display:block;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#a09d97;margin:0 0 9px 4px">PASSWORD</label>
+      <div style="height:56px;border-radius:18px;background:#f5f4f1;display:flex;align-items:center;gap:4px;padding:0 8px 0 18px">
+        <input id="fPass" type="text" value="{{ fPass }}" onChange="{{ setPass }}" placeholder="Type or generate" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font:600 15px/1 ui-monospace,monospace;color:#101010" />
+        <button type="button" onClick="{{ roll }}" aria-label="Generate a new password" style="width:44px;height:44px;border-radius:14px;border:none;background:#ffffff;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none" style-active="background:#eceae5">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="#101010" stroke-width="1.6"><rect x="3" y="3" width="14" height="14" rx="4"></rect><circle cx="7.3" cy="7.3" r="1.15" fill="#101010"></circle><circle cx="12.7" cy="12.7" r="1.15" fill="#101010"></circle><circle cx="12.7" cy="7.3" r="1.15" fill="#101010"></circle><circle cx="7.3" cy="12.7" r="1.15" fill="#101010"></circle></svg>
+        </button>
+        <button type="button" onClick="{{ openGen }}" aria-label="Generator options" style="width:44px;height:44px;border-radius:14px;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none" style-active="background:#eceae5">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#101010" stroke-width="1.7" stroke-linecap="round"><path d="M3 6h12M3 12h12"></path><circle cx="7" cy="6" r="2" fill="#f5f4f1"></circle><circle cx="11" cy="12" r="2" fill="#f5f4f1"></circle></svg>
+        </button>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:12px 4px 0">
+        <span style="display:flex;gap:4px;flex:none">
+          <sc-for list="{{ strengthBars }}" as="b" hint-placeholder-count="4">
+            <span style="width:26px;height:4px;border-radius:2px;background:{{ b.bg }}"></span>
+          </sc-for>
+        </span>
+        <span style="font:600 11.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">{{ strengthLabel }}</span>
+      </div>
+    </div>
+    <div>
+      <label for="fUrl" style="display:block;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#a09d97;margin:0 0 9px 4px">WEBSITE</label>
+      <div style="height:56px;border-radius:18px;background:#f5f4f1;display:flex;align-items:center;padding:0 18px">
+        <input id="fUrl" type="url" inputMode="url" autoCapitalize="none" value="{{ fUrl }}" onChange="{{ setUrl }}" placeholder="https://" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font:500 15.5px/1 'Plus Jakarta Sans',system-ui;color:#101010" />
+      </div>
+    </div>
+    <div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;padding:0 4px 9px">
+        <span style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#a09d97">CUSTOM FIELDS</span>
+        <button type="button" style="border:none;background:none;min-height:44px;padding:12px 10px;margin:-12px -10px;font:700 11.5px/1 'Plus Jakarta Sans',system-ui;color:#101010;cursor:pointer">+ Add field</button>
+      </div>
+      <div style="border-radius:18px;background:#f5f4f1;padding:14px 18px;display:flex;align-items:center;gap:12px">
+        <span style="flex:1;min-width:0">
+          <span style="display:block;font:600 11.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">Recovery email</span>
+          <span style="display:block;margin-top:6px;font:500 14.5px/1 'Plus Jakarta Sans',system-ui;color:#101010">shivam.backup@mail.com</span>
+        </span>
+        <button type="button" aria-label="Remove custom field" style="width:44px;height:44px;border-radius:14px;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none;font:400 20px/1 'Plus Jakarta Sans',system-ui;color:#77746e">×</button>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:16px 22px 34px">
+    <button type="button" style="width:100%;height:54px;border-radius:27px;border:1.5px solid #eceae5;background:#ffffff;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#8f2b12;cursor:pointer">Delete this password</button>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">CRUD 03</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Generator sheet</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Slider and toggles are live</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#ffffff;position:relative">
+  <div style="padding:0 22px;opacity:.45">
+    <span style="display:block;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#a09d97">PASSWORD</span>
+    <div style="margin-top:9px;height:56px;border-radius:18px;background:#f5f4f1;display:flex;align-items:center;padding:0 18px;font:600 15px/1 ui-monospace,monospace;color:#101010">{{ genValue }}</div>
+    <span style="display:block;margin-top:22px;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#a09d97">WEBSITE</span>
+    <div style="margin-top:9px;height:56px;border-radius:18px;background:#f5f4f1"></div>
+  </div>
+
+  <div style="position:absolute;inset:0;background:rgba(16,16,16,0.4);display:flex;align-items:flex-end;animation:fade .16s ease-out">
+    <div style="width:100%;background:#ffffff;border-radius:32px 32px 0 0;padding:14px 22px 34px;animation:rise .22s ease-out">
+      <div style="width:38px;height:4px;border-radius:2px;background:#eceae5;margin:0 auto 18px"></div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between">
+        <span style="font:800 19px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#101010">Generate password</span>
+        <button type="button" onClick="{{ roll }}" style="border:none;background:none;min-height:44px;padding:14px 10px;margin:-14px -10px;font:700 12.5px/1 'Plus Jakarta Sans',system-ui;color:#101010;cursor:pointer">Reroll</button>
+      </div>
+
+      <div style="margin-top:16px;padding:18px;border-radius:20px;background:#f5f4f1;font:600 16px/1.5 ui-monospace,monospace;color:#101010;word-break:break-all">{{ genValue }}</div>
+
+      <div style="display:flex;align-items:center;gap:10px;padding:14px 2px 0">
+        <span style="display:flex;gap:4px;flex:none">
+          <sc-for list="{{ genBars }}" as="b" hint-placeholder-count="4">
+            <span style="width:26px;height:4px;border-radius:2px;background:{{ b.bg }}"></span>
+          </sc-for>
+        </span>
+        <span style="font:600 11.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">{{ genStrength }}</span>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:22px 2px 8px">
+        <span style="font:700 13.5px/1 'Plus Jakarta Sans',system-ui;color:#101010">Length</span>
+        <span style="font:700 15px/1 ui-monospace,monospace;color:#101010">{{ genLen }}</span>
+      </div>
+      <input type="range" min="8" max="40" step="1" value="{{ genLen }}" onChange="{{ setLen }}" aria-label="Password length" style="width:100%;height:44px;accent-color:#101010;cursor:pointer" />
+
+      <div style="display:flex;flex-direction:column;gap:2px;padding-top:6px">
+        <sc-for list="{{ genOptions }}" as="o" hint-placeholder-count="4">
+          <button type="button" onClick="{{ o.toggle }}" aria-pressed="{{ o.on }}" style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 2px;border:none;border-bottom:1.5px solid #f5f4f1;background:transparent;cursor:pointer;text-align:left;width:100%">
+            <span style="flex:1;min-width:0">
+              <span style="display:block;font:600 14.5px/1.2 'Plus Jakarta Sans',system-ui;color:#101010">{{ o.label }}</span>
+              <span style="display:block;margin-top:4px;font:500 11.5px/1 ui-monospace,monospace;color:#77746e">{{ o.sample }}</span>
+            </span>
+            <sc-if value="{{ o.on }}" hint-placeholder-val="{{ true }}">
+              <span style="width:46px;height:28px;border-radius:14px;background:#101010;display:flex;align-items:center;justify-content:flex-end;padding:3px;box-sizing:border-box;flex:none"><span style="width:22px;height:22px;border-radius:11px;background:#fefefe"></span></span>
+            </sc-if>
+            <sc-if value="{{ o.off }}" hint-placeholder-val="{{ false }}">
+              <span style="width:46px;height:28px;border-radius:14px;background:#eceae5;display:flex;align-items:center;padding:3px;box-sizing:border-box;flex:none"><span style="width:22px;height:22px;border-radius:11px;background:#ffffff"></span></span>
+            </sc-if>
+          </button>
+        </sc-for>
+      </div>
+
+      <button type="button" style="width:100%;height:56px;margin-top:20px;border-radius:28px;border:none;background:#101010;color:#fefefe;font:700 15.5px/1 'Plus Jakarta Sans',system-ui;cursor:pointer">Use this password</button>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">CRUD 04</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Note — read</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#ffffff">
+  <div style="padding:0 18px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+    <button type="button" aria-label="Back" style="width:44px;height:44px;border-radius:15px;border:none;background:#f5f4f1;display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#101010" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5L5.5 9l5.5 5.5"></path></svg>
+    </button>
+    <div style="display:flex;gap:8px">
+      <button type="button" style="height:44px;padding:0 17px;border-radius:22px;border:1.5px solid #eceae5;background:#ffffff;font:700 12.5px/1 'Plus Jakarta Sans',system-ui;color:#101010;cursor:pointer">Edit</button>
+      <button type="button" aria-label="More options" style="width:44px;height:44px;border-radius:15px;border:1.5px solid #eceae5;background:#ffffff;display:flex;align-items:center;justify-content:center;cursor:pointer">
+        <svg width="17" height="17" viewBox="0 0 18 18" fill="#101010"><circle cx="9" cy="4" r="1.5"></circle><circle cx="9" cy="9" r="1.5"></circle><circle cx="9" cy="14" r="1.5"></circle></svg>
+      </button>
+    </div>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:22px 24px 0">
+    <h1 style="margin:0;font:800 26px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#101010;text-wrap:pretty">Pi server SSH notes</h1>
+    <div style="margin-top:9px;font:500 12px/1 'Plus Jakarta Sans',system-ui;color:#77746e">Updated 3 days ago · 214 words</div>
+
+    <p style="margin:22px 0 0;font:500 15px/1.65 'Plus Jakarta Sans',system-ui;color:#101010;text-wrap:pretty">Static lease on the router, so the address holds after a reboot. Key lives in the vault under <strong style="font-weight:700">pi-ssh-key.pem</strong>.</p>
+
+    <div style="margin-top:20px;padding:16px 18px;border-radius:18px;background:#f5f4f1;font:600 13.5px/1.7 ui-monospace,monospace;color:#101010">ssh shivam@192.168.1.14<br />sudo systemctl status pidrive</div>
+
+    <div style="margin-top:22px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Before every rebuild</div>
+    <div style="display:flex;flex-direction:column;gap:4px;padding-top:10px">
+      <sc-for list="{{ checklist }}" as="c" hint-placeholder-count="4">
+        <button type="button" onClick="{{ c.toggle }}" aria-pressed="{{ c.done }}" style="display:flex;align-items:flex-start;gap:12px;min-height:44px;padding:11px 2px;border:none;background:transparent;cursor:pointer;text-align:left;width:100%">
+          <sc-if value="{{ c.done }}" hint-placeholder-val="{{ false }}">
+            <span style="width:22px;height:22px;border-radius:7px;background:#101010;display:flex;align-items:center;justify-content:center;flex:none;margin-top:1px"><svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="#fefefe" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.4l2.6 2.6L11 4.4"></path></svg></span>
+          </sc-if>
+          <sc-if value="{{ c.open }}" hint-placeholder-val="{{ true }}">
+            <span style="width:22px;height:22px;border-radius:7px;border:1.5px solid #eceae5;flex:none;margin-top:1px"></span>
+          </sc-if>
+          <span style="flex:1;font:500 14.5px/1.45 'Plus Jakarta Sans',system-ui;color:{{ c.color }};text-decoration:{{ c.line }}">{{ c.label }}</span>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="padding:0 22px 34px">
+    <div style="display:flex;align-items:center;gap:9px;padding:13px 16px;border-radius:16px;background:#f5f4f1">
+      <span style="width:7px;height:7px;border-radius:50%;background:#0e7c66"></span>
+      <span style="font:600 12px/1.3 'Plus Jakarta Sans',system-ui;color:#77746e">Body stays encrypted — search only sees the title</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">CRUD 05</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Note editor</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" keyboard="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#ffffff">
+  <div style="padding:0 18px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+    <button type="button" aria-label="Back" style="width:44px;height:44px;border-radius:15px;border:none;background:#f5f4f1;display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#101010" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5L5.5 9l5.5 5.5"></path></svg>
+    </button>
+    <div role="status" aria-live="polite" style="display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:18px;background:#f5f4f1">
+      <span style="width:6px;height:6px;border-radius:50%;background:{{ noteSaveDot }}"></span>
+      <span style="font:600 11.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">{{ noteSaveLabel }}</span>
+    </div>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:20px 22px 0;display:flex;flex-direction:column">
+    <input id="nTitle" type="text" aria-label="Note title" value="{{ nTitle }}" onChange="{{ setNTitle }}" placeholder="Title" style="border:none;outline:none;background:transparent;font:800 24px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#101010;padding:0 2px" />
+    <textarea id="nBody" aria-label="Note body" value="{{ nBody }}" onChange="{{ setNBody }}" placeholder="Start typing…" style="flex:1;margin-top:14px;border:none;outline:none;resize:none;background:transparent;font:500 15px/1.65 'Plus Jakarta Sans',system-ui;color:#101010;padding:0 2px"></textarea>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:6px;padding:10px 14px;border-top:1.5px solid #eceae5;background:#ffffff">
+    <sc-for list="{{ formatTools }}" as="t" hint-placeholder-count="6">
+      <button type="button" onClick="{{ t.toggle }}" aria-label="{{ t.label }}" aria-pressed="{{ t.on }}" style="width:46px;height:46px;border-radius:15px;border:none;background:{{ t.bg }};display:flex;align-items:center;justify-content:center;cursor:pointer;font:{{ t.font }};color:{{ t.color }};transition:background .12s ease">{{ t.glyph }}</button>
+    </sc-for>
+    <div style="flex:1"></div>
+    <button type="button" aria-label="Attach a file" style="width:46px;height:46px;border-radius:15px;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="#101010" stroke-width="1.7" stroke-linecap="round"><path d="M12.5 7.5l-5 5a2.5 2.5 0 003.5 3.5l6-6a4.2 4.2 0 00-6-6l-6 6a6 6 0 008.5 8.5l4-4"></path></svg>
+    </button>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">CRUD 06</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Upload — pick source</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#ffffff;position:relative">
+  <div style="padding:0 22px;opacity:.4">
+    <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#101010">Media</h1>
+    <div style="margin-top:20px;display:flex;flex-direction:column;gap:14px">
+      <sc-for list="{{ ghostRows }}" as="g" hint-placeholder-count="4">
+        <div style="display:flex;align-items:center;gap:13px">
+          <span style="width:42px;height:42px;border-radius:13px;background:#f5f4f1;flex:none"></span>
+          <span style="flex:1"><span style="display:block;width:{{ g.w }};height:11px;border-radius:6px;background:#f5f4f1"></span><span style="display:block;margin-top:8px;width:88px;height:9px;border-radius:5px;background:#f5f4f1"></span></span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="position:absolute;inset:0;background:rgba(16,16,16,0.4);display:flex;align-items:flex-end;animation:fade .16s ease-out">
+    <div style="width:100%;background:#ffffff;border-radius:32px 32px 0 0;padding:14px 18px 34px;animation:rise .22s ease-out">
+      <div style="width:38px;height:4px;border-radius:2px;background:#eceae5;margin:0 auto 16px"></div>
+      <div style="padding:0 6px 4px">
+        <span style="display:block;font:800 19px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#101010">Add to Documents</span>
+        <span style="display:block;margin-top:7px;font:500 12.5px/1.5 'Plus Jakarta Sans',system-ui;color:#77746e">Files are encrypted here, then uploaded to your Pi. Nothing is kept on this device.</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:2px;padding-top:10px">
+        <sc-for list="{{ sources }}" as="s" hint-placeholder-count="4">
+          <button type="button" style="display:flex;align-items:center;gap:14px;padding:15px 6px;border:none;border-bottom:1.5px solid #f5f4f1;background:transparent;cursor:pointer;text-align:left;width:100%" style-active="background:#f5f4f1">
+            <span style="width:44px;height:44px;border-radius:15px;background:#f5f4f1;display:flex;align-items:center;justify-content:center;flex:none;font:600 17px/1 ui-monospace,monospace;color:#101010">{{ s.glyph }}</span>
+            <span style="flex:1;min-width:0">
+              <span style="display:block;font:700 15px/1.2 'Plus Jakarta Sans',system-ui;color:#101010">{{ s.label }}</span>
+              <span style="display:block;margin-top:5px;font:500 12px/1.2 'Plus Jakarta Sans',system-ui;color:#77746e">{{ s.meta }}</span>
+            </span>
+            <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="#a09d97" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M7 3.5L12.5 9 7 14.5"></path></svg>
+          </button>
+        </sc-for>
+      </div>
+      <button type="button" style="width:100%;height:54px;margin-top:16px;border-radius:27px;border:1.5px solid #eceae5;background:#ffffff;font:700 14.5px/1 'Plus Jakarta Sans',system-ui;color:#101010;cursor:pointer">Cancel</button>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">CRUD 07</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Upload progress</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Runs on its own</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#ffffff">
+  <div style="padding:0 22px">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+      <h1 style="margin:0;font:800 25px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#101010">Encrypting</h1>
+      <button type="button" style="height:38px;padding:0 14px;border-radius:19px;border:1.5px solid #eceae5;background:#ffffff;font:700 11.5px/1 'Plus Jakarta Sans',system-ui;color:#8f2b12;cursor:pointer">Cancel all</button>
+    </div>
+    <div style="margin-top:9px;font:500 12.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">{{ uploadSummary }}</div>
+    <div style="margin-top:16px;height:6px;border-radius:3px;background:#f5f4f1;overflow:hidden"><span style="display:block;width:{{ uploadTotal }};height:100%;background:#101010;transition:width .4s linear"></span></div>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:22px 22px 0;display:flex;flex-direction:column;gap:14px">
+    <sc-for list="{{ uploads }}" as="u" hint-placeholder-count="4">
+      <div style="display:flex;align-items:center;gap:13px">
+        <span style="width:44px;height:44px;border-radius:14px;background:#f5f4f1;display:flex;align-items:center;justify-content:center;flex:none;font:700 10.5px/1 ui-monospace,monospace;color:#101010">{{ u.ext }}</span>
+        <span style="flex:1;min-width:0">
+          <span style="display:flex;align-items:baseline;gap:8px">
+            <span style="flex:1;min-width:0;font:600 14px/1.2 'Plus Jakarta Sans',system-ui;color:#101010;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ u.name }}</span>
+            <span style="font:600 11px/1 ui-monospace,monospace;color:#77746e;flex:none">{{ u.state }}</span>
+          </span>
+          <span style="display:block;margin-top:9px;height:4px;border-radius:2px;background:#f5f4f1;overflow:hidden"><span style="display:block;width:{{ u.pct }};height:100%;background:{{ u.barColor }};transition:width .4s linear"></span></span>
+        </span>
+        <sc-if value="{{ u.done }}" hint-placeholder-val="{{ false }}">
+          <span style="width:24px;height:24px;border-radius:12px;background:#0e7c66;display:flex;align-items:center;justify-content:center;flex:none"><svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="#fefefe" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.4l2.6 2.6L11 4.4"></path></svg></span>
+        </sc-if>
+        <sc-if value="{{ u.running }}" hint-placeholder-val="{{ true }}">
+          <button type="button" aria-label="Cancel {{ u.name }}" style="width:44px;height:44px;border-radius:14px;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none;font:400 19px/1 'Plus Jakarta Sans',system-ui;color:#77746e">×</button>
+        </sc-if>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="padding:0 22px 34px">
+    <div style="display:flex;gap:11px;align-items:flex-start;padding:15px 17px;border-radius:18px;background:#f5f4f1">
+      <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="#77746e" stroke-width="1.6" style="flex:none;margin-top:1px"><rect x="3" y="7.6" width="12" height="7.4" rx="2.4"></rect><path d="M6 7.6V5.4a3 3 0 016 0v2.2"></path></svg>
+      <span style="font:500 12.5px/1.55 'Plus Jakarta Sans',system-ui;color:#77746e;text-wrap:pretty">Encryption happens here, then the file uploads to your Pi. Leaving this screen does not stop it.</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">CRUD 08</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Action sheet</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#ffffff;position:relative">
+  <div style="padding:0 22px;opacity:.4">
+    <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#101010">Media</h1>
+    <div style="margin-top:20px;display:flex;flex-direction:column;gap:14px">
+      <sc-for list="{{ ghostRows }}" as="g" hint-placeholder-count="4">
+        <div style="display:flex;align-items:center;gap:13px">
+          <span style="width:42px;height:42px;border-radius:13px;background:#f5f4f1;flex:none"></span>
+          <span style="flex:1"><span style="display:block;width:{{ g.w }};height:11px;border-radius:6px;background:#f5f4f1"></span><span style="display:block;margin-top:8px;width:88px;height:9px;border-radius:5px;background:#f5f4f1"></span></span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="position:absolute;inset:0;background:rgba(16,16,16,0.4);display:flex;flex-direction:column;justify-content:flex-end;gap:9px;padding:0 12px 30px;animation:fade .16s ease-out">
+    <div style="border-radius:26px;background:#ffffff;overflow:hidden;animation:rise .2s ease-out">
+      <div style="padding:17px 20px;border-bottom:1.5px solid #f5f4f1;display:flex;align-items:center;gap:12px">
+        <span style="width:38px;height:38px;border-radius:12px;background:#f5f4f1;display:flex;align-items:center;justify-content:center;flex:none;font:700 10px/1 ui-monospace,monospace;color:#101010">PDF</span>
+        <span style="min-width:0">
+          <span style="display:block;font:700 14px/1.2 'Plus Jakarta Sans',system-ui;color:#101010;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">lease-agreement.pdf</span>
+          <span style="display:block;margin-top:5px;font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">1.1 MB</span>
+        </span>
+      </div>
+      <sc-for list="{{ sheetActions }}" as="a" hint-placeholder-count="6">
+        <button type="button" style="width:100%;padding:17px 20px;border:none;border-bottom:1.5px solid #f5f4f1;background:#ffffff;display:flex;align-items:center;gap:14px;cursor:pointer;text-align:left" style-active="background:#f5f4f1">
+          <span style="width:20px;font:600 15px/1 ui-monospace,monospace;color:{{ a.color }};flex:none">{{ a.glyph }}</span>
+          <span style="flex:1;font:600 15px/1.2 'Plus Jakarta Sans',system-ui;color:{{ a.color }}">{{ a.label }}</span>
+        </button>
+      </sc-for>
+    </div>
+    <button type="button" style="width:100%;height:58px;border-radius:29px;border:none;background:#ffffff;font:700 15.5px/1 'Plus Jakarta Sans',system-ui;color:#101010;cursor:pointer">Cancel</button>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">CRUD 09</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">New folder</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#ffffff;position:relative">
+  <div style="padding:0 22px;opacity:.4">
+    <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#101010">Media</h1>
+    <div style="margin-top:20px;display:flex;flex-direction:column;gap:14px">
+      <sc-for list="{{ ghostRows }}" as="g" hint-placeholder-count="4">
+        <div style="display:flex;align-items:center;gap:13px">
+          <span style="width:42px;height:42px;border-radius:13px;background:#f5f4f1;flex:none"></span>
+          <span style="flex:1"><span style="display:block;width:{{ g.w }};height:11px;border-radius:6px;background:#f5f4f1"></span><span style="display:block;margin-top:8px;width:88px;height:9px;border-radius:5px;background:#f5f4f1"></span></span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="position:absolute;inset:0;background:rgba(16,16,16,0.4);display:flex;align-items:center;justify-content:center;padding:0 26px;animation:fade .16s ease-out">
+    <div style="width:100%;border-radius:28px;background:#ffffff;padding:26px 22px 18px;animation:rise .2s ease-out">
+      <div style="font:800 19px/1.25 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#101010">New folder</div>
+      <div style="margin-top:8px;font:500 12.5px/1.5 'Plus Jakarta Sans',system-ui;color:#77746e">Created inside Documents.</div>
+      <div style="margin-top:18px;height:54px;border-radius:17px;background:#f5f4f1;border:1.5px solid #101010;display:flex;align-items:center;padding:0 16px">
+        <input id="folderName" type="text" aria-label="Folder name" value="{{ folderName }}" onChange="{{ setFolder }}" placeholder="Folder name" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font:600 16px/1 'Plus Jakarta Sans',system-ui;color:#101010" />
+        <span style="font:500 11px/1 ui-monospace,monospace;color:#77746e">{{ folderCount }}</span>
+      </div>
+      <div style="display:flex;gap:10px;padding-top:20px">
+        <button type="button" style="flex:1;height:52px;border-radius:26px;border:1.5px solid #eceae5;background:#ffffff;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#101010;cursor:pointer">Cancel</button>
+        <button type="button" style="flex:1;height:52px;border-radius:26px;border:none;background:{{ createBg }};color:{{ createFg }};font:700 14px/1 'Plus Jakarta Sans',system-ui;cursor:pointer;transition:background .14s ease">Create</button>
+      </div>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">CRUD 10</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Rename</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#ffffff;position:relative">
+  <div style="padding:0 22px;opacity:.4">
+    <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#101010">Media</h1>
+    <div style="margin-top:20px;display:flex;flex-direction:column;gap:14px">
+      <sc-for list="{{ ghostRows }}" as="g" hint-placeholder-count="4">
+        <div style="display:flex;align-items:center;gap:13px">
+          <span style="width:42px;height:42px;border-radius:13px;background:#f5f4f1;flex:none"></span>
+          <span style="flex:1"><span style="display:block;width:{{ g.w }};height:11px;border-radius:6px;background:#f5f4f1"></span><span style="display:block;margin-top:8px;width:88px;height:9px;border-radius:5px;background:#f5f4f1"></span></span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="position:absolute;inset:0;background:rgba(16,16,16,0.4);display:flex;align-items:center;justify-content:center;padding:0 26px;animation:fade .16s ease-out">
+    <div style="width:100%;border-radius:28px;background:#ffffff;padding:26px 22px 18px;animation:rise .2s ease-out">
+      <div style="font:800 19px/1.25 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#101010">Rename file</div>
+      <div style="margin-top:8px;font:500 12.5px/1.5 'Plus Jakarta Sans',system-ui;color:#77746e">The extension stays as it is.</div>
+      <div style="margin-top:18px;height:54px;border-radius:17px;background:#f5f4f1;border:1.5px solid #101010;display:flex;align-items:center;padding:0 16px;gap:2px">
+        <input id="renameVal" type="text" aria-label="File name" value="{{ renameVal }}" onChange="{{ setRename }}" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font:600 16px/1 'Plus Jakarta Sans',system-ui;color:#101010" />
+        <span style="font:600 15px/1 'Plus Jakarta Sans',system-ui;color:#77746e;flex:none">.pdf</span>
+      </div>
+      <div style="display:flex;gap:10px;padding-top:20px">
+        <button type="button" style="flex:1;height:52px;border-radius:26px;border:1.5px solid #eceae5;background:#ffffff;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#101010;cursor:pointer">Cancel</button>
+        <button type="button" style="flex:1;height:52px;border-radius:26px;border:none;background:#101010;color:#fefefe;font:700 14px/1 'Plus Jakarta Sans',system-ui;cursor:pointer">Rename</button>
+      </div>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">CRUD 11</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Move to folder</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Pick one</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#ffffff;position:relative">
+  <div style="padding:0 22px;opacity:.4">
+    <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#101010">Media</h1>
+    <div style="margin-top:20px;display:flex;flex-direction:column;gap:14px">
+      <sc-for list="{{ ghostRows }}" as="g" hint-placeholder-count="3">
+        <div style="display:flex;align-items:center;gap:13px">
+          <span style="width:42px;height:42px;border-radius:13px;background:#f5f4f1;flex:none"></span>
+          <span style="flex:1"><span style="display:block;width:{{ g.w }};height:11px;border-radius:6px;background:#f5f4f1"></span><span style="display:block;margin-top:8px;width:88px;height:9px;border-radius:5px;background:#f5f4f1"></span></span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="position:absolute;inset:0;background:rgba(16,16,16,0.4);display:flex;align-items:flex-end;animation:fade .16s ease-out">
+    <div style="width:100%;background:#ffffff;border-radius:32px 32px 0 0;padding:14px 20px 34px;animation:rise .22s ease-out">
+      <div style="width:38px;height:4px;border-radius:2px;background:#eceae5;margin:0 auto 16px"></div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;padding:0 4px">
+        <span style="font:800 19px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#101010">Move 2 items</span>
+        <span style="font:600 11.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">Vault › Documents</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:2px;padding-top:14px">
+        <sc-for list="{{ folders }}" as="f" hint-placeholder-count="5">
+          <button type="button" onClick="{{ f.pick }}" aria-pressed="{{ f.sel }}" style="display:flex;align-items:center;gap:13px;padding:14px 4px;border:none;border-bottom:1.5px solid #f5f4f1;background:transparent;cursor:pointer;text-align:left;width:100%">
+            <span style="width:40px;height:40px;border-radius:13px;background:#f5f4f1;display:flex;align-items:center;justify-content:center;flex:none">
+              <svg width="18" height="18" viewBox="0 0 22 22" fill="none" stroke="#101010" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path></svg>
+            </span>
+            <span style="flex:1;min-width:0">
+              <span style="display:block;font:600 15px/1.2 'Plus Jakarta Sans',system-ui;color:#101010">{{ f.name }}</span>
+              <span style="display:block;margin-top:5px;font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:#77746e">{{ f.meta }}</span>
+            </span>
+            <sc-if value="{{ f.sel }}" hint-placeholder-val="{{ false }}">
+              <span style="width:24px;height:24px;border-radius:12px;background:#101010;display:flex;align-items:center;justify-content:center;flex:none"><svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="#fefefe" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.4l2.6 2.6L11 4.4"></path></svg></span>
+            </sc-if>
+            <sc-if value="{{ f.unsel }}" hint-placeholder-val="{{ true }}">
+              <span style="width:24px;height:24px;border-radius:12px;border:1.5px solid #eceae5;flex:none"></span>
+            </sc-if>
+          </button>
+        </sc-for>
+      </div>
+      <div style="display:flex;gap:10px;padding-top:18px">
+        <button type="button" style="flex:1;height:54px;border-radius:27px;border:1.5px solid #eceae5;background:#ffffff;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#101010;cursor:pointer">New folder</button>
+        <button type="button" style="flex:1;height:54px;border-radius:27px;border:none;background:#101010;color:#fefefe;font:700 14px/1 'Plus Jakarta Sans',system-ui;cursor:pointer">Move here</button>
+      </div>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">CRUD 12</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Delete confirm</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#ffffff;position:relative">
+  <div style="padding:0 22px;opacity:.4">
+    <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#101010">Media</h1>
+    <div style="margin-top:20px;display:flex;flex-direction:column;gap:14px">
+      <sc-for list="{{ ghostRows }}" as="g" hint-placeholder-count="4">
+        <div style="display:flex;align-items:center;gap:13px">
+          <span style="width:42px;height:42px;border-radius:13px;background:#f5f4f1;flex:none"></span>
+          <span style="flex:1"><span style="display:block;width:{{ g.w }};height:11px;border-radius:6px;background:#f5f4f1"></span><span style="display:block;margin-top:8px;width:88px;height:9px;border-radius:5px;background:#f5f4f1"></span></span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="position:absolute;inset:0;background:rgba(16,16,16,0.45);display:flex;align-items:center;justify-content:center;padding:0 26px;animation:fade .16s ease-out">
+    <div style="width:100%;border-radius:28px;background:#ffffff;padding:28px 22px 18px;animation:rise .2s ease-out">
+      <div style="width:52px;height:52px;border-radius:18px;background:#fdeeea;display:flex;align-items:center;justify-content:center">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c23c1a" stroke-width="1.9" stroke-linecap="round"><path d="M5 7h14M9 7V5.5A1.5 1.5 0 0110.5 4h3A1.5 1.5 0 0115 5.5V7M7 7l1 12.5A1.5 1.5 0 009.5 21h5a1.5 1.5 0 001.5-1.5L17 7"></path></svg>
+      </div>
+      <div style="margin-top:18px;font:800 20px/1.25 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#101010">Delete 2 items?</div>
+      <p style="margin:10px 0 0;font:500 13.5px/1.55 'Plus Jakarta Sans',system-ui;color:#77746e;text-wrap:pretty">This is permanent. The files are deleted on your Pi straight away, and there is no trash to restore from.</p>
+      <div style="margin-top:18px;padding:14px 16px;border-radius:16px;background:#f5f4f1;display:flex;flex-direction:column;gap:8px">
+        <span style="font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#101010">passport-scan.jpg</span>
+        <span style="font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#101010">pi-ssh-key.pem</span>
+      </div>
+      <div style="display:flex;gap:10px;padding-top:20px">
+        <button type="button" style="flex:1;height:52px;border-radius:26px;border:1.5px solid #eceae5;background:#ffffff;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#101010;cursor:pointer">Keep them</button>
+        <button type="button" style="flex:1;height:52px;border-radius:26px;border:none;background:#c23c1a;color:#fefefe;font:700 14px/1 'Plus Jakarta Sans',system-ui;cursor:pointer">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">CRUD 13</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Sort &amp; view</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Selections are live</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#ffffff;position:relative">
+  <div style="padding:0 22px;opacity:.4">
+    <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#101010">Media</h1>
+    <div style="margin-top:20px;display:flex;flex-direction:column;gap:14px">
+      <sc-for list="{{ ghostRows }}" as="g" hint-placeholder-count="3">
+        <div style="display:flex;align-items:center;gap:13px">
+          <span style="width:42px;height:42px;border-radius:13px;background:#f5f4f1;flex:none"></span>
+          <span style="flex:1"><span style="display:block;width:{{ g.w }};height:11px;border-radius:6px;background:#f5f4f1"></span><span style="display:block;margin-top:8px;width:88px;height:9px;border-radius:5px;background:#f5f4f1"></span></span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="position:absolute;inset:0;background:rgba(16,16,16,0.4);display:flex;align-items:flex-end;animation:fade .16s ease-out">
+    <div style="width:100%;background:#ffffff;border-radius:32px 32px 0 0;padding:14px 22px 34px;animation:rise .22s ease-out">
+      <div style="width:38px;height:4px;border-radius:2px;background:#eceae5;margin:0 auto 18px"></div>
+      <span style="display:block;font:800 19px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#101010">Sort and view</span>
+
+      <span style="display:block;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#a09d97;padding:20px 0 4px">SORT BY</span>
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <sc-for list="{{ sortOptions }}" as="o" hint-placeholder-count="4">
+          <button type="button" onClick="{{ o.pick }}" aria-pressed="{{ o.sel }}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 2px;border:none;border-bottom:1.5px solid #f5f4f1;background:transparent;cursor:pointer;text-align:left;width:100%">
+            <span style="font:600 14.5px/1.2 'Plus Jakarta Sans',system-ui;color:#101010">{{ o.label }}</span>
+            <sc-if value="{{ o.sel }}" hint-placeholder-val="{{ false }}">
+              <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="#101010" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M3.5 9.4l3.6 3.6L14.5 5"></path></svg>
+            </sc-if>
+          </button>
+        </sc-for>
+      </div>
+
+      <span style="display:block;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#a09d97;padding:22px 0 10px">VIEW</span>
+      <div style="display:flex;gap:8px">
+        <button type="button" onClick="{{ pickList }}" aria-pressed="{{ viewIsList }}" style="flex:1;height:52px;border-radius:26px;border:1.5px solid {{ listBorder }};background:{{ listBg }};font:700 13.5px/1 'Plus Jakarta Sans',system-ui;color:{{ listFg }};cursor:pointer;transition:background .14s ease">List</button>
+        <button type="button" onClick="{{ pickGrid }}" aria-pressed="{{ viewIsGrid }}" style="flex:1;height:52px;border-radius:26px;border:1.5px solid {{ gridBorder }};background:{{ gridBg }};font:700 13.5px/1 'Plus Jakarta Sans',system-ui;color:{{ gridFg }};cursor:pointer;transition:background .14s ease">Grid</button>
+      </div>
+
+      <button type="button" onClick="{{ toggleFoldersFirst }}" aria-pressed="{{ foldersFirst }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 2px 6px;border:none;background:transparent;cursor:pointer;text-align:left">
+        <span style="font:600 14.5px/1.2 'Plus Jakarta Sans',system-ui;color:#101010">Folders first</span>
+        <sc-if value="{{ foldersFirst }}" hint-placeholder-val="{{ true }}">
+          <span style="width:46px;height:28px;border-radius:14px;background:#101010;display:flex;align-items:center;justify-content:flex-end;padding:3px;box-sizing:border-box;flex:none"><span style="width:22px;height:22px;border-radius:11px;background:#fefefe"></span></span>
+        </sc-if>
+        <sc-if value="{{ foldersLast }}" hint-placeholder-val="{{ false }}">
+          <span style="width:46px;height:28px;border-radius:14px;background:#eceae5;display:flex;align-items:center;padding:3px;box-sizing:border-box;flex:none"><span style="width:22px;height:22px;border-radius:11px;background:#ffffff"></span></span>
+        </sc-if>
+      </button>
+
+      <button type="button" style="width:100%;height:56px;margin-top:16px;border-radius:28px;border:none;background:#101010;color:#fefefe;font:700 15.5px/1 'Plus Jakarta Sans',system-ui;cursor:pointer">Done</button>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;align-items:baseline;gap:10px;padding:56px 0 26px;width:100%">
+  <span style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#a09d97">DARK</span>
+  <span style="font:700 15px/1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.02em;color:#101010">Same thirteen screens, dark theme</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">CRUD 01</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Password detail</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#101215">
+  <div style="padding:0 18px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+    <button type="button" aria-label="Back" style="width:44px;height:44px;border-radius:15px;border:none;background:#1c1f23;display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#f2f1ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5L5.5 9l5.5 5.5"></path></svg>
+    </button>
+    <div style="display:flex;gap:8px">
+      <button type="button" style="height:44px;padding:0 17px;border-radius:22px;border:1.5px solid #2b2f34;background:#101215;font:700 12.5px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;cursor:pointer">Edit</button>
+      <button type="button" aria-label="More options" style="width:44px;height:44px;border-radius:15px;border:1.5px solid #2b2f34;background:#101215;display:flex;align-items:center;justify-content:center;cursor:pointer">
+        <svg width="17" height="17" viewBox="0 0 18 18" fill="#f2f1ee"><circle cx="9" cy="4" r="1.5"></circle><circle cx="9" cy="9" r="1.5"></circle><circle cx="9" cy="14" r="1.5"></circle></svg>
+      </button>
+    </div>
+  </div>
+
+  <div style="padding:22px 22px 0;display:flex;align-items:center;gap:14px">
+    <span style="width:56px;height:56px;border-radius:19px;background:#1c1f23;display:flex;align-items:center;justify-content:center;font:800 22px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">G</span>
+    <span style="min-width:0">
+      <span style="display:block;font:800 24px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#f2f1ee">GitHub</span>
+      <span style="display:block;margin-top:6px;font:500 13px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">github.com</span>
+    </span>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:20px 22px 0;display:flex;flex-direction:column;gap:10px">
+    <sc-for list="{{ detailFields }}" as="f" hint-placeholder-count="4">
+      <div style="border-radius:20px;border:1.5px solid #2b2f34;background:#101215;padding:15px 16px;display:flex;align-items:center;gap:12px">
+        <span style="flex:1;min-width:0">
+          <span style="display:block;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#7e8085">{{ f.label }}</span>
+          <span style="display:block;margin-top:8px;font:{{ f.font }};color:#f2f1ee;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ f.value }}</span>
+        </span>
+        <sc-if value="{{ f.canReveal }}" hint-placeholder-val="{{ false }}">
+          <button type="button" onClick="{{ f.reveal }}" aria-label="{{ f.revealLabel }}" style="width:44px;height:44px;border-radius:14px;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none" style-active="background:#1c1f23">
+            <svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="#9b9ca1" stroke-width="1.7" stroke-linecap="round"><path d="M1.8 10S4.9 4.8 10 4.8 18.2 10 18.2 10 15.1 15.2 10 15.2 1.8 10 1.8 10z"></path><circle cx="10" cy="10" r="2.4"></circle><path d="{{ f.slash }}"></path></svg>
+          </button>
+        </sc-if>
+        <sc-if value="{{ f.canCopy }}" hint-placeholder-val="{{ true }}">
+          <button type="button" onClick="{{ f.copy }}" aria-label="Copy {{ f.label }}" style="width:44px;height:44px;border-radius:14px;border:1.5px solid #2b2f34;background:#101215;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none" style-active="background:#1c1f23">
+            <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="#f2f1ee" stroke-width="1.6" stroke-linejoin="round"><rect x="6" y="6" width="9.5" height="9.5" rx="2.4"></rect><path d="M12 4.2A2.2 2.2 0 009.8 2H5a2.4 2.4 0 00-2.4 2.4v5.4"></path></svg>
+          </button>
+        </sc-if>
+      </div>
+    </sc-for>
+    <div style="display:flex;gap:26px;padding:8px 4px 0">
+      <span><span style="display:block;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#7e8085">CREATED</span><span style="display:block;margin-top:7px;font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">14 Mar 2024</span></span>
+      <span><span style="display:block;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#7e8085">MODIFIED</span><span style="display:block;margin-top:7px;font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">2 days ago</span></span>
+    </div>
+  </div>
+
+  <div style="padding:0 22px 34px">
+    <div style="display:flex;align-items:center;gap:9px;padding:13px 16px;border-radius:16px;background:#1c1f23">
+      <span style="width:7px;height:7px;border-radius:50%;background:#35c39a"></span>
+      <span style="font:600 12px/1.3 'Plus Jakarta Sans',system-ui;color:#9b9ca1">Saved on your Pi · encrypted at rest</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">CRUD 02</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Password form — autosaves</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Type in it; roll the dice</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#101215">
+  <div style="padding:0 18px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+    <button type="button" aria-label="Back" style="width:44px;height:44px;border-radius:15px;border:none;background:#1c1f23;display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#f2f1ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5L5.5 9l5.5 5.5"></path></svg>
+    </button>
+    <div role="status" aria-live="polite" style="display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:18px;background:#1c1f23">
+      <span style="width:6px;height:6px;border-radius:50%;background:{{ saveDotD }}"></span>
+      <span style="font:600 11.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">{{ saveLabel }}</span>
+    </div>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:20px 22px 0;display:flex;flex-direction:column;gap:14px">
+    <div>
+      <label for="fName-d" style="display:block;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#7e8085;margin:0 0 9px 4px">NAME</label>
+      <div style="height:56px;border-radius:18px;background:#1c1f23;display:flex;align-items:center;padding:0 18px">
+        <input id="fName-d" type="text" value="{{ fName }}" onChange="{{ setName }}" placeholder="GitHub" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font:600 16px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee" />
+      </div>
+    </div>
+    <div>
+      <label for="fUser-d" style="display:block;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#7e8085;margin:0 0 9px 4px">USERNAME</label>
+      <div style="height:56px;border-radius:18px;background:#1c1f23;display:flex;align-items:center;padding:0 18px">
+        <input id="fUser-d" type="text" autoCapitalize="none" value="{{ fUser }}" onChange="{{ setUser }}" placeholder="you@email.com" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font:500 16px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee" />
+      </div>
+    </div>
+    <div>
+      <label for="fPass-d" style="display:block;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#7e8085;margin:0 0 9px 4px">PASSWORD</label>
+      <div style="height:56px;border-radius:18px;background:#1c1f23;display:flex;align-items:center;gap:4px;padding:0 8px 0 18px">
+        <input id="fPass-d" type="text" value="{{ fPass }}" onChange="{{ setPass }}" placeholder="Type or generate" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font:600 15px/1 ui-monospace,monospace;color:#f2f1ee" />
+        <button type="button" onClick="{{ roll }}" aria-label="Generate a new password" style="width:44px;height:44px;border-radius:14px;border:none;background:#101215;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none" style-active="background:#2b2f34">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="#f2f1ee" stroke-width="1.6"><rect x="3" y="3" width="14" height="14" rx="4"></rect><circle cx="7.3" cy="7.3" r="1.15" fill="#f2f1ee"></circle><circle cx="12.7" cy="12.7" r="1.15" fill="#f2f1ee"></circle><circle cx="12.7" cy="7.3" r="1.15" fill="#f2f1ee"></circle><circle cx="7.3" cy="12.7" r="1.15" fill="#f2f1ee"></circle></svg>
+        </button>
+        <button type="button" onClick="{{ openGen }}" aria-label="Generator options" style="width:44px;height:44px;border-radius:14px;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none" style-active="background:#2b2f34">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#f2f1ee" stroke-width="1.7" stroke-linecap="round"><path d="M3 6h12M3 12h12"></path><circle cx="7" cy="6" r="2" fill="#1c1f23"></circle><circle cx="11" cy="12" r="2" fill="#1c1f23"></circle></svg>
+        </button>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:12px 4px 0">
+        <span style="display:flex;gap:4px;flex:none">
+          <sc-for list="{{ strengthBarsD }}" as="b" hint-placeholder-count="4">
+            <span style="width:26px;height:4px;border-radius:2px;background:{{ b.bg }}"></span>
+          </sc-for>
+        </span>
+        <span style="font:600 11.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">{{ strengthLabel }}</span>
+      </div>
+    </div>
+    <div>
+      <label for="fUrl-d" style="display:block;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#7e8085;margin:0 0 9px 4px">WEBSITE</label>
+      <div style="height:56px;border-radius:18px;background:#1c1f23;display:flex;align-items:center;padding:0 18px">
+        <input id="fUrl-d" type="url" inputMode="url" autoCapitalize="none" value="{{ fUrl }}" onChange="{{ setUrl }}" placeholder="https://" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font:500 15.5px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee" />
+      </div>
+    </div>
+    <div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;padding:0 4px 9px">
+        <span style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#7e8085">CUSTOM FIELDS</span>
+        <button type="button" style="border:none;background:none;min-height:44px;padding:12px 10px;margin:-12px -10px;font:700 11.5px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;cursor:pointer">+ Add field</button>
+      </div>
+      <div style="border-radius:18px;background:#1c1f23;padding:14px 18px;display:flex;align-items:center;gap:12px">
+        <span style="flex:1;min-width:0">
+          <span style="display:block;font:600 11.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">Recovery email</span>
+          <span style="display:block;margin-top:6px;font:500 14.5px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">shivam.backup@mail.com</span>
+        </span>
+        <button type="button" aria-label="Remove custom field" style="width:44px;height:44px;border-radius:14px;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none;font:400 20px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">×</button>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:16px 22px 34px">
+    <button type="button" style="width:100%;height:54px;border-radius:27px;border:1.5px solid #2b2f34;background:#101215;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#ff9d80;cursor:pointer">Delete this password</button>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">CRUD 03</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Generator sheet</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Slider and toggles are live</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#101215;position:relative">
+  <div style="padding:0 22px;opacity:.45">
+    <span style="display:block;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#7e8085">PASSWORD</span>
+    <div style="margin-top:9px;height:56px;border-radius:18px;background:#1c1f23;display:flex;align-items:center;padding:0 18px;font:600 15px/1 ui-monospace,monospace;color:#f2f1ee">{{ genValue }}</div>
+    <span style="display:block;margin-top:22px;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#7e8085">WEBSITE</span>
+    <div style="margin-top:9px;height:56px;border-radius:18px;background:#1c1f23"></div>
+  </div>
+
+  <div style="position:absolute;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:flex-end;animation:fade .16s ease-out">
+    <div style="width:100%;background:#101215;border-radius:32px 32px 0 0;padding:14px 22px 34px;animation:rise .22s ease-out">
+      <div style="width:38px;height:4px;border-radius:2px;background:#2b2f34;margin:0 auto 18px"></div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between">
+        <span style="font:800 19px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#f2f1ee">Generate password</span>
+        <button type="button" onClick="{{ roll }}" style="border:none;background:none;min-height:44px;padding:14px 10px;margin:-14px -10px;font:700 12.5px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;cursor:pointer">Reroll</button>
+      </div>
+
+      <div style="margin-top:16px;padding:18px;border-radius:20px;background:#1c1f23;font:600 16px/1.5 ui-monospace,monospace;color:#f2f1ee;word-break:break-all">{{ genValue }}</div>
+
+      <div style="display:flex;align-items:center;gap:10px;padding:14px 2px 0">
+        <span style="display:flex;gap:4px;flex:none">
+          <sc-for list="{{ genBarsD }}" as="b" hint-placeholder-count="4">
+            <span style="width:26px;height:4px;border-radius:2px;background:{{ b.bg }}"></span>
+          </sc-for>
+        </span>
+        <span style="font:600 11.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">{{ genStrength }}</span>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:22px 2px 8px">
+        <span style="font:700 13.5px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Length</span>
+        <span style="font:700 15px/1 ui-monospace,monospace;color:#f2f1ee">{{ genLen }}</span>
+      </div>
+      <input type="range" min="8" max="40" step="1" value="{{ genLen }}" onChange="{{ setLen }}" aria-label="Password length" style="width:100%;height:44px;accent-color:#f2f1ee;cursor:pointer" />
+
+      <div style="display:flex;flex-direction:column;gap:2px;padding-top:6px">
+        <sc-for list="{{ genOptions }}" as="o" hint-placeholder-count="4">
+          <button type="button" onClick="{{ o.toggle }}" aria-pressed="{{ o.on }}" style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 2px;border:none;border-bottom:1.5px solid #1c1f23;background:transparent;cursor:pointer;text-align:left;width:100%">
+            <span style="flex:1;min-width:0">
+              <span style="display:block;font:600 14.5px/1.2 'Plus Jakarta Sans',system-ui;color:#f2f1ee">{{ o.label }}</span>
+              <span style="display:block;margin-top:4px;font:500 11.5px/1 ui-monospace,monospace;color:#9b9ca1">{{ o.sample }}</span>
+            </span>
+            <sc-if value="{{ o.on }}" hint-placeholder-val="{{ true }}">
+              <span style="width:46px;height:28px;border-radius:14px;background:#f2f1ee;display:flex;align-items:center;justify-content:flex-end;padding:3px;box-sizing:border-box;flex:none"><span style="width:22px;height:22px;border-radius:11px;background:#101215"></span></span>
+            </sc-if>
+            <sc-if value="{{ o.off }}" hint-placeholder-val="{{ false }}">
+              <span style="width:46px;height:28px;border-radius:14px;background:#2b2f34;display:flex;align-items:center;padding:3px;box-sizing:border-box;flex:none"><span style="width:22px;height:22px;border-radius:11px;background:#101215"></span></span>
+            </sc-if>
+          </button>
+        </sc-for>
+      </div>
+
+      <button type="button" style="width:100%;height:56px;margin-top:20px;border-radius:28px;border:none;background:#f2f1ee;color:#101215;font:700 15.5px/1 'Plus Jakarta Sans',system-ui;cursor:pointer">Use this password</button>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">CRUD 04</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Note — read</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#101215">
+  <div style="padding:0 18px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+    <button type="button" aria-label="Back" style="width:44px;height:44px;border-radius:15px;border:none;background:#1c1f23;display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#f2f1ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5L5.5 9l5.5 5.5"></path></svg>
+    </button>
+    <div style="display:flex;gap:8px">
+      <button type="button" style="height:44px;padding:0 17px;border-radius:22px;border:1.5px solid #2b2f34;background:#101215;font:700 12.5px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;cursor:pointer">Edit</button>
+      <button type="button" aria-label="More options" style="width:44px;height:44px;border-radius:15px;border:1.5px solid #2b2f34;background:#101215;display:flex;align-items:center;justify-content:center;cursor:pointer">
+        <svg width="17" height="17" viewBox="0 0 18 18" fill="#f2f1ee"><circle cx="9" cy="4" r="1.5"></circle><circle cx="9" cy="9" r="1.5"></circle><circle cx="9" cy="14" r="1.5"></circle></svg>
+      </button>
+    </div>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:22px 24px 0">
+    <h1 style="margin:0;font:800 26px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#f2f1ee;text-wrap:pretty">Pi server SSH notes</h1>
+    <div style="margin-top:9px;font:500 12px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">Updated 3 days ago · 214 words</div>
+
+    <p style="margin:22px 0 0;font:500 15px/1.65 'Plus Jakarta Sans',system-ui;color:#f2f1ee;text-wrap:pretty">Static lease on the router, so the address holds after a reboot. Key lives in the vault under <strong style="font-weight:700">pi-ssh-key.pem</strong>.</p>
+
+    <div style="margin-top:20px;padding:16px 18px;border-radius:18px;background:#1c1f23;font:600 13.5px/1.7 ui-monospace,monospace;color:#f2f1ee">ssh shivam@192.168.1.14<br />sudo systemctl status pidrive</div>
+
+    <div style="margin-top:22px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Before every rebuild</div>
+    <div style="display:flex;flex-direction:column;gap:4px;padding-top:10px">
+      <sc-for list="{{ checklistD }}" as="c" hint-placeholder-count="4">
+        <button type="button" onClick="{{ c.toggle }}" aria-pressed="{{ c.done }}" style="display:flex;align-items:flex-start;gap:12px;min-height:44px;padding:11px 2px;border:none;background:transparent;cursor:pointer;text-align:left;width:100%">
+          <sc-if value="{{ c.done }}" hint-placeholder-val="{{ false }}">
+            <span style="width:22px;height:22px;border-radius:7px;background:#f2f1ee;display:flex;align-items:center;justify-content:center;flex:none;margin-top:1px"><svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="#101215" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.4l2.6 2.6L11 4.4"></path></svg></span>
+          </sc-if>
+          <sc-if value="{{ c.open }}" hint-placeholder-val="{{ true }}">
+            <span style="width:22px;height:22px;border-radius:7px;border:1.5px solid #2b2f34;flex:none;margin-top:1px"></span>
+          </sc-if>
+          <span style="flex:1;font:500 14.5px/1.45 'Plus Jakarta Sans',system-ui;color:{{ c.color }};text-decoration:{{ c.line }}">{{ c.label }}</span>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="padding:0 22px 34px">
+    <div style="display:flex;align-items:center;gap:9px;padding:13px 16px;border-radius:16px;background:#1c1f23">
+      <span style="width:7px;height:7px;border-radius:50%;background:#35c39a"></span>
+      <span style="font:600 12px/1.3 'Plus Jakarta Sans',system-ui;color:#9b9ca1">Body stays encrypted — search only sees the title</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">CRUD 05</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Note editor</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" keyboard="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#101215">
+  <div style="padding:0 18px;display:flex;align-items:center;justify-content:space-between;gap:10px">
+    <button type="button" aria-label="Back" style="width:44px;height:44px;border-radius:15px;border:none;background:#1c1f23;display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#f2f1ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5L5.5 9l5.5 5.5"></path></svg>
+    </button>
+    <div role="status" aria-live="polite" style="display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:18px;background:#1c1f23">
+      <span style="width:6px;height:6px;border-radius:50%;background:{{ noteSaveDotD }}"></span>
+      <span style="font:600 11.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">{{ noteSaveLabel }}</span>
+    </div>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:20px 22px 0;display:flex;flex-direction:column">
+    <input id="nTitle-d" type="text" aria-label="Note title" value="{{ nTitle }}" onChange="{{ setNTitle }}" placeholder="Title" style="border:none;outline:none;background:transparent;font:800 24px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.035em;color:#f2f1ee;padding:0 2px" />
+    <textarea id="nBody-d" aria-label="Note body" value="{{ nBody }}" onChange="{{ setNBody }}" placeholder="Start typing…" style="flex:1;margin-top:14px;border:none;outline:none;resize:none;background:transparent;font:500 15px/1.65 'Plus Jakarta Sans',system-ui;color:#f2f1ee;padding:0 2px"></textarea>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:6px;padding:10px 14px;border-top:1.5px solid #2b2f34;background:#101215">
+    <sc-for list="{{ formatToolsD }}" as="t" hint-placeholder-count="6">
+      <button type="button" onClick="{{ t.toggle }}" aria-label="{{ t.label }}" aria-pressed="{{ t.on }}" style="width:46px;height:46px;border-radius:15px;border:none;background:{{ t.bg }};display:flex;align-items:center;justify-content:center;cursor:pointer;font:{{ t.font }};color:{{ t.color }};transition:background .12s ease">{{ t.glyph }}</button>
+    </sc-for>
+    <div style="flex:1"></div>
+    <button type="button" aria-label="Attach a file" style="width:46px;height:46px;border-radius:15px;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="#f2f1ee" stroke-width="1.7" stroke-linecap="round"><path d="M12.5 7.5l-5 5a2.5 2.5 0 003.5 3.5l6-6a4.2 4.2 0 00-6-6l-6 6a6 6 0 008.5 8.5l4-4"></path></svg>
+    </button>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">CRUD 06</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Upload — pick source</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#101215;position:relative">
+  <div style="padding:0 22px;opacity:.4">
+    <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#f2f1ee">Media</h1>
+    <div style="margin-top:20px;display:flex;flex-direction:column;gap:14px">
+      <sc-for list="{{ ghostRows }}" as="g" hint-placeholder-count="4">
+        <div style="display:flex;align-items:center;gap:13px">
+          <span style="width:42px;height:42px;border-radius:13px;background:#1c1f23;flex:none"></span>
+          <span style="flex:1"><span style="display:block;width:{{ g.w }};height:11px;border-radius:6px;background:#1c1f23"></span><span style="display:block;margin-top:8px;width:88px;height:9px;border-radius:5px;background:#1c1f23"></span></span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="position:absolute;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:flex-end;animation:fade .16s ease-out">
+    <div style="width:100%;background:#101215;border-radius:32px 32px 0 0;padding:14px 18px 34px;animation:rise .22s ease-out">
+      <div style="width:38px;height:4px;border-radius:2px;background:#2b2f34;margin:0 auto 16px"></div>
+      <div style="padding:0 6px 4px">
+        <span style="display:block;font:800 19px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#f2f1ee">Add to Documents</span>
+        <span style="display:block;margin-top:7px;font:500 12.5px/1.5 'Plus Jakarta Sans',system-ui;color:#9b9ca1">Files are encrypted here, then uploaded to your Pi. Nothing is kept on this device.</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:2px;padding-top:10px">
+        <sc-for list="{{ sources }}" as="s" hint-placeholder-count="4">
+          <button type="button" style="display:flex;align-items:center;gap:14px;padding:15px 6px;border:none;border-bottom:1.5px solid #1c1f23;background:transparent;cursor:pointer;text-align:left;width:100%" style-active="background:#1c1f23">
+            <span style="width:44px;height:44px;border-radius:15px;background:#1c1f23;display:flex;align-items:center;justify-content:center;flex:none;font:600 17px/1 ui-monospace,monospace;color:#f2f1ee">{{ s.glyph }}</span>
+            <span style="flex:1;min-width:0">
+              <span style="display:block;font:700 15px/1.2 'Plus Jakarta Sans',system-ui;color:#f2f1ee">{{ s.label }}</span>
+              <span style="display:block;margin-top:5px;font:500 12px/1.2 'Plus Jakarta Sans',system-ui;color:#9b9ca1">{{ s.meta }}</span>
+            </span>
+            <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="#7e8085" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M7 3.5L12.5 9 7 14.5"></path></svg>
+          </button>
+        </sc-for>
+      </div>
+      <button type="button" style="width:100%;height:54px;margin-top:16px;border-radius:27px;border:1.5px solid #2b2f34;background:#101215;font:700 14.5px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;cursor:pointer">Cancel</button>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">CRUD 07</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Upload progress</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Runs on its own</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#101215">
+  <div style="padding:0 22px">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+      <h1 style="margin:0;font:800 25px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#f2f1ee">Encrypting</h1>
+      <button type="button" style="height:38px;padding:0 14px;border-radius:19px;border:1.5px solid #2b2f34;background:#101215;font:700 11.5px/1 'Plus Jakarta Sans',system-ui;color:#ff9d80;cursor:pointer">Cancel all</button>
+    </div>
+    <div style="margin-top:9px;font:500 12.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">{{ uploadSummary }}</div>
+    <div style="margin-top:16px;height:6px;border-radius:3px;background:#1c1f23;overflow:hidden"><span style="display:block;width:{{ uploadTotal }};height:100%;background:#f2f1ee;transition:width .4s linear"></span></div>
+  </div>
+
+  <div style="flex:1;overflow:hidden;padding:22px 22px 0;display:flex;flex-direction:column;gap:14px">
+    <sc-for list="{{ uploadsD }}" as="u" hint-placeholder-count="4">
+      <div style="display:flex;align-items:center;gap:13px">
+        <span style="width:44px;height:44px;border-radius:14px;background:#1c1f23;display:flex;align-items:center;justify-content:center;flex:none;font:700 10.5px/1 ui-monospace,monospace;color:#f2f1ee">{{ u.ext }}</span>
+        <span style="flex:1;min-width:0">
+          <span style="display:flex;align-items:baseline;gap:8px">
+            <span style="flex:1;min-width:0;font:600 14px/1.2 'Plus Jakarta Sans',system-ui;color:#f2f1ee;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ u.name }}</span>
+            <span style="font:600 11px/1 ui-monospace,monospace;color:#9b9ca1;flex:none">{{ u.state }}</span>
+          </span>
+          <span style="display:block;margin-top:9px;height:4px;border-radius:2px;background:#1c1f23;overflow:hidden"><span style="display:block;width:{{ u.pct }};height:100%;background:{{ u.barColor }};transition:width .4s linear"></span></span>
+        </span>
+        <sc-if value="{{ u.done }}" hint-placeholder-val="{{ false }}">
+          <span style="width:24px;height:24px;border-radius:12px;background:#35c39a;display:flex;align-items:center;justify-content:center;flex:none"><svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="#101215" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.4l2.6 2.6L11 4.4"></path></svg></span>
+        </sc-if>
+        <sc-if value="{{ u.running }}" hint-placeholder-val="{{ true }}">
+          <button type="button" aria-label="Cancel {{ u.name }}" style="width:44px;height:44px;border-radius:14px;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none;font:400 19px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">×</button>
+        </sc-if>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="padding:0 22px 34px">
+    <div style="display:flex;gap:11px;align-items:flex-start;padding:15px 17px;border-radius:18px;background:#1c1f23">
+      <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="#9b9ca1" stroke-width="1.6" style="flex:none;margin-top:1px"><rect x="3" y="7.6" width="12" height="7.4" rx="2.4"></rect><path d="M6 7.6V5.4a3 3 0 016 0v2.2"></path></svg>
+      <span style="font:500 12.5px/1.55 'Plus Jakarta Sans',system-ui;color:#9b9ca1;text-wrap:pretty">Encryption happens here, then the file uploads to your Pi. Leaving this screen does not stop it.</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">CRUD 08</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Action sheet</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#101215;position:relative">
+  <div style="padding:0 22px;opacity:.4">
+    <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#f2f1ee">Media</h1>
+    <div style="margin-top:20px;display:flex;flex-direction:column;gap:14px">
+      <sc-for list="{{ ghostRows }}" as="g" hint-placeholder-count="4">
+        <div style="display:flex;align-items:center;gap:13px">
+          <span style="width:42px;height:42px;border-radius:13px;background:#1c1f23;flex:none"></span>
+          <span style="flex:1"><span style="display:block;width:{{ g.w }};height:11px;border-radius:6px;background:#1c1f23"></span><span style="display:block;margin-top:8px;width:88px;height:9px;border-radius:5px;background:#1c1f23"></span></span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="position:absolute;inset:0;background:rgba(0,0,0,0.6);display:flex;flex-direction:column;justify-content:flex-end;gap:9px;padding:0 12px 30px;animation:fade .16s ease-out">
+    <div style="border-radius:26px;background:#101215;overflow:hidden;animation:rise .2s ease-out">
+      <div style="padding:17px 20px;border-bottom:1.5px solid #1c1f23;display:flex;align-items:center;gap:12px">
+        <span style="width:38px;height:38px;border-radius:12px;background:#1c1f23;display:flex;align-items:center;justify-content:center;flex:none;font:700 10px/1 ui-monospace,monospace;color:#f2f1ee">PDF</span>
+        <span style="min-width:0">
+          <span style="display:block;font:700 14px/1.2 'Plus Jakarta Sans',system-ui;color:#f2f1ee;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">lease-agreement.pdf</span>
+          <span style="display:block;margin-top:5px;font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">1.1 MB</span>
+        </span>
+      </div>
+      <sc-for list="{{ sheetActionsD }}" as="a" hint-placeholder-count="6">
+        <button type="button" style="width:100%;padding:17px 20px;border:none;border-bottom:1.5px solid #1c1f23;background:#101215;display:flex;align-items:center;gap:14px;cursor:pointer;text-align:left" style-active="background:#1c1f23">
+          <span style="width:20px;font:600 15px/1 ui-monospace,monospace;color:{{ a.color }};flex:none">{{ a.glyph }}</span>
+          <span style="flex:1;font:600 15px/1.2 'Plus Jakarta Sans',system-ui;color:{{ a.color }}">{{ a.label }}</span>
+        </button>
+      </sc-for>
+    </div>
+    <button type="button" style="width:100%;height:58px;border-radius:29px;border:none;background:#101215;font:700 15.5px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;cursor:pointer">Cancel</button>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">CRUD 09</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">New folder</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#101215;position:relative">
+  <div style="padding:0 22px;opacity:.4">
+    <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#f2f1ee">Media</h1>
+    <div style="margin-top:20px;display:flex;flex-direction:column;gap:14px">
+      <sc-for list="{{ ghostRows }}" as="g" hint-placeholder-count="4">
+        <div style="display:flex;align-items:center;gap:13px">
+          <span style="width:42px;height:42px;border-radius:13px;background:#1c1f23;flex:none"></span>
+          <span style="flex:1"><span style="display:block;width:{{ g.w }};height:11px;border-radius:6px;background:#1c1f23"></span><span style="display:block;margin-top:8px;width:88px;height:9px;border-radius:5px;background:#1c1f23"></span></span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="position:absolute;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;padding:0 26px;animation:fade .16s ease-out">
+    <div style="width:100%;border-radius:28px;background:#101215;padding:26px 22px 18px;animation:rise .2s ease-out">
+      <div style="font:800 19px/1.25 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#f2f1ee">New folder</div>
+      <div style="margin-top:8px;font:500 12.5px/1.5 'Plus Jakarta Sans',system-ui;color:#9b9ca1">Created inside Documents.</div>
+      <div style="margin-top:18px;height:54px;border-radius:17px;background:#1c1f23;border:1.5px solid #f2f1ee;display:flex;align-items:center;padding:0 16px">
+        <input id="folderName-d" type="text" aria-label="Folder name" value="{{ folderName }}" onChange="{{ setFolder }}" placeholder="Folder name" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font:600 16px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee" />
+        <span style="font:500 11px/1 ui-monospace,monospace;color:#9b9ca1">{{ folderCount }}</span>
+      </div>
+      <div style="display:flex;gap:10px;padding-top:20px">
+        <button type="button" style="flex:1;height:52px;border-radius:26px;border:1.5px solid #2b2f34;background:#101215;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;cursor:pointer">Cancel</button>
+        <button type="button" style="flex:1;height:52px;border-radius:26px;border:none;background:{{ createBgD }};color:{{ createFgD }};font:700 14px/1 'Plus Jakarta Sans',system-ui;cursor:pointer;transition:background .14s ease">Create</button>
+      </div>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">CRUD 10</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Rename</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#101215;position:relative">
+  <div style="padding:0 22px;opacity:.4">
+    <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#f2f1ee">Media</h1>
+    <div style="margin-top:20px;display:flex;flex-direction:column;gap:14px">
+      <sc-for list="{{ ghostRows }}" as="g" hint-placeholder-count="4">
+        <div style="display:flex;align-items:center;gap:13px">
+          <span style="width:42px;height:42px;border-radius:13px;background:#1c1f23;flex:none"></span>
+          <span style="flex:1"><span style="display:block;width:{{ g.w }};height:11px;border-radius:6px;background:#1c1f23"></span><span style="display:block;margin-top:8px;width:88px;height:9px;border-radius:5px;background:#1c1f23"></span></span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="position:absolute;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;padding:0 26px;animation:fade .16s ease-out">
+    <div style="width:100%;border-radius:28px;background:#101215;padding:26px 22px 18px;animation:rise .2s ease-out">
+      <div style="font:800 19px/1.25 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#f2f1ee">Rename file</div>
+      <div style="margin-top:8px;font:500 12.5px/1.5 'Plus Jakarta Sans',system-ui;color:#9b9ca1">The extension stays as it is.</div>
+      <div style="margin-top:18px;height:54px;border-radius:17px;background:#1c1f23;border:1.5px solid #f2f1ee;display:flex;align-items:center;padding:0 16px;gap:2px">
+        <input id="renameVal-d" type="text" aria-label="File name" value="{{ renameVal }}" onChange="{{ setRename }}" style="flex:1;min-width:0;height:100%;border:none;outline:none;background:transparent;font:600 16px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee" />
+        <span style="font:600 15px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1;flex:none">.pdf</span>
+      </div>
+      <div style="display:flex;gap:10px;padding-top:20px">
+        <button type="button" style="flex:1;height:52px;border-radius:26px;border:1.5px solid #2b2f34;background:#101215;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;cursor:pointer">Cancel</button>
+        <button type="button" style="flex:1;height:52px;border-radius:26px;border:none;background:#f2f1ee;color:#101215;font:700 14px/1 'Plus Jakarta Sans',system-ui;cursor:pointer">Rename</button>
+      </div>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">CRUD 11</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Move to folder</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Pick one</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#101215;position:relative">
+  <div style="padding:0 22px;opacity:.4">
+    <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#f2f1ee">Media</h1>
+    <div style="margin-top:20px;display:flex;flex-direction:column;gap:14px">
+      <sc-for list="{{ ghostRows }}" as="g" hint-placeholder-count="3">
+        <div style="display:flex;align-items:center;gap:13px">
+          <span style="width:42px;height:42px;border-radius:13px;background:#1c1f23;flex:none"></span>
+          <span style="flex:1"><span style="display:block;width:{{ g.w }};height:11px;border-radius:6px;background:#1c1f23"></span><span style="display:block;margin-top:8px;width:88px;height:9px;border-radius:5px;background:#1c1f23"></span></span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="position:absolute;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:flex-end;animation:fade .16s ease-out">
+    <div style="width:100%;background:#101215;border-radius:32px 32px 0 0;padding:14px 20px 34px;animation:rise .22s ease-out">
+      <div style="width:38px;height:4px;border-radius:2px;background:#2b2f34;margin:0 auto 16px"></div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;padding:0 4px">
+        <span style="font:800 19px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#f2f1ee">Move 2 items</span>
+        <span style="font:600 11.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">Vault › Documents</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:2px;padding-top:14px">
+        <sc-for list="{{ folders }}" as="f" hint-placeholder-count="5">
+          <button type="button" onClick="{{ f.pick }}" aria-pressed="{{ f.sel }}" style="display:flex;align-items:center;gap:13px;padding:14px 4px;border:none;border-bottom:1.5px solid #1c1f23;background:transparent;cursor:pointer;text-align:left;width:100%">
+            <span style="width:40px;height:40px;border-radius:13px;background:#1c1f23;display:flex;align-items:center;justify-content:center;flex:none">
+              <svg width="18" height="18" viewBox="0 0 22 22" fill="none" stroke="#f2f1ee" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 014.5 5h4L10 7h7.5A1.5 1.5 0 0119 8.5v8A1.5 1.5 0 0117.5 18h-13A1.5 1.5 0 013 16.5z"></path></svg>
+            </span>
+            <span style="flex:1;min-width:0">
+              <span style="display:block;font:600 15px/1.2 'Plus Jakarta Sans',system-ui;color:#f2f1ee">{{ f.name }}</span>
+              <span style="display:block;margin-top:5px;font:500 11.5px/1 'Plus Jakarta Sans',system-ui;color:#9b9ca1">{{ f.meta }}</span>
+            </span>
+            <sc-if value="{{ f.sel }}" hint-placeholder-val="{{ false }}">
+              <span style="width:24px;height:24px;border-radius:12px;background:#f2f1ee;display:flex;align-items:center;justify-content:center;flex:none"><svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="#101215" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.4l2.6 2.6L11 4.4"></path></svg></span>
+            </sc-if>
+            <sc-if value="{{ f.unsel }}" hint-placeholder-val="{{ true }}">
+              <span style="width:24px;height:24px;border-radius:12px;border:1.5px solid #2b2f34;flex:none"></span>
+            </sc-if>
+          </button>
+        </sc-for>
+      </div>
+      <div style="display:flex;gap:10px;padding-top:18px">
+        <button type="button" style="flex:1;height:54px;border-radius:27px;border:1.5px solid #2b2f34;background:#101215;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;cursor:pointer">New folder</button>
+        <button type="button" style="flex:1;height:54px;border-radius:27px;border:none;background:#f2f1ee;color:#101215;font:700 14px/1 'Plus Jakarta Sans',system-ui;cursor:pointer">Move here</button>
+      </div>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">CRUD 12</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Delete confirm</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#101215;position:relative">
+  <div style="padding:0 22px;opacity:.4">
+    <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#f2f1ee">Media</h1>
+    <div style="margin-top:20px;display:flex;flex-direction:column;gap:14px">
+      <sc-for list="{{ ghostRows }}" as="g" hint-placeholder-count="4">
+        <div style="display:flex;align-items:center;gap:13px">
+          <span style="width:42px;height:42px;border-radius:13px;background:#1c1f23;flex:none"></span>
+          <span style="flex:1"><span style="display:block;width:{{ g.w }};height:11px;border-radius:6px;background:#1c1f23"></span><span style="display:block;margin-top:8px;width:88px;height:9px;border-radius:5px;background:#1c1f23"></span></span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="position:absolute;inset:0;background:rgba(0,0,0,0.62);display:flex;align-items:center;justify-content:center;padding:0 26px;animation:fade .16s ease-out">
+    <div style="width:100%;border-radius:28px;background:#101215;padding:28px 22px 18px;animation:rise .2s ease-out">
+      <div style="width:52px;height:52px;border-radius:18px;background:#331a12;display:flex;align-items:center;justify-content:center">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e2603c" stroke-width="1.9" stroke-linecap="round"><path d="M5 7h14M9 7V5.5A1.5 1.5 0 0110.5 4h3A1.5 1.5 0 0115 5.5V7M7 7l1 12.5A1.5 1.5 0 009.5 21h5a1.5 1.5 0 001.5-1.5L17 7"></path></svg>
+      </div>
+      <div style="margin-top:18px;font:800 20px/1.25 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#f2f1ee">Delete 2 items?</div>
+      <p style="margin:10px 0 0;font:500 13.5px/1.55 'Plus Jakarta Sans',system-ui;color:#9b9ca1;text-wrap:pretty">This is permanent. The files are deleted on your Pi straight away, and there is no trash to restore from.</p>
+      <div style="margin-top:18px;padding:14px 16px;border-radius:16px;background:#1c1f23;display:flex;flex-direction:column;gap:8px">
+        <span style="font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">passport-scan.jpg</span>
+        <span style="font:600 12.5px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee">pi-ssh-key.pem</span>
+      </div>
+      <div style="display:flex;gap:10px;padding-top:20px">
+        <button type="button" style="flex:1;height:52px;border-radius:26px;border:1.5px solid #2b2f34;background:#101215;font:700 14px/1 'Plus Jakarta Sans',system-ui;color:#f2f1ee;cursor:pointer">Keep them</button>
+        <button type="button" style="flex:1;height:52px;border-radius:26px;border:none;background:#e2603c;color:#101215;font:700 14px/1 'Plus Jakarta Sans',system-ui;cursor:pointer">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+  <div><div style="font:700 10px/1 ui-monospace,monospace;letter-spacing:0.18em;color:#a09d97">CRUD 13</div><div style="margin-top:6px;font:700 14px/1.3 'Plus Jakarta Sans',system-ui;color:#101010">Sort &amp; view</div><div style="margin-top:3px;font:500 11.5px/1.4 'Plus Jakarta Sans',system-ui;color:#77746e">Selections are live</div></div>
+<x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" dark="{{ true }}" hint-size="402px,874px">
+<div style="height:100%;box-sizing:border-box;padding:98px 0 0;display:flex;flex-direction:column;background:#101215;position:relative">
+  <div style="padding:0 22px;opacity:.4">
+    <h1 style="margin:0;font:800 27px/1.1 'Plus Jakarta Sans',system-ui;letter-spacing:-0.04em;color:#f2f1ee">Media</h1>
+    <div style="margin-top:20px;display:flex;flex-direction:column;gap:14px">
+      <sc-for list="{{ ghostRows }}" as="g" hint-placeholder-count="3">
+        <div style="display:flex;align-items:center;gap:13px">
+          <span style="width:42px;height:42px;border-radius:13px;background:#1c1f23;flex:none"></span>
+          <span style="flex:1"><span style="display:block;width:{{ g.w }};height:11px;border-radius:6px;background:#1c1f23"></span><span style="display:block;margin-top:8px;width:88px;height:9px;border-radius:5px;background:#1c1f23"></span></span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="position:absolute;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:flex-end;animation:fade .16s ease-out">
+    <div style="width:100%;background:#101215;border-radius:32px 32px 0 0;padding:14px 22px 34px;animation:rise .22s ease-out">
+      <div style="width:38px;height:4px;border-radius:2px;background:#2b2f34;margin:0 auto 18px"></div>
+      <span style="display:block;font:800 19px/1.2 'Plus Jakarta Sans',system-ui;letter-spacing:-0.03em;color:#f2f1ee">Sort and view</span>
+
+      <span style="display:block;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#7e8085;padding:20px 0 4px">SORT BY</span>
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <sc-for list="{{ sortOptions }}" as="o" hint-placeholder-count="4">
+          <button type="button" onClick="{{ o.pick }}" aria-pressed="{{ o.sel }}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 2px;border:none;border-bottom:1.5px solid #1c1f23;background:transparent;cursor:pointer;text-align:left;width:100%">
+            <span style="font:600 14.5px/1.2 'Plus Jakarta Sans',system-ui;color:#f2f1ee">{{ o.label }}</span>
+            <sc-if value="{{ o.sel }}" hint-placeholder-val="{{ false }}">
+              <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="#f2f1ee" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M3.5 9.4l3.6 3.6L14.5 5"></path></svg>
+            </sc-if>
+          </button>
+        </sc-for>
+      </div>
+
+      <span style="display:block;font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.16em;color:#7e8085;padding:22px 0 10px">VIEW</span>
+      <div style="display:flex;gap:8px">
+        <button type="button" onClick="{{ pickList }}" aria-pressed="{{ viewIsList }}" style="flex:1;height:52px;border-radius:26px;border:1.5px solid {{ listBorderD }};background:{{ listBgD }};font:700 13.5px/1 'Plus Jakarta Sans',system-ui;color:{{ listFgD }};cursor:pointer;transition:background .14s ease">List</button>
+        <button type="button" onClick="{{ pickGrid }}" aria-pressed="{{ viewIsGrid }}" style="flex:1;height:52px;border-radius:26px;border:1.5px solid {{ gridBorderD }};background:{{ gridBgD }};font:700 13.5px/1 'Plus Jakarta Sans',system-ui;color:{{ gridFgD }};cursor:pointer;transition:background .14s ease">Grid</button>
+      </div>
+
+      <button type="button" onClick="{{ toggleFoldersFirst }}" aria-pressed="{{ foldersFirst }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 2px 6px;border:none;background:transparent;cursor:pointer;text-align:left">
+        <span style="font:600 14.5px/1.2 'Plus Jakarta Sans',system-ui;color:#f2f1ee">Folders first</span>
+        <sc-if value="{{ foldersFirst }}" hint-placeholder-val="{{ true }}">
+          <span style="width:46px;height:28px;border-radius:14px;background:#f2f1ee;display:flex;align-items:center;justify-content:flex-end;padding:3px;box-sizing:border-box;flex:none"><span style="width:22px;height:22px;border-radius:11px;background:#101215"></span></span>
+        </sc-if>
+        <sc-if value="{{ foldersLast }}" hint-placeholder-val="{{ false }}">
+          <span style="width:46px;height:28px;border-radius:14px;background:#2b2f34;display:flex;align-items:center;padding:3px;box-sizing:border-box;flex:none"><span style="width:22px;height:22px;border-radius:11px;background:#101215"></span></span>
+        </sc-if>
+      </button>
+
+      <button type="button" style="width:100%;height:56px;margin-top:16px;border-radius:28px;border:none;background:#f2f1ee;color:#101215;font:700 15.5px/1 'Plus Jakarta Sans',system-ui;cursor:pointer">Done</button>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<div style="width:280px;padding-top:34px;display:flex;flex-direction:column;gap:22px">
+  <div>
+    <div style="font:700 9.5px/1 ui-monospace,monospace;letter-spacing:0.2em;color:#a09d97;margin-bottom:12px">PATTERNS</div>
+    <div style="font:500 12px/1.75 'Plus Jakarta Sans',system-ui;color:#5f5c57">
+      Bottom sheet: 32px top radius, 38×4 grabber<br />Centre dialog: 28px radius, 26px inset<br />Destructive text #8F2B12, filled #C23C1A<br />Toggle 46×28, tick 24px, field 56px<br />Every row and control clears 44px
+    </div>
+  </div>
+  <div style="border-top:1px solid rgba(16,16,16,0.12);padding-top:16px;font:500 12px/1.7 'Plus Jakarta Sans',system-ui;color:#5f5c57">
+    Decisions held: forms autosave and say so instead of a Save button, the generator is both a dice on the field and a sheet, notes are rich text with checklists, context menus are bottom action sheets, deletion is a confirm dialog with no trash.
+  </div>
+</div>
+
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:1400}}">
+class Component extends DCLogic {
+  state = {
+    fName: 'GitHub', fUser: 'shivam@pidrive.app', fPass: 'r7$Kq2mL!vXz', fUrl: 'https://github.com',
+    saving: false, revealed: false,
+    nTitle: 'Pi server SSH notes', nBody: 'Static lease on the router, so the address holds after a reboot.', nSaving: false,
+    tools: { bold: false, italic: false, list: true, check: false },
+    genLen: 16, genOpts: { upper: true, digits: true, symbols: true, ambiguous: false }, genValue: 'r7$Kq2mL!vXz',
+    checks: [true, true, false, false],
+    folderName: 'Bank statements', renameVal: 'lease-agreement',
+    folderPick: 1, sort: 0, view: 'list', foldersFirst: true,
+    pct: [100, 62, 18, 0]
+  };
+
+  componentDidMount() {
+    this.iv = setInterval(() => this.setState(s => {
+      const pct = s.pct.map((p, i) => i === 0 ? 100 : Math.min(100, p + (p > 0 || s.pct[i - 1] > 55 ? [0, 3, 2, 1.4][i] : 0)));
+      this.ticks = (this.ticks || 0) + 1;
+      if (this.ticks > 40 || pct[2] >= 100) clearInterval(this.iv);
+      return { pct };
+    }), 700);
+  }
+  componentWillUnmount() { clearInterval(this.iv); [this.t1, this.t2].forEach(clearTimeout); }
+
+  touch(key, timer) {
+    this.setState({ [key]: true });
+    clearTimeout(this[timer]);
+    this[timer] = setTimeout(() => this.setState({ [key]: false }), 900);
+  }
+
+  gen() {
+    const o = this.state.genOpts;
+    let pool = 'abcdefghijkmnopqrstuvwxyz';
+    if (o.upper) pool += 'ABCDEFGHJKLMNPQRSTUVWXYZ';
+    if (o.digits) pool += '23456789';
+    if (o.symbols) pool += '!@#$%^&*-_=+?';
+    if (o.ambiguous) pool += 'l1IO0';
+    let out = '';
+    for (let i = 0; i < this.state.genLen; i++) out += pool[Math.floor(Math.random() * pool.length)];
+    return out;
+  }
+
+  bars(pw, d) {
+    const score = Math.min(4, Math.floor(pw.length / 5) + (/[^a-zA-Z0-9]/.test(pw) ? 1 : 0));
+    const on = d ? '#f2f1ee' : '#101010', off = d ? '#2b2f34' : '#eceae5';
+    return {
+      bars: [0, 1, 2, 3].map(i => ({ bg: i < score ? on : off })),
+      label: ['Too short', 'Weak', 'Fair', 'Strong', 'Very strong'][score]
+    };
+  }
+
+  renderVals() {
+    const s = this.state;
+    const strong = this.bars(s.fPass, false), strongD = this.bars(s.fPass, true);
+    const genB = this.bars(s.genValue, false), genBD = this.bars(s.genValue, true);
+    const ghost = [{ w: '62%' }, { w: '78%' }, { w: '48%' }, { w: '70%' }];
+    const detail = [
+      { label: 'USERNAME', value: s.fUser, font: "500 15.5px/1 'Plus Jakarta Sans',system-ui", canCopy: true, canReveal: false },
+      { label: 'PASSWORD', value: s.revealed ? s.fPass : '••••••••••••', font: '600 15px/1 ui-monospace,monospace', canCopy: true, canReveal: true,
+        slash: s.revealed ? 'M3 17L17 3' : '', revealLabel: s.revealed ? 'Hide password' : 'Reveal password',
+        reveal: () => this.setState({ revealed: !s.revealed }) },
+      { label: 'WEBSITE', value: 'https://github.com', font: "500 15.5px/1 'Plus Jakarta Sans',system-ui", canCopy: true, canReveal: false },
+      { label: 'RECOVERY EMAIL', value: 'shivam.backup@mail.com', font: "500 15.5px/1 'Plus Jakarta Sans',system-ui", canCopy: true, canReveal: false }
+    ].map(f => Object.assign({ copy: () => {}, reveal: () => {}, slash: '', revealLabel: '' }, f));
+
+    const toolDefs = [
+      { key: 'bold', glyph: 'B', label: 'Bold', font: "800 16px/1 'Plus Jakarta Sans',system-ui" },
+      { key: 'italic', glyph: 'I', label: 'Italic', font: "600 16px/1 Georgia,serif" },
+      { key: 'list', glyph: '•—', label: 'Bulleted list', font: "600 13px/1 ui-monospace,monospace" },
+      { key: 'check', glyph: '☑', label: 'Checklist', font: '600 16px/1 ui-monospace,monospace' },
+      { key: 'code', glyph: '{ }', label: 'Code block', font: '600 12px/1 ui-monospace,monospace' },
+      { key: 'undo', glyph: '↶', label: 'Undo', font: '600 17px/1 ui-monospace,monospace' }
+    ];
+    const genOptDefs = [
+      { key: 'upper', label: 'Uppercase letters', sample: 'A–Z' },
+      { key: 'digits', label: 'Numbers', sample: '2–9' },
+      { key: 'symbols', label: 'Symbols', sample: '!@#$%' },
+      { key: 'ambiguous', label: 'Allow look-alikes', sample: 'l 1 I O 0' }
+    ];
+    const sortDefs = ['Recently used', 'Name A–Z', 'Newest first', 'Largest first'];
+    const folderDefs = [
+      { name: 'Vault root', meta: '14 items' },
+      { name: 'Aadhaar', meta: '6 items' },
+      { name: 'Insurance', meta: '3 items' },
+      { name: 'Tax records', meta: '9 items' },
+      { name: 'Private area', meta: 'Needs PIN' }
+    ];
+    const upNames = [
+      { name: 'aadhaar-front.jpg', ext: 'JPG' },
+      { name: 'lease-agreement.pdf', ext: 'PDF' },
+      { name: 'tax-2025.zip', ext: 'ZIP' },
+      { name: 'locker-photos.heic', ext: 'HEIC' }
+    ];
+    const doneCount = s.pct.filter(p => p >= 100).length;
+    const total = Math.round(s.pct.reduce((a, b) => a + b, 0) / s.pct.length);
+
+    return {
+      ghostRows: ghost,
+      detailFields: detail,
+
+      fName: s.fName, fUser: s.fUser, fPass: s.fPass, fUrl: s.fUrl,
+      setName: e => { this.setState({ fName: e.target.value }); this.touch('saving', 't1'); },
+      setUser: e => { this.setState({ fUser: e.target.value }); this.touch('saving', 't1'); },
+      setPass: e => { this.setState({ fPass: e.target.value }); this.touch('saving', 't1'); },
+      setUrl: e => { this.setState({ fUrl: e.target.value }); this.touch('saving', 't1'); },
+      saveLabel: s.saving ? 'Saving…' : 'Saved just now',
+      saveDot: s.saving ? '#a09d97' : '#0e7c66',
+      saveDotD: s.saving ? '#7e8085' : '#35c39a',
+      strengthBars: strong.bars, strengthLabel: strong.label,
+      strengthBarsD: strongD.bars,
+      roll: () => { const v = this.gen(); this.setState({ fPass: v, genValue: v }); this.touch('saving', 't1'); },
+      openGen: () => {},
+
+      genValue: s.genValue, genLen: s.genLen,
+      genBars: genB.bars, genBarsD: genBD.bars, genStrength: genB.label,
+      setLen: e => { const n = Number(e.target.value); this.setState({ genLen: n }, () => this.setState({ genValue: this.gen() })); },
+      genOptions: genOptDefs.map(o => ({
+        label: o.label, sample: o.sample, on: !!s.genOpts[o.key], off: !s.genOpts[o.key],
+        toggle: () => this.setState({ genOpts: Object.assign({}, s.genOpts, { [o.key]: !s.genOpts[o.key] }) }, () => this.setState({ genValue: this.gen() }))
+      })),
+
+      nTitle: s.nTitle, nBody: s.nBody,
+      setNTitle: e => { this.setState({ nTitle: e.target.value }); this.touch('nSaving', 't2'); },
+      setNBody: e => { this.setState({ nBody: e.target.value }); this.touch('nSaving', 't2'); },
+      noteSaveLabel: s.nSaving ? 'Saving…' : 'Saved · encrypted',
+      noteSaveDot: s.nSaving ? '#a09d97' : '#0e7c66',
+      noteSaveDotD: s.nSaving ? '#7e8085' : '#35c39a',
+      formatTools: toolDefs.map(t => ({
+        glyph: t.glyph, label: t.label, font: t.font, on: !!s.tools[t.key],
+        bg: s.tools[t.key] ? '#101010' : '#f5f4f1',
+        color: s.tools[t.key] ? '#fefefe' : '#101010',
+        toggle: () => this.setState({ tools: Object.assign({}, s.tools, { [t.key]: !s.tools[t.key] }) })
+      })),
+      formatToolsD: toolDefs.map(t => ({
+        glyph: t.glyph, label: t.label, font: t.font, on: !!s.tools[t.key],
+        bg: s.tools[t.key] ? '#f2f1ee' : '#1c1f23',
+        color: s.tools[t.key] ? '#101215' : '#f2f1ee',
+        toggle: () => this.setState({ tools: Object.assign({}, s.tools, { [t.key]: !s.tools[t.key] }) })
+      })),
+
+      checklist: ['Snapshot the SD card', 'Export vault to external drive', 'Note the current firmware', 'Check fan and temps'].map((label, i) => ({
+        label, done: s.checks[i], open: !s.checks[i],
+        color: s.checks[i] ? '#77746e' : '#101010',
+        line: s.checks[i] ? 'line-through' : 'none',
+        toggle: () => this.setState({ checks: s.checks.map((c, j) => j === i ? !c : c) })
+      })),
+      checklistD: ['Snapshot the SD card', 'Export vault to external drive', 'Note the current firmware', 'Check fan and temps'].map((label, i) => ({
+        label, done: s.checks[i], open: !s.checks[i],
+        color: s.checks[i] ? '#9b9ca1' : '#f2f1ee',
+        line: s.checks[i] ? 'line-through' : 'none',
+        toggle: () => this.setState({ checks: s.checks.map((c, j) => j === i ? !c : c) })
+      })),
+
+      sources: [
+        { glyph: '▣', label: 'Photos and videos', meta: 'From your camera roll' },
+        { glyph: '▤', label: 'Files', meta: 'Documents, archives, keys' },
+        { glyph: '⧉', label: 'Scan a document', meta: 'Camera, auto-cropped' },
+        { glyph: '◉', label: 'Take a photo', meta: 'Straight into the vault' }
+      ],
+
+      uploads: upNames.map((u, i) => ({
+        name: u.name, ext: u.ext, pct: Math.round(s.pct[i]) + '%',
+        state: s.pct[i] >= 100 ? 'Done' : (s.pct[i] > 0 ? Math.round(s.pct[i]) + '%' : 'Queued'),
+        done: s.pct[i] >= 100, running: s.pct[i] < 100,
+        barColor: s.pct[i] >= 100 ? '#0e7c66' : '#101010'
+      })),
+      uploadsD: upNames.map((u, i) => ({
+        name: u.name, ext: u.ext, pct: Math.round(s.pct[i]) + '%',
+        state: s.pct[i] >= 100 ? 'Done' : (s.pct[i] > 0 ? Math.round(s.pct[i]) + '%' : 'Queued'),
+        done: s.pct[i] >= 100, running: s.pct[i] < 100,
+        barColor: s.pct[i] >= 100 ? '#35c39a' : '#f2f1ee'
+      })),
+      uploadTotal: total + '%',
+      uploadSummary: doneCount + ' of 4 done · 24.3 MB · encrypting, then uploading',
+
+      sheetActions: [
+        { glyph: '↗', label: 'Open', color: '#101010' },
+        { glyph: 'Aa', label: 'Rename', color: '#101010' },
+        { glyph: '⇢', label: 'Move to folder', color: '#101010' },
+        { glyph: '⚿', label: 'Move to private area', color: '#101010' },
+        { glyph: '↓', label: 'Export to device', color: '#101010' },
+        { glyph: '×', label: 'Delete', color: '#8f2b12' }
+      ],
+      sheetActionsD: [
+        { glyph: '↗', label: 'Open', color: '#f2f1ee' },
+        { glyph: 'Aa', label: 'Rename', color: '#f2f1ee' },
+        { glyph: '⇢', label: 'Move to folder', color: '#f2f1ee' },
+        { glyph: '⚿', label: 'Move to private area', color: '#f2f1ee' },
+        { glyph: '↓', label: 'Export to device', color: '#f2f1ee' },
+        { glyph: '×', label: 'Delete', color: '#ff9d80' }
+      ],
+
+      folderName: s.folderName,
+      setFolder: e => this.setState({ folderName: e.target.value }),
+      folderCount: s.folderName.length + '/40',
+      createBg: s.folderName.trim() ? '#101010' : '#f5f4f1',
+      createFg: s.folderName.trim() ? '#fefefe' : '#a09d97',
+      createBgD: s.folderName.trim() ? '#f2f1ee' : '#1c1f23',
+      createFgD: s.folderName.trim() ? '#101215' : '#7e8085',
+      renameVal: s.renameVal,
+      setRename: e => this.setState({ renameVal: e.target.value }),
+
+      folders: folderDefs.map((f, i) => ({
+        name: f.name, meta: f.meta, sel: s.folderPick === i, unsel: s.folderPick !== i,
+        pick: () => this.setState({ folderPick: i })
+      })),
+
+      sortOptions: sortDefs.map((label, i) => ({ label, sel: s.sort === i, pick: () => this.setState({ sort: i }) })),
+      viewIsList: s.view === 'list', viewIsGrid: s.view === 'grid',
+      pickList: () => this.setState({ view: 'list' }),
+      pickGrid: () => this.setState({ view: 'grid' }),
+      listBg: s.view === 'list' ? '#101010' : '#ffffff',
+      listFg: s.view === 'list' ? '#fefefe' : '#101010',
+      listBorder: s.view === 'list' ? '#101010' : '#eceae5',
+      gridBg: s.view === 'grid' ? '#101010' : '#ffffff',
+      gridFg: s.view === 'grid' ? '#fefefe' : '#101010',
+      gridBorder: s.view === 'grid' ? '#101010' : '#eceae5',
+      listBgD: s.view === 'list' ? '#f2f1ee' : '#101215',
+      listFgD: s.view === 'list' ? '#101215' : '#f2f1ee',
+      listBorderD: s.view === 'list' ? '#f2f1ee' : '#2b2f34',
+      gridBgD: s.view === 'grid' ? '#f2f1ee' : '#101215',
+      gridFgD: s.view === 'grid' ? '#101215' : '#f2f1ee',
+      gridBorderD: s.view === 'grid' ? '#f2f1ee' : '#2b2f34',
+      foldersFirst: s.foldersFirst, foldersLast: !s.foldersFirst,
+      toggleFoldersFirst: () => this.setState({ foldersFirst: !s.foldersFirst })
+    };
+  }
+}
+</script>
+</body>
+</html>
